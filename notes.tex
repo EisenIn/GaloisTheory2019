@@ -1,0 +1,151 @@
+\documentclass[a4paper,12pt,american]{scrbook} 
+ 
+
+
+\usepackage{times}
+\usepackage{mathptmx}
+
+\usepackage[utf8]{inputenc} 
+\usepackage{utf8math}
+
+\usepackage{mathrsfs}
+\usepackage[american]{babel}
+\usepackage{mathtools} % includes amsmath
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{todonotes}
+
+%\usepackage{multirow}
+\usepackage{enumerate}
+
+%\usepackage{tikz}
+\usepackage{framed}
+%\usepackage[colorlinks]{hyperref}
+%\usepackage{showlabels}  
+
+
+%\usetikzlibrary{calc}
+%\usetikzlibrary{intersections}
+%\usetikzlibrary{arrows}
+%\usetikzlibrary{decorations.pathmorphing}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}} 
+\newcommand{\X}{\mathscr{X}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\pscal}[1]{\langle {#1} \rangle}
+\newcommand{\con}[1]{\overline{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\car}{\mathrm{Char}}
+
+\providecommand{\one}{\mathbf{1}}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\cont}{cont}
+\DeclareMathOperator{\rank}{rang}
+\DeclareMathOperator{\noy}{noyau}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\tcone}{tcone}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\cof}{cof}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\relint}{relint}
+\DeclareMathOperator{\spa}{span}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclarePairedDelimiter\mnorm{\lvert\lvert\lvert}{\rvert\rvert\rvert} % matrix norm
+
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem*{notation}{Notation}
+\newtheorem{example}{Example}[chapter]
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}{Problem}[chapter]
+\newtheorem{exercise}{Exercise}[chapter]
+\newtheorem{algorithm}{Algorithm}[chapter]
+
+
+
+\newcommand{\iunit}{\mathrm{i}}
+\newcommand{\CC}{{\mathbb C}}
+\newcommand{\EE}{{\mathbb E}}
+\newcommand{\FF}{{\mathbb F}}
+\newcommand{\KK}{{\mathbb K}}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\ZZ}{{\mathbb Z}}
+
+\newcommand{\calB}{{\mathcal B}}
+
+
+%opening
+
+\title{Galois Theory }
+\subtitle{MATH-317}
+\author{Friedrich Eisenbrand}
+
+%\includeonly{chapter02-theoreme-spectral}
+
+\begin{document} 
+
+\maketitle
+
+\subsection*{What this course is about}
+Let $E ⊇ F$ be an extension of fields. Galois theory studies the group of automorphisms $θ： E → E$ that \emph{fix} $F$. For certain extensions that are in the focus of this course, there is a remarkable connection between this group and the subfields of $E$ that contain $F$. This   \emph{Galois correspondence} enables us to  prove that the general quintic does not have a solution that is a radical expression of the coefficients.
+
+Galois theory is an essential part of mathematical training for more than a century now. Numerous books exist that treat the subject, some of which belong to the finest writing in mathematics, see for example~\cite{van1950moderne,artin1998galois,nicholson2012introduction}. In this course,  will also discuss algorithmic aspects of Galois Theory that are not yet reflected in the canonical textbooks. We will consider the problem of calculating the Galois group of a polynomial and questions like how to transition between rational approximations of an algebraic number to its minimal polynomial via lattice basis reduction, in particular the method developed in~\cite{kannan1988polynomial}. We will also discuss the efficient algorithm for the problem to find a root of a rational polynomial in radicals~\cite{landau1985solvability}.
+
+
+
+\subsection*{Acknowledgments}
+The following people have helped with comments, suggestions and corrections
+
+
+
+
+
+\tableofcontents
+
+
+\include{chapter00-basics} 
+
+
+\bibliographystyle{acm}
+\bibliography{books}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+

@@ -1,0 +1,283 @@
+\chapter{Preliminaries}
+\label{cha:preliminaries}
+
+
+We assume the reader to be familiar with the content of the course \emph{MATH-215, Rings and Fields}. In the following, we briefly review some of the most important notions from this course.
+
+Throughout this course, we assume that a ring $(R,+,⋅)$ to be commutative with \emph{unity}  $1_R \neq 0_R$. A \emph{zero divisor} is an element $a≠0$ such that there exists  an element $b≠0$ with $a⋅b = 0$. A ring without zero divisors is an  \emph{integral domain}. The \emph{characteristic} of $R$ is the order of $1$ in the additive subgroup $(R,+)$, if this order is finite. If this order is infinite, then the characteristic of is $R$ zero. The characteristic of an integral domain is either zero or a prime number.
+\begin{quote}
+  \small Indeed, if the order of $1$ is $m ≥1$ and if $m = p⋅q$ with natural numbers $p,q >1$, then $ p ⋅1≠ 0$ and   $q ⋅1≠0$ but  $ (p ⋅1 ) (q ⋅1) = (p⋅q) 1 = 0$ contradicting the assumption that $R$ does not contain zero divisors. 
+\end{quote}
+
+
+An element $u ∈ R$ is a  \emph{unit}, if there exists an element $u^{-1} ∈R$ with $u ⋅ u^{-1} = 1$. 
+A \emph{field} is a ring $R$ in which $(R \setminus \{0\}, ⋅)$  is a group, or in other words, if each element of $R$ apart from $0$ is a unit. The \emph{field of quotients} of an integral domain is the set of equivalence classes of $X = \{ (r,u) ： r,u ∈R, u ≠0\}$ of the equivalence relation
+$  (r,u) ≡ (r',u') \quad \text{ if  and only if } r ⋅ u' = r' ⋅ u$,  together with the obvious well defined operations $+, ⋅$.
+
+
+
+
+\section{Homomorphisms and ideals}
+\label{sec:homomorphisms-ideals}
+
+
+If $R_1$ and $R_2$ are rings, a map  $θ: R_1 → R_2$ is a \emph{ring  homomorphism} if for all $r,s ∈R_1$:
+\begin{enumerate}
+\item $θ(r+s) = θ(r) + θ(s)$
+\item $θ(rs) = θ(r) θ(s)$
+\item $θ(1_{R_1}) = θ(1_{R_2}) $ 
+\end{enumerate}
+If $θ$ is a bijection, then it is a \emph{(ring) isomorphism} and if in addition $R_1 = R_1$, then $θ$ is called an \emph{automorphism}.
+
+If $A$ is an additive subgroup of $R$, then $R$ is partitioned into classes
+\begin{displaymath}
+  r + A = \{ r+a ： a ∈A\}, \quad \text{ where } r ∈R. 
+\end{displaymath}
+Since $(R,+)$ is abelian, $A$ is a normal subgroup which makes the addition operation on classes
+\begin{equation}\label{eq:1}
+  (r + A ) + (s + A) = (r+s) + A
+\end{equation}
+well defined. We would like to have a well defined multiplication as well. 
+An additive subgroup of $A$ of $R$ is an \emph{ideal} if $ra ∈ A$ for each $r∈R$ and $a ∈A$.
+\begin{quote}
+  \small  We repeat the argument that shows  why the multiplication~\eqref{eq:1} is well defined if and only if the additive subgroup $A$ is an ideal of $R$. If $A$ is an ideal, $r+A = r'+A$ and $s +A = s'+A$, then we need to show that $rs - r's' ∈ A$. But
+  \begin{eqnarray*}
+    rs - r's' & = & rs - rs' + rs' - r's' \\
+              & = & r(s-s') + (r - r') s' 
+  \end{eqnarray*}
+  and this is an element of $A$ since both $s-s' ∈A$ and $r-r' ∈A$, as the corresponding cosets are equal.
+
+Suppose next that the multiplication is well defined and let $r ∈R$ and $a ∈A$. Then $a+A = 0+A$ and thus the coset $ra +A$ is the coset $r⋅0 +A$  which is equivalent to $ra ∈A$. \qed
+\end{quote}
+
+We have the following theorem.
+\begin{theorem}
+  \label{thr:1}
+  Let $A$ be an ideal of the  ring $R$. The additive factor group $R / A$ is, together with the multiplication $(r+A ) (s+A) = rs+A$ a ring with unity $1+A$.   This ring $R/A$ is called the \emph{factor ring} of $R$ by $A$.
+\end{theorem}
+\begin{proof}
+  Since $(R,+)$ is abelian, $R/A$ is an abelian group. The multiplication is well defined and it is easy to see that $1 +A$ is the unity. Verification that the multiplication is associative and that the distributive laws hold are an exercise. 
+\end{proof}
+
+The kernel of a homomorphism $θ: R_1 → R_2$, $\ker(θ) = \{ r ∈ R_1 ：θ(r) = 0\}$ is an ideal of $R_1$. If we denote the image of $θ$ by $θ(R_1) = \{ θ(r) ：r ∈R_1\} ⊆ R_2$, then we can note the isomorphism theorem.
+\begin{theorem}[Isomorphism theorem]
+  \label{thr:2}
+  Let $θ：R_1 →R_2$ be a ring-homomorphism and $A = \ker(θ)$. Then $θ$ induces the ring isomorphism $φ：R_1 / A → θ(R_1)$ with $φ(r +A) = θ(r)$. 
+\end{theorem}
+
+
+An ideal $P$ of a ring $R$ is called a \emph{prime ideal} if, $P ≠R$ and $P$ has the following property: If $rs ∈P$, the $r ∈P$ or $s ∈P$. One immediately has the following theorem. 
+
+\begin{theorem}
+  \label{thr:3}
+  An ideal $P ≠R$ of a ring $R$ is a prime ideal if and only if $R/P$ is an integral domain. 
+\end{theorem}
+
+An ideal $M$ of $R$ is called \emph{maximal ideal}, if $M ≠R$ and the following property holds: An ideal $A$ of $R$ with $M ⊆ A ⊆R$ is either equal to $M$ or equal to $R$. One immediately has the following theorem.
+
+\begin{theorem}
+  \label{thr:4}
+  Let $M$ be an ideal of $R$. Then $M$ is maximal if and only if $R/M$ is a field. 
+\end{theorem}
+\begin{proof}
+  \small Indeed, if $M$ is maximal and $r ∉ M$, then $Rr + M$ is also an ideal that contains $M$ but is not equal to $M$ and thus is equal to $R$ and thus contains $1$. This means that there exists $x ∈R$ and $m ∈M$ with $xr + m =1$ which shows that $x+M$ is the multiplicative inverse of $r+M$. If on the other hand $R/M$ is not a field, then there exists a non-invertible element $r + M ≠ 0+M$ of $R/M$. The ideal $Rr + M$ contains $M$ strictly, but is not equal to $R$, which contradicts the fact that $M$ is maximal. 
+\end{proof}
+
+
+
+\subsection*{Exercises}
+
+
+\begin{enumerate}
+\item Let $θ: R_1 → R_2$ be a ring homomorphism. Show that $\ker(θ) = \{ r ∈ R_1 ：θ(r) = 0 \}$ is an ideal of $R_1$. 
+\item Let $R$ be an integral domain and consider the construction of the field  of quotients as described above. We denote the equivalence class of $(r,u)$ with $u ≠0$ by $\frac{r}{u}$. Show that addition and multiplication
+  \begin{displaymath}
+    \frac{r}{u} + \frac{x}{y} = \frac{ry + ux}{uy} \quad  \text{ and } \quad  \frac{r}{u} ⋅ \frac{x}{y} = \frac{rx}{uy} 
+  \end{displaymath}
+  where $r,u,x,y ∈R$ and $uy ≠0$ are well defined. 
+\item Complete the proof of Theorem~\ref{thr:1} by showing that the multiplication defined on $R/A$ is associative and that the distributive laws hold.
+\end{enumerate}
+
+
+
+\section{Polynomials}
+\label{sec:polynomials}
+
+The ring of polynomials with coefficients in $R$ is denoted by $R[x]$. If $f(x) ∈ R[x]$ is nonzero, then the highest exponent of $x$ that has nonzero coefficient is the \emph{degree} of $f(x)$. This coefficient is the \emph{leading coefficient} of $f(x)$. The polynomial $f(x)$ is called \emph{monic} if this leading coefficient is $1$. The degree of $0$ is not defined.  We recall division with remainder. 
+\begin{theorem}
+  \label{thr:5}
+  Let $R$ be a ring and $f(x),g(x)∈R[x]$, $g(x) ≠0$  be polynomials such that the leading coefficient of $g$ is a unit in $R$. Then there exist uniquely determined polynomials $q(x)$ and $r(x)$ such that
+  \begin{enumerate}[i)]
+  \item $f(x) = q(x) g(x) + r(x)$, and
+  \item either $r(x) = 0$ or $\deg r(x) < \deg g(x)$.
+  \end{enumerate}
+\end{theorem}
+%
+In particular, division with remainder implies the so-called \emph{factor theorem}. for $f(x) ∈ R[x]$ and $a ∈R$, if $f(a) = 0$, then there exists $q(x) ∈ R[x]$ with
+\begin{displaymath}
+  f(x) = (x - a) q(x). 
+\end{displaymath}
+In this case, $a$ is a \emph{root} of $f(x)$. The \emph{multiplicity} of the root $a$ is the largest $m≥1$ such that $f(x) = (x-a)^m \, g(x)$.
+
+In the following, let $F$ denote a field. A nonzero polynomial $p(x) ∈ F[x]$ is called an \emph{irreducible polynomial}, if
+\begin{enumerate}[(1)]
+\item $\deg p(x) ≥1$, and
+\item if $p(x) = f(x) g(x)$ with $f(x),g(x) ∈ F[x]$, then either $f(x) ∈ F$ or $g(x) ∈F$. 
+\end{enumerate}
+In particular, irreducible polynomials in $F$ have no root in $F$.
+The \emph{content} of a polynomial $f(x) = a_1 + a_1 x + \cdots + a_n x^n ∈ Z[x]$  with integer coefficients is defined as $\cont(f) = \gcd(a_0,\dots,a_n)$. 
+
+\begin{theorem}[Gauss's Lemma]
+  Let $f(x),g(x), h(x) ∈ℤ[x]$ be nonzero polynomials with $f(x) = g(x) h(x)$, then
+  \begin{displaymath}
+    \cont (f) = \cont (g) \cont (h).  
+  \end{displaymath}
+\end{theorem}
+
+\begin{proof}[Sketch of proof] 
+  \small It suffices to show that in the case $\cont(g)  = \cont(h) =1$. Let $p$ be a prime dividing each coefficient of $f$. Write $g(x) = a_0 + a_1 x + \dots$ and $h(x) = b_0 + b_1 x + \dots$ and let $i,j$ be the smallest indices such that $p$ does not divide $a_i$ and $p$ does not divide $a_j$ respectively. The coefficient of $x^{i+j}$ is $a_ib_j + a_{i-1}b_{j+1} + a_{i-2}b_{j+2}+ \dots + a_{i+1}b_{j-1} + a_{i+2} b_{j-2}+ \dots$. Since $p$ divides this coefficient, it follows that $p$ divides $a_i$ or $p$ divides $b_j$, a contradiction. 
+\end{proof}
+The consequence is that a nonzero polynomial $f(x) ∈ ℤ[X]$ is irreducible in $ℚ[x]$ if and only if it cannot be written as $f(x) = g(x) h(x)$ where $g(x),h(x) ∈ ℤ[x]$ are non-constant polynomials.
+
+\begin{theorem}[Eisenstein criterion]
+  Let $f(x) = a_0 + a_1 x + \dots + a_n x^n ∈ ℤ[x]$ be a polynomial with integral coefficients, where $n≥1$.  If  there exists a prime number $p$ such  that
+  \begin{enumerate}[(1)]
+  \item $p$ divides $a_0,\dots,a_{n-1}$,
+  \item $p$ does not divide $a_n$, and
+  \item $p^2$ does not divide $a_0$, 
+  \end{enumerate}
+  then $f(x)$ is irreducible in $ℚ[x]$.   
+\end{theorem}
+\begin{proof}[Sketch of proof] 
+  Suppose $f(x)$ is not irreducible. Then there exist polynomials $g(x) = b_0+ b_1x + \dots + b_rx^r ∈ℤ[x]$ and $h(x) = c_0+ c_1x+ \dots + c_sx^s ∈ℤ[x]$ such that $f(x) = g(x) h(x)$. The prime $p$ divides either $b_0$ or $c_0$. Assume it divides $c_0$. Let $0<i<s$ be the first index such that $p$ does not divide $c_i$. The coefficient of $x^i$ is $b_0c_i + b_1c_{i-1}+ \dots$. This implies $p$ divides $c_i$. 
+\end{proof}
+
+The Eisenstein criterion is sufficient but not necessary for irreducibility. How can we rigorously test whether $f(x) = a_0 + a_1 x + \dots a_n x^n ∈ ℤ[x]$  is irreducible? One way to do so is to derive bounds on the coefficients of a possible factor, see~\cite{mignotte1974inequality}.
+
+We define the \emph{norm} of a complex polynomial  $f(x) = a_0+a_1x+ \cdots+a_nx^n ∈ ℂ[x]$ by  $\|f\|_2 = \sqrt{∑_{i=0}^n |a_i|^2}$ where $|⋅|$ denotes the usual norm in $ℂ$. By the fundamental theorem of algebra, we can write
+\begin{displaymath}
+f(x)  = a_n ∏_{i=1}^n (x-z_i),  
+\end{displaymath}
+where the $z_i$ are the roots of $f(x)$. We define the \emph{measure} of $f(x)≠0$ as
+\begin{displaymath}
+  M(x) = a_n ∏_{i=1}^n \max\{1,|z_i|\},
+\end{displaymath}
+and $M(0) = 0$. 
+Clearly, the measure is multiplicative, i.e., for $f(x),g(x) ∈ℂ[x]$ are nonzero, then
+\begin{displaymath}
+  M(f(x)g(x)) = M(f(x)) \, M (g(x)). 
+\end{displaymath}
+
+
+The next assertion bounds the norm of $f(x)$ by the measure $M(f)$ from above. To this end, we also introduce the $1$-norm of a polynomial $f(x) = a_0+ \cdots+a_nx^n∈ ℂ[x]$ as
+\begin{displaymath}
+  \|f\|_1 = ∑_{i=0}^n |a_i| 
+\end{displaymath}
+and recall $\|f(x)\|_2 ≤ \|f(x)\|_1$. 
+
+\begin{theorem}
+  \label{thr:6}
+  Let $f(x) =a_0 + \cdots + a_n x^n∈ ℂ[x]$, then $\|f(x)\|_1 ≤ 2^n M(f(x))$. 
+\end{theorem}
+\begin{proof}
+  Let us denote the roots of $f(x)$ again by $z_1,\dots, z_n$. Then
+  \begin{displaymath}
+    f(x) = a_n ∏_{i=1}^n (x-z_i).
+  \end{displaymath}
+  The $i$-th coefficient of $f(x)$ is
+  \begin{displaymath}
+    a_i = (-1)^{n-i} a_n  ∑_{ S ∈ \binom{n}{n-i}} ∏_{j ∈S} z_j. 
+\end{displaymath}
+This implies
+\begin{displaymath}
+  |a_i| ≤ \binom{n}{n-i} M(f(x)) 
+\end{displaymath}
+and thus
+\begin{displaymath}
+  ∑_{i=0}^n |a_i| ≤ 2^n M(f(x)) 
+\end{displaymath}
+follows. 
+\end{proof} 
+%
+\begin{lemma}
+  \label{lem:1}
+  For $f(x) ∈ℂ[x]$ and $z ∈ℂ$, one has
+  \begin{displaymath}
+    \|(x-z) f(x)\|_2 = \|(\overline{z}x-1) f(x)\|_2. 
+  \end{displaymath}
+\end{lemma}
+\begin{proof}
+  If we define $a_{-1}=0$ and $a_{n+1} = 0$, then
+  \begin{eqnarray*}
+    \|(x-z) f(x)\|_2^2 & = & ∑_{i=0}^{n+1} | a_{i-1} - z a_i|^2 \\
+                       & = & ∑_{i=0}^{n+1} (a_{i-1} - z a_i) (\con{a_{i-1}} - \con{z} \con{ a_i})  \\
+                      & = & (1+ |z|^2 ) \|f(x)\|_2^2 - ∑_{i=0}^{n+1} \con{z} a_{i-1} \con{a_{i}} + z \con{a_{i-1}} a_i . 
+  \end{eqnarray*}
+%
+Similarly, we develop
+  \begin{eqnarray*}
+    \|(\con{z}x-1) f(x)\|_2^2 & = & ∑_{i=0}^{n+1} | \con{z} a_{i-1} -  a_i|^2 \\
+                       & = & ∑_{i=0}^{n+1} (\con{z} a_{i-1} -  a_i) (z \con{a_{i-1}} -  \con{ a_i})  \\
+                      & = & (1+ |z|^2 ) \|f(x)\|_2^2 - ∑_{i=0}^{n+1} \con{z}  a_{i-1}\con{a_{i}} + {z}  \con{a_{i-1}} a_i. 
+  \end{eqnarray*}
+\end{proof}
+%
+We next want to bound the norm by the measure from below.
+%
+\begin{theorem}[Landau's inequality]
+  Let $f(x) ∈ℂ[x]$, then $M(f) ≤ \|f(x)\|_2$. 
+\end{theorem}
+\begin{proof}
+  This clearly holds for the zero polynomial. Thus, let $f(x)≠0$ and suppose the roots $z_i$ are ordered such that $|z_1|,\dots,|z_k| >1$ and $|z_{k+1}|,\dots,|z_n| ≤1$ such that $M(f) = |a_n ⋅ z_1 \cdots z_k|$. We define the polynomial
+  \begin{displaymath}
+    g(x) = a_n ∏_{i=1}^k (\con{z}x-1) ∏_{i=k+1}^n(x-z_i) = g_n x^n + \cdots + g_0 ∈ ℂ[x]. 
+  \end{displaymath}
+
+  One has
+  \begin{eqnarray*}
+    M(f)^2 &=& |g_n|^2 \\
+           & ≤& \|g(x)\|_2^2 \\
+           & = & \| \frac{g(x)}{\con{z_1}x-1} (x-z_1) \|_2^2\\
+           & = & \| \frac{g(x)}{(\con{z_1}x-1) \cdots (\con{z_k}x-1)} (x-z_1) \cdots  (x-z_k) \|_2^2 \\
+           & = & \|f(x)\|_2^2,  
+  \end{eqnarray*}
+  where we applied Lemma~\ref{lem:1} repeatedly.    
+\end{proof}
+
+\begin{theorem}
+  \label{thr:7}
+  Let $f(x) ∈ ℤ[x]$ be a nonzero polynomial of degree $n$ and $g(x),h(x) ∈ℤ[x]$ with
+  $f(x) = g(x) h(x)$, then
+  \begin{displaymath}
+    \|g\|_1 ≤ 2^n \|f\|_2. 
+  \end{displaymath}    
+\end{theorem}
+
+\begin{proof}
+  The measure is multiplicative and each coefficient is integral. Thus we have $M(g) ≤ M(f)$.
+  Theorem~\ref{thr:6} implies    $\|g\|_1 ≤ 2^n M(g)$. Since the measure is multiplicative and the coefficients are all integral, the absolute value of the leading coefficient of $f$ is at least the one of $g$ and therefore $M(g) ≤ M(f)$. Finally Landau's inequality yields $M(f)≤ \|f\|_2$. This yields
+  \begin{displaymath}
+    \|g\|_1 ≤ 2^n \|f\|_2. 
+  \end{displaymath}
+\end{proof}
+
+
+
+Theorem~\ref{thr:7} enables us to solve the problem whether a given polynomial $f(x) ∈ℤ[x]$  with content $1$ is irreducible or not with a finite algorithm. The assertion states that a factor $g(x) ∈ℤ[x]$ satisfies $\|g\|_1 ≤ 2^n \|f\|_2$, where $n$ is the degree of $f$. We can simply list all polynomials of degree at most $n$ that satisfy this bound. This is a finite but not efficient algorithm. It is exponential in the degree and in the binary encoding length of the largest absolute vallue of a coefficient of $f$. The problem has an efficient algorithmic solution. This is a celebrated result by Lenstra, Lenstra and Lovàsz~\cite{lenstra1982factoring}.  
+
+
+\subsection*{Exercises}
+\begin{enumerate}
+\item Let $f(x) ∈ R[x]$ and $a ∈R$ be a root of $f(x)$ with multiplicity $m$. Let $g(x) ∈ R[x]$ with $f(x) = (x-a)^m g(x)$. Show that $a$ is not a root of $g(x)$.
+\item Let $R$ be an integral domain and  $f(x) ∈ R[x]$ be a nonzero polynomial. Show that $f(x)$ has at most $\deg f(x)$ many different roots.
+\item Describe an irreducible (in $ℚ[x]$) polynomial $p(x) ∈ℤ[X]$ with degree at least two which does not satisfy the Eisenstein criterion.
+\item Let  $f(x),g(x) ∈ℂ[x]$ be nonzero. Show that $M(f(x)g(x)) = M(f(x)) \, M (g(x))$.
+\item Let $f(x),g(x) ∈ℂ[x]$ be nonzero polynomials with leading coefficients $a,b ≠0$ where $\deg (f) = n$. Shoe the following generalization of Theorem~\ref{thr:7}: $\|g\|_1 ≤ 2^n |b| / |a| \|f\|_2$. 
+\end{enumerate}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:
