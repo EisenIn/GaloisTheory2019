@@ -27,7 +27,7 @@ If $R_1$ and $R_2$ are rings, a map  $θ: R_1 → R_2$ is a \emph{ring  homomorp
 \item $θ(rs) = θ(r) θ(s)$
 \item $θ(1_{R_1}) = 1_{R_2} $ 
 \end{enumerate}
-If $θ$ is a bijection, then it is a \emph{(ring) isomorphism} and if in addition $R_1 = R_1$, then $θ$ is called an \emph{automorphism}.
+If $θ$ is a bijection, then it is a \emph{(ring) isomorphism} and if in addition $R_1 = R_2$, then $θ$ is called an \emph{automorphism}.
 
 If $A$ is an additive subgroup of $R$, then $R$ is partitioned into classes
 \begin{displaymath}
@@ -125,7 +125,7 @@ In the following, let $F$ denote a field. A nonzero polynomial $p(x) ∈ F[x]$ i
 \item if $p(x) = f(x) g(x)$ with $f(x),g(x) ∈ F[x]$, then either $f(x) ∈ F$ or $g(x) ∈F$. 
 \end{enumerate}
 In particular, irreducible polynomials in $F$ have no root in $F$.
-The \emph{content} of a polynomial $f(x) = a_1 + a_1 x + \cdots + a_n x^n ∈ Z[x]$  with integer coefficients is defined as $\cont(f) = \gcd(a_0,\dots,a_n)$. 
+The \emph{content} of a polynomial $f(x) = a_0 + a_1 x + \cdots + a_n x^n ∈ Z[x]$  with integer coefficients is defined as $\cont(f) = \gcd(a_0,\dots,a_n)$. 
 
 \begin{theorem}[Gauss's Lemma]
   Let $f(x),g(x), h(x) ∈ℤ[x]$ be nonzero polynomials with $f(x) = g(x) h(x)$, then
@@ -135,7 +135,7 @@ The \emph{content} of a polynomial $f(x) = a_1 + a_1 x + \cdots + a_n x^n ∈ Z[
 \end{theorem}
 
 \begin{proof}[Sketch of proof] 
-  \small It suffices to show that in the case $\cont(g)  = \cont(h) =1$. Let $p$ be a prime dividing each coefficient of $f$. Write $g(x) = a_0 + a_1 x + \dots$ and $h(x) = b_0 + b_1 x + \dots$ and let $i,j$ be the smallest indices such that $p$ does not divide $a_i$ and $p$ does not divide $a_j$ respectively. The coefficient of $x^{i+j}$ is $a_ib_j + a_{i-1}b_{j+1} + a_{i-2}b_{j+2}+ \dots + a_{i+1}b_{j-1} + a_{i+2} b_{j-2}+ \dots$. Since $p$ divides this coefficient, it follows that $p$ divides $a_i$ or $p$ divides $b_j$, a contradiction. 
+  \small It suffices to show that in the case $\cont(g)  = \cont(h) =1$. Let $p$ be a prime dividing each coefficient of $f$. Write $g(x) = a_0 + a_1 x + \dots$ and $h(x) = b_0 + b_1 x + \dots$ and let $i,j$ be the smallest indices such that $p$ does not divide $a_i$ and $p$ does not divide $b_j$ respectively. The coefficient of $x^{i+j}$ is $a_ib_j + a_{i-1}b_{j+1} + a_{i-2}b_{j+2}+ \dots + a_{i+1}b_{j-1} + a_{i+2} b_{j-2}+ \dots$. Since $p$ divides this coefficient, it follows that $p$ divides $a_i$ or $p$ divides $b_j$, a contradiction. 
 \end{proof}
 The consequence is that a nonzero polynomial $f(x) ∈ ℤ[X]$ is irreducible in $ℚ[x]$ if and only if it cannot be written as $f(x) = g(x) h(x)$ where $g(x),h(x) ∈ ℤ[x]$ are non-constant polynomials.
 
@@ -160,7 +160,7 @@ f(x)  = a_n ∏_{i=1}^n (x-z_i),
 \end{displaymath}
 where the $z_i$ are the roots of $f(x)$. We define the \emph{measure} of $f(x)≠0$ as
 \begin{displaymath}
-  M(x) = a_n ∏_{i=1}^n \max\{1,|z_i|\},
+  M(f) = |a_n| ∏_{i=1}^n \max\{1,|z_i|\},
 \end{displaymath}
 and $M(0) = 0$. 
 Clearly, the measure is multiplicative, i.e., for $f(x),g(x) ∈ℂ[x]$ are nonzero, then
