@@ -1,4 +1,4 @@
-# Algebre-Lineaire-2
+# Galois Theory
 
 This repository contains the latex sources of the lecture notes of my course on Galois Theory 
 
