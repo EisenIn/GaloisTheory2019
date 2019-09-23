@@ -1,0 +1,163 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 1 - Solutions}
+\rhead{September 20, 2019}
+\rfoot{1-2 by J.Baudin \\3-5 by S.Giampietro\\6-8 by V.A.Nadarajan}
+ 
+
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{../../utf8math}
+
+
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}} 
+\newcommand{\X}{\mathscr{X}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\pscal}[1]{\langle {#1} \rangle}
+\newcommand{\con}[1]{\overline{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\car}{\mathrm{Char}}
+
+\providecommand{\one}{\mathbf{1}}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\cont}{cont}
+\DeclareMathOperator{\rank}{rang}
+\DeclareMathOperator{\noy}{noyau}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\tcone}{tcone}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\cof}{cof}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\relint}{relint}
+\DeclareMathOperator{\spa}{span}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+
+
+
+\begin{document}
+
+
+\vskip 2ex
+
+
+
+\textbf{Solution 1.}
+	We show the more general statement that the preimage of an ideal by a ring homomorphisn is always an ideal (as $\{0\}$ is an ideal, we see that the statement follows). \\
+	Let $\theta : R_1 \rightarrow R_2$ be a ring homomorphism and let $J$ be an ideal of $R_2$. We show that $I = \theta^{-1}(J)$ is an ideal of $R_1$ : 
+	\begin{itemize}
+		\item $I$ is an abelian subgroup : let $x, y \in I$, then $\theta(x + y) = \theta(x) + \theta(y) \in J$ so $x + y \in I$ and $\theta(-x) = -\theta(x) \in J$ so $-x \in I$ because $J$ is an abelian subgroup. Hence, $I$ is an abelian subgroup. 
+		\item $rI \subseteq I$ for all $r \in R_1$ : let $r \in R_1$ and $x \in I$, then $\theta(rx) = \theta(r)\theta(x) \in J$ because $J$ is an ideal. Hence, $rx \in I$.
+	\end{itemize}
+	Thus, we have proven that $I$ is an ideal of $R_1$.
+
+\textbf{Solution 2.}
+	Recall : for $r, s, u, v \in R$ with $s, v \neq 0$, $(r, s) \equiv (u, v)$ if $rv = su$ and we define $(r, s) + (u, v) = (rv + su, sv)$ and $(r, s)(u, v) = (ru, sv)$. We also denote the equivalence class of $(r, s)$ by $\frac{r}{s}$. \\
+	Suppose that $(r_1, s_1) \equiv (r_2, s_2)$ and $(u_1, v_1) \equiv (u_2, v_2)$, the goal is to show that $(r_1, s_1) + (u_1, v_1) \equiv (r_2, s_2) + (u_2, v_2)$ and $(r_1, s_1)(u_1, v_1) \equiv (r_2, s_2)(u_2, v_2)$. \\
+	\begin{itemize}
+		\item Addition : Since $(r_1, s_1) \equiv (r_2, s_2)$ and $(u_1, v_1) \equiv (u_2, v_2)$, $r_1s_2 = s_1r_2$ and $u_1v_2 = v_1u_2$. We have that 
+		\[ s_2v_2(r_1v_1 + s_1u_1) = (s_2r_1)(v_2v_1) + (u_1v_2)(s_1s_2) =\] \[ (s_1r_2)(v_2v_1) + (u_2v_1)(s_1s_2) = s_1v_1(r_2v_2 + s_2u_2) \] so we obtain that \[ (r_1v_1 + s_1u_1, s_1v_1) \equiv (r_2v_2 + s_2u_2, s_2v_2) \] which is what we wanted.
+		\item Multiplication : We have that \[ (r_1u_1)(s_2v_2) = (r_1s_2)(u_1v_2) = (r_2s_1)(u_2v_1) = (r_2u_2)(s_1v_1) \] so we obtain that \[ (r_1u_1, s_1v_1) \equiv (r_2u_2, s_2v_2) \] which is what we wanted
+	\end{itemize}
+	Hence, we have shown that the operations $+$ and $\cdot : (R \times R \setminus \{0\}) \times (R \times R \setminus \{0\}) \rightarrow (R \times R \setminus \{0\})$ are compatible with the equivalence relation $\equiv$ so they are well-defined in the quotient, which is exactly the fraction field.
+\\
+
+\textbf{Solution 3.  }\\
+
+Let $r,s,t$ be arbitrary elements of $R$. \\
+Both associativity and the distributive laws follow from those in $R$.
+We show first associativity. 
+\begin{align*}
+((r+A)(s+A))(t+A)= & (rs+A)(t+A)=( (rs)t+A)\stackrel{\star}{=} (r(st)+A) \\
+= & (r+A)((st)+A)=(r+A)((s+A)(t+A))
+\end{align*}
+We have used the associative law in $R$ for ($\star$).\\
+For the left distributive law: 
+\begin{align*}
+(r+A)((s+A)+(t+A))= & (r+A)((s+t)+A) = (r(s+t) + A) = \\
+\stackrel{\star}{=} &((rs + rt) + A) = (rs+A)+ (rt+A) = \\
+= & (r+A)(s+A) + (r+A)(t+A)
+\end{align*}
+Again, we have used the left distributive law in $R$ for ($\star$).\\
+Right distributivity is analogous (follows from right distributivity in $R$). 
+\\
+\\
+\textbf{Solution 4.  }\\
+
+Suppose by contradiction that $a$ is a root of $g(x)$. Then we can write $g(x)=(x-a)h(x)$ for some polynomial $h(x)\in R[x]$. But this would imply: $f(x)=(x-a)^{m+1}h(x)$. This contradicts the fact that the multiplicity of the root $a$ is $m$. Hence $a$ is not a root of $g(x)$. 
+\\
+\\
+\textbf{Solution 5.  }\\
+
+We proceed by induction on $n=deg(f)$.  \\
+For $deg(f)=0$, $f$ is constant and nonzero so clearly $f=0$ has no solutions. \\
+Now let $n>=1$, and we suppose the statement true for $n-1$. Let $f$ be of degree $n$. \\ 
+If $f(x)=0$ has no solution then we are done. \\
+So suppose there exists $a\in R$ such that $f(a)=0$. 
+Then we may write $f(x)=(x-a)g(x)$, for $g(x)\in R[x]$ with $deg(g)= n-1$. If $f$ has no other roots different from $a$, then again we are done (since $n\geq1$). \\
+Otherwise let $b$ be a root of $f$ such that $a\neq b$. 
+Then necessarily, since $f(b)=0$, $(b-a)\neq 0$, and $R$ is an integral domain, $g(b)=0$. Since $b$ was arbitrary, all roots of $f$ different from $a$ are also roots of $g(x)$. 
+By induction hypothesis, $g(x)$ has at most $n-1$ different roots.
+Hence we conclude that $f$ has at most $n-1$ different roots which are not equal to $a$, hence in total at most $n$ different roots, which concludes the induction step. \\
+
+\textbf{Solution 6. }\\
+
+Let $p$ be a prime number. Consider the polynomial $f(X)=X^2-p^3\in\mathbb{Z}[X]$. This polynomial does not satisfy the Eisenstein criterion. Moreover this polynomial does not have a root over $\mathbb{Q}$: if $\frac{m}{n}\in \mathbb{Q}$ is a root, then $m^2=p^3.n^2$ which contradicts the fundamental theorem of arithmetic.
+
+A polynomial $f(x) ∈ K[x]$ with $\deg(f) = 2$ is irreducible, if and only if it has no roof in $K$. 
+
+Thus the polynomial $g(X)=X^3-p^2\in\mathbb{Z}[X]$ does not satisfy the Eisenstein criterion and is irreducible.  \\
+
+\textbf{Solution 7. }\\
+
+Let $f(X)=a_m\prod_{i=1}^{m}(X-z_i)$, $g(X)=b_n\prod_{i=1}^{n}(X-w_i)\in \mathbb{C}[X]$. We have by definition
+
+\begin{itemize}
+    \item $fg(X)=a_mb_n\prod_{i=1}^{m}(X-z_i)\prod_{i=1}^{n}(X-w_i)$
+    \item $M(f)=|a_m|\prod_{i=1}^{m} \max \{1, |z_i|\}$, $M(g)=|b_n|\prod_{i=1}^{n} \max \{1, |w_i|\}$
+    \item $M(fg)=|a_mb_n|\prod_{i=1}^{m} \max \{1, |z_i|\}\prod_{i=1}^{n} \max \{1, |w_i|\}$
+\end{itemize}{}
+
+Hence the result follows. \\
+
+\textbf{Solution 8. }\\
+
+Let $f(X)=a\prod_{i=1}^{m}(X-z_i)\in\mathbb{C}[X]$ $a\neq 0$, we can order the roots of $f$ in such a way that $g(X)=b\prod_{i=1}^{n}(X-z_i)$ with $n\leq m$. We have by definition
+
+\begin{itemize}
+    \item $M(f)=|a|\prod_{i=1}^{m} \max \{1, |z_i|\}$, $M(g)=|b|\prod_{i=1}^{n} \max \{1, |z_i|\}$
+    \item Therefore $M(g)=|b|\prod_{i=1}^{n} \max \{1, |z_i|\}=\frac{|b|}{|a|}|a|\prod_{i=1}^{n} \max \{1, |z_i|\}\leq \frac{|b|}{|a|}|a|\prod_{i=1}^{m} \max \{1, |z_i|\} $ (since we multiply by terms of absolute value at least 1). But the R.H.S. is $\frac{|b|}{|a|}M(f)$.
+    \item Finally we have $||g||_1\leq 2^m M(g)\leq 2^n \frac{|b|}{|a|}M(f)$.  
+\end{itemize}{}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
