@@ -144,7 +144,7 @@ The \emph{content} of a polynomial $f(x) = a_0 + a_1 x + \cdots + a_n x^n ∈ Z[
 \end{theorem}
 
 \begin{proof}[Sketch of proof] 
-  \small It suffices to show that in the case $\cont(g)  = \cont(h) =1$. Let $p$ be a prime dividing each coefficient of $f$. Write $g(x) = a_0 + a_1 x + \dots$ and $h(x) = b_0 + b_1 x + \dots$ and let $i,j$ be the smallest indices such that $p$ does not divide $a_i$ and $p$ does not divide $b_j$ respectively. The coefficient of $x^{i+j}$ in $f(x) is $a_ib_j + a_{i-1}b_{j+1} + a_{i-2}b_{j+2}+ \dots + a_{i+1}b_{j-1} + a_{i+2} b_{j-2}+ \dots$. Since $p$ divides this coefficient, it follows that $p$ divides $a_i$ or $p$ divides $b_j$, a contradiction. 
+  \small It suffices to show that in the case $\cont(g)  = \cont(h) =1$. Let $p$ be a prime dividing each coefficient of $f$. Write $g(x) = a_0 + a_1 x + \dots$ and $h(x) = b_0 + b_1 x + \dots$ and let $i,j$ be the smallest indices such that $p$ does not divide $a_i$ and $p$ does not divide $b_j$  respectively. The coefficient of $x^{i+j}$ in $f(x)$ is $a_ib_j + a_{i-1}b_{j+1} + a_{i-2}b_{j+2}+ \dots + a_{i+1}b_{j-1} + a_{i+2} b_{j-2}+ \dots$. Since $p$ divides this coefficient, it follows that $p$ divides $a_i$ or $p$ divides $b_j$, a contradiction. 
 \end{proof}
 The consequence is that a nonzero polynomial $f(x) ∈ ℤ[X]$ is irreducible in $ℚ[x]$ if and only if it cannot be written as $f(x) = g(x) h(x)$ where $g(x),h(x) ∈ ℤ[x]$ are non-constant polynomials.
 
@@ -158,7 +158,7 @@ The consequence is that a nonzero polynomial $f(x) ∈ ℤ[X]$ is irreducible in
   then $f(x)$ is irreducible in $ℚ[x]$.   
 \end{theorem}
 \begin{proof}[Sketch of proof] 
-  Suppose $f(x)$ is not irreducible. Then there exist non constant polynomials $g(x) = b_0+ b_1x + \dots + b_rx^r ∈ℤ[x]$ and $h(x) = c_0+ c_1x+ \dots + c_sx^s ∈ℤ[x]$ such that $f(x) = g(x) h(x)$. The prime $p$ divides either $b_0$ or $c_0$. Assume it divides $c_0$. Let $0<i<s$ be the first index such that $p$ does not divide $c_i$. The coefficient of $x^i$ in $f(x) is $b_0c_i + b_1c_{i-1}+ \dots$. This implies $p$ divides $c_i$. 
+Suppose $f(x)$ is not irreducible. Then there exist non constant polynomials $g(x) = b_0+ b_1x + \dots + b_rx^r ∈ℤ[x]$ and $h(x) = c_0+ c_1x+ \dots + c_sx^s ∈ℤ[x]$ such that $f(x) = g(x) h(x)$. The prime $p$ divides either $b_0$ or $c_0$. Assume it divides $c_0$. Let $0<i<s$ be the first index such that $p$  does not divide $c_i$. The coefficient of $x^i$ in $f(x)$ is $b_0c_i + b_1c_{i-1}+ \dots$. This implies $p$ divides $c_i$.  
 \end{proof}
 
 The Eisenstein criterion is sufficient but not necessary for irreducibility. How can we rigorously test whether $f(x) = a_0 + a_1 x + \dots a_n x^n ∈ ℤ[x]$  is irreducible? One way to do so is to derive bounds on the coefficients of a possible factor, see~\cite{mignotte1974inequality}.
@@ -449,9 +449,31 @@ Let $f(x) = a_0 + a_1x + \cdots + a_n x^n ∈ F[x]$  be a polynomial. The \emph{
 \section{Field extensions}
 \label{sec:field-extensions}
 
-Let $E$ and $F$ be fields. If $E ⊇ F$ holds, then $E$ is a \emph{field extension} of $F$. It is an important observation that $E$ is an $F$-vector space and thus the concepts of linear algebra can be used. The dimension of $E$ as an $F$ vector space is denoted by $[E:F]$. It is also called the \emph{degree of the extension}. A field extension of finite degree is also called a \emph{finite field extension}. 
+Let $E$ and $F$ be fields. If $E ⊇ F$ holds, then $E$ is a \emph{field extension} of $F$. It is an important observation that $E$ is an $F$-vector space and thus the concepts of linear algebra can be used. The dimension of $E$ as an $F$ vector space is denoted by $[E:F]$. It is also called the \emph{degree of the extension}. A field extension of finite degree is also called a \emph{finite field extension}.
 
-An element $α∈ E$ is \emph{algebraic} over $F$, if there exists a nonzero polynomial $f(x) ∈ F[x]$  such that $f(α)= 0 $ holds. The \emph{minimal polynomial} of $α$ is the unique monic and non-zero polynomial $p(x) ∈ F[x] $ of minimal degree with $p(α)=0$. 
+\begin{theorem}[Tower Law] 
+  \label{thr:10}
+  Let $E ⊇F$ be a finite field extension and $K$ an intermediate field, i.e.,  $E ⊇K ⊇F$, then
+  \begin{displaymath}
+    [E:F] = [E:K] ⋅ [K:F] 
+  \end{displaymath}
+\end{theorem}
+The proof of the tower  law is a simple exercise in linear algebra. 
+
+An element $α∈ E$ is \emph{algebraic} over $F$, if there exists a nonzero polynomial $f(x) ∈ F[x]$  such that $f(α)= 0 $ holds. The \emph{minimal polynomial} of $α$ is the unique monic and non-zero polynomial $p(x) ∈ F[x] $ of minimal degree with $p(α)=0$. For fields $E ⊇ F$ and $u_1,\dots,u_k ∈E$, $F(u_1,\dots,u_k)$ denotes the inclusion-wise minimal intermediate field of $E⊇F$ that contains $u_1,\dots,u_k$. We have the following important fact. If $u ∈E$ is algebraic over $F$ with minimal polynomial $p(x) = a_0+ \cdots + a_n x^n ∈F[x]$, then
+\begin{equation}
+  \label{eq:8}
+  F(u) ≅ F[x] / 〈p(x)〉. 
+\end{equation}
+This follows from the isomorphism theorem~\ref{thr:2} by inspecting  ring homomorphism
+\begin{equation}
+  \label{eq:10}
+  \begin{array}{rccc}
+    φ: & K[x] &→&  E \\
+       &  f(x) & ↦ & f(u). 
+  \end{array}
+\end{equation}
+The image $φ(K[x])$ of $φ$ is isomorphic to $ K[x] / 〈p(x)〉$. Since $p(x)$ is irreducible, $〈p(x)〉$ is maximal and thus $ K[x] / 〈p(x)〉$ is a field. The image $φ(K[x])$ is thus $F(u)$. 
 
 
 %%% Local Variables:
