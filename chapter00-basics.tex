@@ -357,10 +357,7 @@ and thus
     f_{k}
   \end{pmatrix}
   =
-  \begin{pmatrix}
-    g_1 & g_2 \\
-    g_3 & g_4
-  \end{pmatrix} 
+  U 
   \begin{pmatrix}
     f_0  \\
     f_1
@@ -368,18 +365,11 @@ and thus
 \end{equation}
 where
 $
-   \begin{pmatrix}
-    g_1 & g_2 \\
-    g_3 & g_4
-  \end{pmatrix} ∈ K[x]
+U 
   $
   is the matrix 
 \begin{equation}
-  \label{eq:7}
-   \begin{pmatrix}
-    g_1 & g_2 \\
-    g_3 & g_4
-  \end{pmatrix} = 
+  \label{eq:7} U =    
   \begin{pmatrix}
     0 & 1 \\
     1 & -q_{k-1}
@@ -392,9 +382,76 @@ $
 
 
 
+\begin{example}
+  \label{exe:1}
+  We compute the greatest common divisor of
+  \begin{displaymath}
+     f_0(x)= x^5 - 2x^4 + 3x^3 - 3x^2 + 1
+  \end{displaymath}
+  and
+  \begin{displaymath}
+    f_1(x) = x^4 - x^3 - x + 1.
+  \end{displaymath}
+    Successive division with remainder yields the sequence 
+  \begin{eqnarray*}
+    f_0(x) &= &  x^5 - 2x^4 + 3x^3 - 3x^2 + 1 \\
+    f_1(x) &=&  x^4 - x^3 - x + 1 \\
+    f_2(x) & = & 2x^3 - 2x^2 - 2x + 2 \\
+    f_3(x) & = &  x^2 - 2x + 1 \\
+    f_4(x) & = & 0
+  \end{eqnarray*}
+  with the corresponding quotients    
+  \begin{eqnarray*}
+    \label{eq:9}
+    q_1(x) & = &  x - 1 \\
+    q_2(x) & = &  \frac{1}{2}x \\
+    q_3(x) & = &   2x + 2.     
+  \end{eqnarray*}
+The greatest common  divisor is $x^2 - 2x + 1$. The matrix $U$ is 
+  \begin{eqnarray*}
+    U & = &  \left(\begin{array}{rr}
+0 & 1 \\
+1 & -2 x - 2
+\end{array}\right) ⋅
+\left(\begin{array}{rr}
+0 & 1 \\
+1 & -\frac{1}{2} x
+\end{array}\right) ⋅ 
+\left(\begin{array}{rr}
+0 & 1 \\
+1 & -x + 1
+      \end{array}\right) \\
+    & = & \left(\begin{array}{rr}
+-\frac{1}{2} x & \frac{1}{2} x^{2} - \frac{1}{2} x + 1 \\
+x^{2} + x + 1 & -x^{3} - 2 x - 1
+\end{array}\right).
+  \end{eqnarray*}
+  And indeed
+  \begin{displaymath}
+    -\frac{1}{2} x  ⋅ f_0(x) +  \left(\frac{1}{2} x^{2} - \frac{1}{2} x + 1\right) ⋅ f_1(x) = x^2 - 2x + 1. 
+  \end{displaymath}
+\end{example}
+
+
+Let $f(x) = a_0 + a_1x + \cdots + a_n x^n ∈ F[x]$  be a polynomial. The \emph{derivative} of $f$ is the polynomial $f'(x) = a_1 + 2 a_2x + \cdots + n a_n x^{n-1}$. The following is easily verified by comparing the coefficients of the resulting polynomials. 
+\begin{theorem}
+  \label{thr:10}
+  Let $f$ and $g$ be polynomials in $F[x]$, where $F$ is a field, then
+  \begin{enumerate}[i)]
+  \item $(f(x) + g(x))' = f'(x) +  g'(x)$, 
+  \item $(f(x) g(x))' = f'(x)g(x)  +  f(x) g'(x)$, and
+  \item $(f(g(x)))' = f'(g(x))g'(x)$. 
+  \end{enumerate}
+\end{theorem}
 
 
 
+\section{Field extensions}
+\label{sec:field-extensions}
+
+Let $E$ and $F$ be fields. If $E ⊇ F$ holds, then $E$ is a \emph{field extension} of $F$. It is an important observation that $E$ is an $F$-vector space and thus the concepts of linear algebra can be used. The dimension of $E$ as an $F$ vector space is denoted by $[E:F]$. It is also called the \emph{degree of the extension}. A field extension of finite degree is also called a \emph{finite field extension}. 
+
+An element $α∈ E$ is \emph{algebraic} over $F$, if there exists a nonzero polynomial $f(x) ∈ F[x]$  such that $f(α)= 0 $ holds. The \emph{minimal polynomial} of $α$ is the unique monic and non-zero polynomial $p(x) ∈ F[x] $ of minimal degree with $p(α)=0$. 
 
 
 %%% Local Variables:

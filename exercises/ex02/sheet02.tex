@@ -1,0 +1,63 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 2 }
+\rhead{September 24, 2019}
+\rfoot{Problems selected by F. Eisenbrand and V. Nadarajan}
+ 
+
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\usepackage{../../utf8math}
+
+
+
+
+\begin{document}
+
+
+\vskip 2ex
+
+
+
+\begin{enumerate}
+\item Compute the greatest common divisor of the rational polynomials
+  \begin{eqnarray*}
+   f_0(x) & = &  x^{5} - 3 x^{4} + x^{3} + 8 x^{2} - 12 x + 6 \\
+f_1(x) & = & x^{4} - x^{3} - x^{2} + 6
+  \end{eqnarray*}
+  and compute polynomials $g_0(x), g_1(x) ∈ ℚ[x]$ with 
+  \begin{displaymath}
+    g_0 f_0 + g_1 f_1 = \gcd(f_0,f_1). 
+  \end{displaymath}
+
+ \emph{Hint: Check the sage code that I wrote to latex the example-run of the Euclidean algorithm and modify it. The code can be found in the {\tt Programming} directory of the GitHub page of our course.} 
+\item Which of the following polynomials in   $\mathbb{Q}[x]$ are separable?  
+  \begin{eqnarray*}
+    f_1(x) & = & x^4 + 3x^2 + 1) (x^{20} + 3x^{15} + 3  \\
+    f_2(x) & = & x^{5} - 6 x^{4} + 7 x^{3} + 14 x^{2} - 30 x + 18      
+  \end{eqnarray*}
+\item Show that the quotient ring $\mathbb{Q}[X]/(X^2-1)$ is isomorphic to the product ring $\mathbb{Q}\times \mathbb{Q}$.
+
+\item Let $E ⊇ F$ be a field extension of finite degree. Show that each element of $E$ is algebraic over $F$.    
+  \emph{Hint: Use the Chinese remainder theorem} 
+\item Let $\mathbb{Z}[i]=\{a+bi|a,b\in \mathbb{Z}\}$ be the ring of Gaussian integers. (it is viewed as a ring by considering it as a subring of $\mathbb{C}$) Let $p$ be any prime such that $p\equiv 3\mod 4$. Show that the quotient ring $\mathbb{Z}[i]/(p) \simeq \mathbb{F}_p[X]/(X^2+1) \simeq \mathbb{F}_{p^2}$ where $\mathbb{F}_{p^2}$ is the unique (up to isomorphism) field with $p^2$ elements.
+\item Let $p$ be a prime number. Show that there is a unique (up to isomorphism) field with $p^n$ elements for every natural number $n$.
+
+  \emph{Hint: This field is the splitting field of $X^{p^n}-X$ over $F_p$.} 
+\item Let $R$ be an integral domain and $Q(R)$ its field of fractions. Let $i:R\xrightarrow{}Q(R)$ denote the cananical inclusion $r\mapsto \frac{r}{1}$.  Let $\alpha:R\xrightarrow{}K$ be an injection into a field $K$. Show that there is an injection $\alpha':Q(R)\xrightarrow{}K$ s.t. $\alpha=\alpha'\circ i$. In this sense the field of fractions is the "smallest field containing R".
+\item Let $R$ be an integral domain. Show that $R[X]$ is an integral domain. [Hint: If $f,g\in R[X]$ show that $deg(fg)=deg(f).deg(g)$] 
+
+\end{enumerate}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
