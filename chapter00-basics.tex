@@ -189,7 +189,7 @@ and recall $\|f(x)\|_2 ≤ \|f(x)\|_1$.
   Let $f(x) =a_0 + \cdots + a_n x^n∈ ℂ[x]$, then $\|f(x)\|_1 ≤ 2^n M(f(x))$. 
 \end{theorem}
 \begin{proof}
-  Let us denote the roots of $f(x)$ again by $z_1,\dots, z_n$. Then
+  Let us denote the roots of $f(x)$ by $z_1,\dots, z_n$. Then
   \begin{displaymath}
     f(x) = a_n ∏_{i=1}^n (x-z_i).
   \end{displaymath}
@@ -263,7 +263,6 @@ We next want to bound the norm by the measure from below.
 \end{theorem}
 
 \begin{proof}
-  The measure is multiplicative and each coefficient is integral. Thus we have $M(g) ≤ M(f)$.
   Theorem~\ref{thr:6} implies    $\|g\|_1 ≤ 2^n M(g)$. Since the measure is multiplicative and the coefficients are all integral, the absolute value of the leading coefficient of $f$ is at least the one of $g$ and therefore $M(g) ≤ M(f)$. Finally Landau's inequality yields $M(f)≤ \|f\|_2$. This yields
   \begin{displaymath}
     \|g\|_1 ≤ 2^n \|f\|_2. 
@@ -526,7 +525,7 @@ A polynomial $f(x) ∈ F[x] \setminus\{0\}$ is called \emph{separable}, if it do
 \end{theorem}
 
 \begin{proof}
-  Suppose that $f$ is separable. We show $\gcd(f,f') = 1$. This is the case if $\deg(f)=1$.  Thus suppose that $\deg(f)>1$ and that  $x-u$ divides both $f$ and $f'$. Then $f = (x-u) g$ with and thus $f'= g + (x-u) g'$. Since $g' ≠0$ this means that $(x-u)$ divides $g$ which is a contraction.
+  Suppose that $f$ is separable. We show $\gcd(f,f') = 1$. This is the case if $\deg(f)≤1$.  Thus suppose that $\deg(f)>1$ and that  $x-u$ divides both $f$ and $f'$. Then $f = (x-u) g$ with and thus $f'= g + (x-u) g'$. Since $g' ≠0$ this means that $(x-u)$ divides $g$ which is a contraction.
 
   If $\gcd(f,f') = 1$, then there exist $g,h∈ F[x]$ such that $g ⋅ f + h ⋅f'=1$. This means that no polynomial $x-u$ with $u ∈E$ can divide both $f$ and $f'$ and thus $(x-u)^2$ does not divide $f$. This means that  $f$ is separable.
 \end{proof}
