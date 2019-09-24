@@ -463,7 +463,7 @@ The proof of the tower  law is a simple exercise in linear algebra.
 An element $α∈ E$ is \emph{algebraic} over $F$, if there exists a nonzero polynomial $f(x) ∈ F[x]$  such that $f(α)= 0 $ holds. The \emph{minimal polynomial} of $α$ is the unique monic and non-zero polynomial $p(x) ∈ F[x] $ of minimal degree with $p(α)=0$. For fields $E ⊇ F$ and $u_1,\dots,u_k ∈E$, $F(u_1,\dots,u_k)$ denotes the inclusion-wise minimal intermediate field of $E⊇F$ that contains $u_1,\dots,u_k$. We have the following important fact. If $u ∈E$ is algebraic over $F$ with minimal polynomial $p(x) = a_0+ \cdots + a_n x^n ∈F[x]$, then
 \begin{equation}
   \label{eq:8}
-  F(u) ≅ F[x] / 〈p(x)〉. 
+  F(u) ≅ F[x] / 〈p(x)〉.  
 \end{equation}
 This follows from the isomorphism theorem~\ref{thr:2} by inspecting  ring homomorphism
 \begin{equation}
@@ -473,8 +473,63 @@ This follows from the isomorphism theorem~\ref{thr:2} by inspecting  ring homomo
        &  f(x) & ↦ & f(u). 
   \end{array}
 \end{equation}
-The image $φ(K[x])$ of $φ$ is isomorphic to $ K[x] / 〈p(x)〉$. Since $p(x)$ is irreducible, $〈p(x)〉$ is maximal and thus $ K[x] / 〈p(x)〉$ is a field. The image $φ(K[x])$ is thus $F(u)$. 
+The image $φ(K[x])$ of $φ$ is isomorphic to $ K[x] / 〈p(x)〉$. Since $p(x)$ is irreducible, $〈p(x)〉$ is maximal and thus $ K[x] / 〈p(x)〉$ is a field. The image $φ(K[x])$ is thus $F(u)$. A further consequence of this fact is Kronecker's Theorem.
+\begin{theorem}[Kronecker's Theorem]
+  \label{thr:11}
+  If $F$ is any field and if $f(x) ∈ F[x]$ is a non-constant polynomial, then there exists a field extension of $F$ in which $f(x)$ has a root. 
+\end{theorem}
+The proof is by inspecting an irreducible factor $p(x)$ of $f(x)$ and by embedding $F$ into $F[x] / 〈p(x)〉$ via the injective homomorphism $π: F →F[x] / 〈p(x)〉$  defined by  $π(r) = r + 〈f(x)〉$.
 
+
+\begin{definition}
+  \label{def:1}
+  Let $f(x)$ be a polynomial in $F[x]$ with $\deg(f) ≥1$, where $F$ is a field. An extension $E ⊇F$ is called a \emph{splitting field} of $f$ over $F$ if
+  \begin{enumerate}[i)]
+  \item  $f(x) = a (x-u_1) \cdots (x - u_n)$, where $a ∈F$ and $u_i ∈E$ for each $i$ and
+  \item $E = F(u_1,\dots,u_n)$. 
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  \label{thr:12}
+  Let $f$ be a polynomial of degree $n≥1$ over a field $F$. Then a splitting field $E ⊇F$ of $f$ over $F$ exists and $[E:F] ≤ n!$. 
+\end{theorem}
+{\small \noindent 
+The proof is by induction on $n$. If $n=1$,  then $E = F$ is a splitting field. This is also the case if $f(x)$ splits into linear factors over $F$ already. Otherwise, let $p(x) ∈ F[x]$ be a monic irreducible factor of $f(x)$ with $\deg(p) ≥2$.  Let $K ⊇ F$ be an extension that contains a root $u_1$ of $p$ and let $E_1 = F(u_1)$. Clearly $[E_1:F] ≤ n$ and $f(x) = (x - u_1) g(x)$ with $g(x) ∈ E_1[x]$ has degree $n-1$. By induction, there exists a splitting field $E_2 ⊇ E_1$ of $g$ and this is of the form $E_2 = E_1(u_2,\dots,u_n)$ and one has $[E_2:E_1] ≤ (n-1)!$. Clearly $F(u_1,\dots,u_n)$ is a splitting field of $f$ over $F$ of degree at most $n ⋅(n-1)! = n!$. \qed
+}
+
+
+The next theorem shows that splitting fields are unique up to isomorphism.
+
+\begin{theorem}
+  \label{thr:13}
+  Let $π: F → \overline{F}$ be an isomorphism of fields and let $f(x) = a_0+ \dots+a_nx^n ∈ F[x]$ be a non-constant polynomial and let $f^π(x) = π(a_0)+\dots+π(a_n) x^n ∈ \overline{F}[x]$. If $E⊇F$ is a splitting field of $f(x)$ over $F$ and  $\overline{E}⊇\overline{F}$ is a splitting field of $f^π(x)$ over $\overline{F}$, then there exists an isomorphism $φ: E → \overline{E}$ that extends $π$, i.e. for which $π(r) = φ(r)$ for each $ r ∈ F$ holds. 
+\end{theorem}
+
+The proof is by induction, see diagram below. 
+\begin{displaymath}
+  \begin{CD}
+    E @>φ>> \overline{E} \\
+    @AAA     @AAA \\
+    F(u) @>τ >>\overline{F}(v) \\
+    @AAA     @AAA \\
+     F @>π >>\overline{F}
+  \end{CD}
+\end{displaymath}
+
+
+
+A polynomial $f(x) ∈ F[x] \setminus\{0\}$ is called \emph{separable}, if it does not have any multiple roots in any field extension $E ⊇F$. We can check easily, whether a polynomial $f(x) ∈F[x]$ is separable. 
+\begin{theorem}
+  \label{thr:14}
+  A non-zero polynomial $f(x) ∈ F[x]$ is separable, if and only if $\gcd(f,f') = 1$. 
+\end{theorem}
+
+\begin{proof}
+  Suppose that $f$ is separable. We show $\gcd(f,f') = 1$. This is the case if $\deg(f)=1$.  Thus suppose that $\deg(f)>1$ and that  $x-u$ divides both $f$ and $f'$. Then $f = (x-u) g$ with and thus $f'= g + (x-u) g'$. Since $g' ≠0$ this means that $(x-u)$ divides $g$ which is a contraction.
+
+  If $\gcd(f,f') = 1$, then there exist $g,h∈ F[x]$ such that $g ⋅ f + h ⋅f'=1$. This means that no polynomial $x-u$ with $u ∈E$ can divide both $f$ and $f'$ and thus $(x-u)^2$ does not divide $f$. This means that  $f$ is separable.
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex
