@@ -144,7 +144,7 @@ The \emph{content} of a polynomial $f(x) = a_0 + a_1 x + \cdots + a_n x^n ∈ Z[
 \end{theorem}
 
 \begin{proof}[Sketch of proof] 
-  \small It suffices to show that in the case $\cont(g)  = \cont(h) =1$. Let $p$ be a prime dividing each coefficient of $f$. Write $g(x) = a_0 + a_1 x + \dots$ and $h(x) = b_0 + b_1 x + \dots$ and let $i,j$ be the smallest indices such that $p$ does not divide $a_i$ and $p$ does not divide $b_j$ respectively. The coefficient of $x^{i+j}$ is $a_ib_j + a_{i-1}b_{j+1} + a_{i-2}b_{j+2}+ \dots + a_{i+1}b_{j-1} + a_{i+2} b_{j-2}+ \dots$. Since $p$ divides this coefficient, it follows that $p$ divides $a_i$ or $p$ divides $b_j$, a contradiction. 
+  \small It suffices to show that in the case $\cont(g)  = \cont(h) =1$. Let $p$ be a prime dividing each coefficient of $f$. Write $g(x) = a_0 + a_1 x + \dots$ and $h(x) = b_0 + b_1 x + \dots$ and let $i,j$ be the smallest indices such that $p$ does not divide $a_i$ and $p$ does not divide $b_j$ respectively. The coefficient of $x^{i+j}$ in $f(x) is $a_ib_j + a_{i-1}b_{j+1} + a_{i-2}b_{j+2}+ \dots + a_{i+1}b_{j-1} + a_{i+2} b_{j-2}+ \dots$. Since $p$ divides this coefficient, it follows that $p$ divides $a_i$ or $p$ divides $b_j$, a contradiction. 
 \end{proof}
 The consequence is that a nonzero polynomial $f(x) ∈ ℤ[X]$ is irreducible in $ℚ[x]$ if and only if it cannot be written as $f(x) = g(x) h(x)$ where $g(x),h(x) ∈ ℤ[x]$ are non-constant polynomials.
 
@@ -158,7 +158,7 @@ The consequence is that a nonzero polynomial $f(x) ∈ ℤ[X]$ is irreducible in
   then $f(x)$ is irreducible in $ℚ[x]$.   
 \end{theorem}
 \begin{proof}[Sketch of proof] 
-  Suppose $f(x)$ is not irreducible. Then there exist polynomials $g(x) = b_0+ b_1x + \dots + b_rx^r ∈ℤ[x]$ and $h(x) = c_0+ c_1x+ \dots + c_sx^s ∈ℤ[x]$ such that $f(x) = g(x) h(x)$. The prime $p$ divides either $b_0$ or $c_0$. Assume it divides $c_0$. Let $0<i<s$ be the first index such that $p$ does not divide $c_i$. The coefficient of $x^i$ is $b_0c_i + b_1c_{i-1}+ \dots$. This implies $p$ divides $c_i$. 
+  Suppose $f(x)$ is not irreducible. Then there exist non constant polynomials $g(x) = b_0+ b_1x + \dots + b_rx^r ∈ℤ[x]$ and $h(x) = c_0+ c_1x+ \dots + c_sx^s ∈ℤ[x]$ such that $f(x) = g(x) h(x)$. The prime $p$ divides either $b_0$ or $c_0$. Assume it divides $c_0$. Let $0<i<s$ be the first index such that $p$ does not divide $c_i$. The coefficient of $x^i$ in $f(x) is $b_0c_i + b_1c_{i-1}+ \dots$. This implies $p$ divides $c_i$. 
 \end{proof}
 
 The Eisenstein criterion is sufficient but not necessary for irreducibility. How can we rigorously test whether $f(x) = a_0 + a_1 x + \dots a_n x^n ∈ ℤ[x]$  is irreducible? One way to do so is to derive bounds on the coefficients of a possible factor, see~\cite{mignotte1974inequality}.
