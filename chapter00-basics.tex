@@ -237,7 +237,7 @@ We next want to bound the norm by the measure from below.
   Let $f(x) ∈ℂ[x]$, then $M(f) ≤ \|f(x)\|_2$. 
 \end{theorem}
 \begin{proof}
-  This clearly holds for the zero polynomial. Thus, let $f(x)≠0$ and suppose the roots $z_i$ are ordered such that $|z_1|,\dots,|z_k| >1$ and $|z_{k+1}|,\dots,|z_n| ≤1$ such that $M(f) = |a_n ⋅ z_1 \cdots z_k|$. We define the polynomial
+  This clearly holds for any constant polynomial. Thus, let $f(x) be non constant and suppose the roots $z_i$ are ordered such that $|z_1|,\dots,|z_k| >1$ and $|z_{k+1}|,\dots,|z_n| ≤1$ such that $M(f) = |a_n ⋅ z_1 \cdots z_k|$. We define the polynomial
   \begin{displaymath}
     g(x) = a_n ∏_{i=1}^k (\con{z}x-1) ∏_{i=k+1}^n(x-z_i) = g_n x^n + \cdots + g_0 ∈ ℂ[x]. 
   \end{displaymath}
@@ -306,12 +306,14 @@ From this one can conclude the following important fact from which the uniquenes
   Let $p(x) ∈K[x]$ be irreducible and suppose that $p(x)$ divides $f(x) ⋅ g(x) ∈ K[x]$. Then $p(x)$ divides $f(x)$ or $p(x)$ divides $g(x)$. 
 \end{theorem}
 {\small \noindent 
+\begin{proof}
   In fact, if $p(x)$ does not divide $f(x)$, then $〈p(x),f(x)〉 = 〈1〉$ which means that there are $h_1(x), h_2(x) ∈ K[x]$ with $1 = h_1(x) p(x) + h_2(x) f(x)$. But then
   \begin{equation}
     \label{eq:2}
     g(x) = h_1(x) p(x)  g(x)+ h_2(x) f(x) g(x),
   \end{equation}
   and since $p(x)$ divides $f(x) ⋅g(x)$ the term on the right of~\eqref{eq:2} is divisible by $p(x)$ and thus $h(x)$ is divisible by $p(x)$. \qed
+  \end{proof}
   
 }
 
