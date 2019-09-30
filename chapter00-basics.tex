@@ -472,7 +472,7 @@ This follows from the isomorphism theorem~\ref{thr:2} by inspecting  ring homomo
        &  f(x) & ↦ & f(u). 
   \end{array}
 \end{equation}
-The image $φ(K[x])$ of $φ$ is isomorphic to $ K[x] / 〈p(x)〉$. Since $p(x)$ is irreducible, $〈p(x)〉$ is maximal and thus $ K[x] / 〈p(x)〉$ is a field. The image $φ(K[x])$ is thus $F(u)$. A further consequence of this fact is Kronecker's Theorem.
+The image $φ(K[x])$ of $φ$ is isomorphic to $ K[x] / 〈p(x)〉$. Since $p(x)$ is irreducible, $〈p(x)〉$ is maximal and thus $ K[x] / 〈p(x)〉$ is a field. The image $φ(K[x])$ is clearly contained in  $F(u)$ and since the image is a field, it is equal to the smallest extension field of $F$ containing $u$, which is $F(u)$. A further consequence of this fact is Kronecker's Theorem.
 \begin{theorem}[Kronecker's Theorem]
   \label{thr:11}
   If $F$ is any field and if $f(x) ∈ F[x]$ is a non-constant polynomial, then there exists a field extension of $F$ in which $f(x)$ has a root. 
@@ -517,6 +517,26 @@ The proof is by induction, see diagram below.
 \end{displaymath}
 
 
+\begin{proof}
+  First we observe that the mapping $ F[x] → F'[x]$ with $f ↦ f^π$ is a ring-isomorphism that extends $π$ (Exercise).
+  Let $f(x) = p_1(x) \cdots p_k(x) ⋅ (x-a_1) \cdots (x-a_l)$ where the $p_i∈ F[x]$ are irreducibles of degree at least two and $a_i ∈F$. 
+  
+  The proof is then by induction on $\deg P_1 + \cdots + \deg p_k$. If this sum is equal to zero,  then $E = F$ and $\overline{E} = \overline{F}$ and the assertion obviously holds. Let $p(x)∈ F[x]$  be an irreducible factor of $f(x)$ of degree at least two and let $u ∈ E$ be a root of $p(x)$. Similarly, let $v ∈ \overline{E}$ be a root of the irreducible factor $p^π(x)$ of $f^π(x)$.
+
+  We have argued, see~\eqref{eq:8} that $F(u) ≅ F[x] / 〈 p(x) 〉$ and $\overline{F}[x] / 〈p^π(x)〉 ≅ \overline{F}(v)$. Let $Ψ_1: F(u) → F[x] / 〈 p(x) 〉$ and $Ψ_2: \overline{F}[x] / 〈p^π(x)〉 →  \overline{F}(v)$ be the corresponding isomorphisms.   The  mapping  $Ψ_3: F[x] / 〈p(x)〉 → \overline{F}[x] / 〈p^π(x) 〉$ with 
+  \begin{equation}
+    \label{eq:11}
+    Ψ (h(x) + 〈p(x) 〉 ) = h^π(x) + 〈p^π(x)〉
+  \end{equation}
+  is well defined (Exercise) 
+  and an isomorphism that extends $π$. Clearly $ τ = Ψ_1 \circ  Ψ_3 \circ Ψ_2: F(u) → \overline{F}(v)$ is an isomorphism extending $π$. Since $f$ has at least one linear factor more in $F(u)$ than in $F$, we can apply induction now. There exists an isomorphism $φ: E → \overline{E}$ that extends $τ$ and thus also extends $π$.       
+\end{proof}
+
+
+\begin{corollary}
+  \label{co:1}
+  Let $f(x) ∈ F[x]$ be a non-constant polynomial and $E ⊇F$ as well as $\overline{E} ⊇F$ be splitting fields of $f$ over $F$, then $E ≅ \overline{E}$. 
+\end{corollary}
 
 A polynomial $f(x) ∈ F[x] \setminus\{0\}$ is called \emph{separable}, if it does not have any multiple roots in any field extension $E ⊇F$. We can check easily, whether a polynomial $f(x) ∈F[x]$ is separable. 
 \begin{theorem}
@@ -525,10 +545,94 @@ A polynomial $f(x) ∈ F[x] \setminus\{0\}$ is called \emph{separable}, if it do
 \end{theorem}
 
 \begin{proof}
-  Suppose that $f$ is separable. We show $\gcd(f,f') = 1$. This is the case if $\deg(f)≤1$.  Thus suppose that $\deg(f)>1$ and that  $x-u$ divides both $f$ and $f'$. Then $f = (x-u) g$ with and thus $f'= g + (x-u) g'$. Since $g' ≠0$ this means that $(x-u)$ divides $g$ which is a contraction.
+  Suppose that $f$ is separable. We show $\gcd(f,f') = 1$. This is the case if $\deg(f)≤1$ because then, either $f$ is a constant or $f'$ is a nonzero constant.   Thus suppose that $\deg(f)>1$ and that  $x-u$ divides both $f$ and $f'$, where $u$ is an element of a splitting field $E ⊇ F$. Then $f = (x-u) g$  and thus $f'= g + (x-u) g'$. This means that $(x-u)$ divides $g$ and thus that $u$ is a double root of $f$. This is a contradiction. 
 
   If $\gcd(f,f') = 1$, then there exist $g,h∈ F[x]$ such that $g ⋅ f + h ⋅f'=1$. This means that no polynomial $x-u$ with $u ∈E$ can divide both $f$ and $f'$ and thus $(x-u)^2$ does not divide $f$. This means that  $f$ is separable.
 \end{proof}
+
+\begin{theorem}
+  \label{thr:15}
+  Let $p(x) ∈ F[x]$ be irreducible. If $\car(F) = 0$, then $p(x)$ is separable. If $\car(F) = p$, then $p$ is not separable if and only if $p(x) = h(x^p)$. 
+\end{theorem}
+
+\begin{proof}
+  If $p' ≠0$ then $\gcd(p,p')=1$, since $p$ is irreducible and with
+  Theorem~\ref{thr:14} it follows that $p$ is then separable. This is
+  the case if $\car(F) = 0$.
+  
+  Let $p(x) = a_0 + a_1x + \cdots + a_n x^n$ with $n≥1$ and $a_n ≠0$,
+  then $p'(x) = a_1 + 2a_2x + \cdots + n ⋅ a_n x^{n-1}$. This shows that,  $\car(F) =p$, then $p'=0$ if and only if $a_i = 0$ whenever $i ≠ 0 \pmod{p}$. This means that $f(x) = g(x^p)$ with $g(x) = a_0 + a_px^p + a_{2p}x^{2p} + \cdots$. 
+  
+\end{proof}
+
+\begin{definition}
+  Let $E ⊇F$ be a finite field extension. An element $u ∈E$ is called \emph{separable} if its minimal polynomial $p(x) ∈F[x]$ is separable.
+\end{definition}
+
+
+\begin{theorem}[Primitive element theorem]
+  \label{thr:16}
+  Let $E ⊇ F$ be a finite field extension, $u_1,\dots,u_k ∈E$ and suppose that $u_2,\dots,u_k$ are separable. Then there exists an element $u ∈ F(u_1,\dots,u_k)$ with
+  \begin{displaymath}
+    F(u) =  F(u_1,\dots,u_k). 
+  \end{displaymath}  
+\end{theorem}
+
+\begin{proof}
+  If $F$ is a finite field, then so is  $F(u_1,\dots,u_k)$. The group of units  in a finite field is cyclic. Clearly, $F(u_1,\dots,u_k) = f(α)$, where $α$ is a generator of $(F(u_1,\dots,u_k) \setminus \{0\}, ⋅)$. To this end, let us assume that $F$ is infinite. We show the theorem  for $k=2$, i.e., we show that there exists an element $u ∈ F(u_1,u_2)$ with $F(u) = F(u_1,u_2)$. The assertion  then  follows by induction on $k$.
+
+ 
+
+
+To simplify notation, we denote  $α = u_1$ and $β = u_2$. We claim that there exists an element $y ∈F \setminus \{0\}$ such that $α + yβ$ is a generator of the field extension.  Let $p(x)$ and $q(x)$ be the minimal polynomials of $α$ and $β$ respectively. We can factor
+  \begin{eqnarray*}
+    p(x) & = &  (x- α_1) \cdots (x-α_n)  \\
+    q(x) & = & (x- β_1) \cdots (x-β_m) 
+  \end{eqnarray*}
+  in a splitting field of $E ⊇ F$ of $p(x)⋅q(x)$, where $α=α_1$ and $β = β_1$. The $β_i$ are pairwise different.
+
+  We now define the polynomial
+  \begin{equation}
+    \label{eq:12}
+    h(x) = p( (α + y β) - y x) ∈ F(α + y β)[x]. 
+  \end{equation}
+  The idea is to choose $y ∈F \setminus \{0\}$ in such a way that
+  \begin{equation}
+    \label{eq:13}
+    (x-β) =  \gcd(q,h) 
+  \end{equation}
+  holds.  Since $\gcd(q,h) ∈ F(α + y β)[x]$, this shows that
+  $β ∈ F(α + y β)$ and therefore also $α ∈ F(α + y β)$. Consequently
+  $F(α,β) = F(α + y β)$.
+
+  We have~\eqref{eq:13} if and only if none of the elements $β_2,\dots,β_m$ are roots of $h(x)$ and this is if and only if $y ∈ F$ was chosen such that
+  \begin{equation}
+    \label{eq:14}
+    α + y β - y β_i ≠ α_j, \, \text{ holds for } 2≤ i ≤ m, \, 1 ≤ j ≤ n.  
+  \end{equation}
+  For $i,j$ in this range fixed, one has
+  \begin{displaymath}
+     α + y β - y β_i = α_j 
+   \end{displaymath}
+   if and only if
+   \begin{displaymath}
+     y (β - β_i) = α_j - α 
+   \end{displaymath}
+   and since the $β≠ β_i$ this holds if and only if
+   \begin{displaymath}
+     y  = (α_j - α)  / (β - β_i). 
+   \end{displaymath}
+   This shows that any $y$ from the set
+   \begin{displaymath}
+     F \setminus \{ (α_j - α)  / (β - β_i) ：  2≤ i ≤ m, \, 1 ≤ j ≤ n\}
+   \end{displaymath}
+   satisfies
+   \begin{displaymath}
+     F(α,β) = F(α + y β). 
+   \end{displaymath}  
+\end{proof}
+
+
 
 %%% Local Variables:
 %%% mode: latex
