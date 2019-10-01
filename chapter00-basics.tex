@@ -526,7 +526,7 @@ The proof is by induction, see diagram below.
   We have argued, see~\eqref{eq:8} that $F(u) ≅ F[x] / 〈 p(x) 〉$ and $\overline{F}[x] / 〈p^π(x)〉 ≅ \overline{F}(v)$. Let $Ψ_1: F(u) → F[x] / 〈 p(x) 〉$ and $Ψ_2: \overline{F}[x] / 〈p^π(x)〉 →  \overline{F}(v)$ be the corresponding isomorphisms.   The  mapping  $Ψ_3: F[x] / 〈p(x)〉 → \overline{F}[x] / 〈p^π(x) 〉$ with 
   \begin{equation}
     \label{eq:11}
-    Ψ (h(x) + 〈p(x) 〉 ) = h^π(x) + 〈p^π(x)〉
+    Ψ_3 (h(x) + 〈p(x) 〉 ) = h^π(x) + 〈p^π(x)〉
   \end{equation}
   is well defined (Exercise) 
   and an isomorphism that extends $π$. Clearly $ τ = Ψ_1 \circ  Ψ_3 \circ Ψ_2: F(u) → \overline{F}(v)$ is an isomorphism extending $π$. Since $f$ has at least one linear factor more in $F(u)$ than in $F$, we can apply induction now. There exists an isomorphism $φ: E → \overline{E}$ that extends $τ$ and thus also extends $π$.       
@@ -591,10 +591,10 @@ To simplify notation, we denote  $α = u_1$ and $β = u_2$. We claim that there 
   \end{eqnarray*}
   in a splitting field of $E ⊇ F$ of $p(x)⋅q(x)$, where $α=α_1$ and $β = β_1$. The $β_i$ are pairwise different.
 
-  We now define the polynomial
+  For $y ∈ F$ we  define the polynomial
   \begin{equation}
     \label{eq:12}
-    h(x) = p( (α + y β) - y x) ∈ F(α + y β)[x]. 
+    h_y(x) = p( (α + y β) - y ⋅ x) ∈ F(α + y β)[x]. 
   \end{equation}
   The idea is to choose $y ∈F \setminus \{0\}$ in such a way that
   \begin{equation}

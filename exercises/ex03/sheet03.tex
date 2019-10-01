@@ -1,0 +1,79 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 3}
+\rhead{September 30, 2019}
+\rfoot{Problems selected by J. Baudin, F. Eisenbrand, S. Giampietro,  V. Nadarajan, }
+ 
+
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{../../utf8math}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+
+
+
+\begin{document}
+
+
+\vskip 2ex
+
+
+
+\begin{enumerate}
+\item Let $R$ be a unique factorization domain. (i.e. every element in $R$ can be written uniquely as a product of irreducible elements) Let $K$ be its fraction field. Let $f(x)=a_n x^n+\cdots +a_0\in R[x]$, we define $content(f)=g.c.d.(a_n,\cdots , a_0)$. Note that in $R$, $g.c.d.$ is only defined up to multiplication by units, the same is true for the content. Prove the following statements:
+\begin{enumerate}
+    \item $f,g\in R[x]$, $content(fg)=content(f)content(g)$ [Hint: recall that irreducible elements are prime in R and imitate the proof given in class]
+    \item Let $f\in R[x]$ be a monic polynomial, show that if $a\in K$ is a root of $f$ then in fact $a\in R$. (we say that $R$ is integrally closed)
+    \item \textbf{Gauss lemma:} If $f\in R[x]$ has $content(f)\in R^{\times}$  and $f=gh\in K[x]$, then we can find $p,q\in R[x]$ s.t. $f=pq\in R[x]$ and $content(p), content(q)\in R^{\times}$.  
+    \item A polynomial $f\in R[x]$ is irreducible iff $f$ is irreducible in $K[x]$ and $content(f)\in R^{\times}$.
+    \item $R[x]$ is a unique factorization domain.\\
+\end{enumerate}{}
+
+\item Show that the mapping $Ψ_3: F[x] / 〈p(x)〉 → \overline{F}[x] / 〈p^π(x) 〉$ from the proof of Theorem~1.18 with 
+  \begin{equation}
+    \label{eq:11}
+    Ψ_3 (h(x) + 〈p(x) 〉 ) = h^π(x) + 〈p^π(x)〉
+  \end{equation}
+  is well defined and an isomoprhism of fields. (You can assume that the mapping from $F[x] → \overline{F}[x]$ with  $f ↦ f^π$  is an isomorphism of rings. )
+
+\item Let $\mathbb{F}_{11}$ be the field with 11 elements. Prove the following statements:
+\begin{enumerate}
+    \item $x^2+1\in \mathbb{F}_{11}[x]$ is irreducible.
+    \item $x^2+x+4\in \mathbb{F}_{11}[x]$ is irreducible.
+    \item Therefore $\mathbb{F}_{11}[x]/〈x^2+1〉$ and $\mathbb{F}_{11}[x]/〈x^2+x+4〉$ are both fields with 121 elements and by Set 2 exercise 7, they are isomorphic. Construct an explicit isomorphism between them. 
+\end{enumerate}{}
+
+\item Let $L⊇K$ be a field extension. Let $f,g\in K[x]$, prove that $f,g$ viewed as polynomials in $L[x]$ are co prime, i,e, $gcd(f,g)=1$ iff $f,g\in K[x]$ are co prime.
+
+\item Let $K$ be a field. Let $f(x)\in K[x]$ be any polynomial. Find all the ideals of the ring $K[x]/〈f〉$. Which are prime? Which are maximal? [Hint: There are only finitely many ideals in $K[x]/〈f〉$ and they are all principal.]
+
+\item For $k$ a positive integer, we denote by $\zeta_k$ a primitive k\textsuperscript{th} root of unity.
+\begin{enumerate} 
+	\item Compute $[\Q(\zeta_6) : \Q]$.
+	\item Find a primitive element for the extension $\Q(\zeta_n, \zeta_m) ⊇\Q$.
+\end{enumerate}{}
+
+\item Let $p, q, r$ be distincts primes. Find a primitive element for the extensions $\Q(\sqrt{p}, \sqrt{q})⊇\Q$ and $\Q(\sqrt{p}, \sqrt{q}, \sqrt{r})⊇\Q$. [Hint : You may want to check the proof of the primitive element theorem] 
+
+\item  Let $p$ be a prime number and let $L = \F_p(x, y)$, $K = \F_p(x^p, y^p)$.
+\begin{enumerate}
+	\item Compute $[L : K]$ and show that this extension is not separable (of course, the point (b) shows $L⊇K$ is not separable but try to find an other proof).
+	\item Show that this extension has no primitive element.
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

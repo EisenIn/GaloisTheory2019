@@ -1,0 +1,119 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 2 - Solutions}
+\rhead{September 30, 2019}
+\rfoot{4.5.6 by J.Baudin \\1,2,3,7 by S.Giampietro\\8,9 by V.A.Nadarajan}
+ 
+
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+
+
+
+
+\begin{document}
+
+
+\vskip 2ex
+
+\textbf{Solution 1.  }\\
+Using \texttt{sage} we code the Euclidean algorithm to find the greatest common divisor of two polynomials $f_0$ and $f_1$ and the polynomials $g_0,$ $g_1\in \mathbb{Q}[x]$ such that:\\
+$g_0f_0+g_1f_1=\gcd(f_0,f_1)$. An example is as follows: \\
+\\
+\texttt{def euclAlgo(f0,f1): }\\
+\null\qquad \texttt{q1, f2 =  f0.quo\_rem(f1)}\\
+\null\qquad   \texttt{U = Matrix([[0,1],[1,-q1]])}\\
+\null \qquad   \texttt{while f1 != 0:}\\
+\null\qquad \qquad         \texttt{q1,f2 = f0.quo\_rem(f1)}\\
+\null\qquad \qquad         \texttt{f0=f1}\\
+\null\qquad \qquad         \texttt{f1=f2} \\
+\null\qquad \qquad         \texttt{U2=Matrix([[0,1],[1,-q1]])} \\
+\null\qquad \qquad         \texttt{U=U2*U}\\
+\null\qquad    \texttt{lc=f0.lc()}\\
+\null\qquad     \texttt{return f0/lc, U[0,0]/lc, U[0,1]/lc }\\
+\\
+For a polynomial $f$ the function \texttt{f.lc()} returns the leading coefficient of the polynomial $f$ and so in the last line we make sure the greatest common divisor of $f_0$ and $f_1$ is monic. 
+\\
+Running \texttt{euclAlgo(f0,f1)} for the given polynomials, we find:
+\begin{align*}
+&\gcd(f_0,f_1)=x^2 - 3x + 3\\
+&g_0=-\tfrac{1}{6}x + \tfrac{1}{3}\\
+&g_1=\tfrac{1}{6}x^2 - \tfrac{2}{3}x + \tfrac{5}{6}
+\end{align*}
+\\
+\textit{Remark:} To verify your algorithm, the extended Euclidean Algorithm is already part of \texttt{Sage}'s library:  \texttt{xgcd(f0, f1)}.\\
+\\
+\textbf{Solution 2.  }\\
+For $f$ a polynomial we can again use \texttt{sage} to compute the greatest common divisor of $f$ with its derivative: \texttt{gcd(f, f.derivative())}.\\
+For the given polynomials $f_1$, $f_2$, we find: 
+\begin{align*}
+&\gcd(f_1, f'_1)=1\\
+&\gcd(f_2, f'_2)=(x-3)
+\end{align*}
+Hence $f_1$ is separable, $f_2$ is not separable. 
+\\
+\\
+\\
+\textbf{Solution 3.  }\\
+Since  $u$ is a root of $f(x)$, $f(u)=0$ and we have the following equalities: 
+\begin{align*}
+& u^{11}+8u^9-2u^4+10u^3+8u^2-12u+6=0 \\
+& u^{11}+8u^9-2u^4+10u^3+8u^2-12u = -6 \\
+& \tfrac{-1}{6}u(u^{10}+8u^8-2u^3+10u^2+8u-12)=1
+\end{align*}
+Hence 
+$$\tfrac{1}{u}= \tfrac{-1}{6}(u^{10}+8u^8-2u^3+10u^2+8u-12)$$
+\\
+\textbf{Exercise 4.}
+	Since $X^2 - 1 = (X + 1)(X - 1)$, we can write \[ \mathbb{Q}[X]/(X^2 - 1) = \mathbb{Q}[X]/(X - 1)(X + 1) \]
+	Since these two polynomials are coprime, the corresponding ideals are coprime too so we can apply CRT (Chinese Remainder Theorem) to obtain that \[ \mathbb{Q}[X]/(X - 1)(X + 1) \cong \mathbb{Q}[X]/(X - 1) \times \mathbb{Q}[X]/(X + 1) \] 
+	In general, the evaluation of a polynomial at some $a \in \mathbb{Q}$ induces an isomorphism $\mathbb{Q}[X]/(X - a) \cong \mathbb{Q}$ so we finally proved that \[ \mathbb{Q}[X]/(X^2 - 1) \cong \mathbb{Q} \times \mathbb{Q}\] 
+	\\
+	\textbf{Solution 5.}
+	Let $E \supseteq F$ be a finite extension of degree $n$ and let $a \in E$. Consider the family of $n + 1$ numbers $(1, a, \dots, a^n)$. As $\dim_F(E) = n$, this family cannot be free, ie there is a non-trivial $F$-linear relation beetween these numbers. Hence, there exist $b_0, \dots, b_n \in F$ such that \[ \sum_{j = 0}^{n}b_ja^j = 0 \] Thus, $a$ is the root of the polynomial \[ \sum_{j = 0}^{n}b_jt^j \in F[t] \setminus \{0\} \] so $a$ is algebraic over $F$. \\
+	
+	\textbf{Solution 6.} We first show the isomorphism \[ \mathbb{Z}[i]/(p) \cong \mathbb{F}_p[X]/(X^2 + 1) \] which is true independent of any conditions on the prime $p$. \\
+	The isomorphism  $\mathbb{Z}[i] \cong \mathbb{Z}[X]/(X^2 + 1)$ induces an isomorphism \[ \mathbb{Z}[i]/(p) \cong (\mathbb{Z}[X]/(X^2 + 1))/(\overline{p}) \] where $\overline{p}$ denotes the image of $p$ into the quotient by $(X^2 + 1)$. Note that the ideal $(\overline{p})$ is exactly equal to $(p, X^2 + 1)/(X^2 + 1)$, so using the third isomorphism theorem, we obtain that \[ (\mathbb{Z}[X]/(X^2 + 1))/(\overline{p}) = (\mathbb{Z}[X]/(X^2 + 1))/((p, X^2 + 1))/(X^2 + 1)) \cong \mathbb{Z}[X]/(p, X^2 + 1) \] Using the same trick reversing $(p)$ and $(X^2 + 1)$, we deduce that \[ \mathbb{Z}[X]/(p, X^2 + 1) \cong (\mathbb{Z}[X]/(p))/(\overline{X^2 + 1}) \] Again, the isomorphism $\mathbb{Z}[X]/(p) \cong \mathbb{F}_p[X]$ induces an isomorphism \[ (\mathbb{Z}[X]/(p))/(\overline{X^2 + 1}) \cong \mathbb{F}_p[X]/(X^2 + 1) \] Thus, we have proven that \[ \mathbb{Z}[i]/(p) \cong \mathbb{F}_p[X]/(X^2 + 1) \]
+	Now, we prove the second part, ie that if $p \equiv 3$ (mod 4), then \[ \mathbb{F}_p[X]/(X^2 + 1) \cong \mathbb{F}_{p^2} \]
+	In fact, since all finite fields with the same cardinality are isomorphic (cf exercise $6$), we just have to show that $\mathbb{F}_p[X]/(X^2 + 1)$ is a field of size $p^2$.
+	The fact that the size of this set is $p^2$ is because any element of this set can be uniquely written as $a + bX$ for $a, b \in \mathbb{F}_p$. We are left to show that it is a field, or equivalently that the polynomial $X^2 + 1$ is irreducible over $\mathbb{F}_p$. Since $X^2 + 1$ has degree $2$, it is irreducible if and only if it has no root in $\mathbb{F}_p$. \\
+	Suppose by contradiction that there exists a root $\alpha \in \mathbb{F}_p$ of $X^2 + 1$, then $\alpha^2 = -1 \neq 1$ (as $p \neq 2$) and $\alpha^4 = 1$. Hence, the order of $\alpha$ in the multiplicative group $(\mathbb{F}_p^\times, \cdot)$ is $4$. Thus, by Lagrange's theorem, $4$ divides $|\mathbb{F}_p^\times|= p - 1$ so $p \equiv 1$ (mod 4), which is a contradiction. Therefore, $\mathbb{F}_p[X]/(X^2 + 1)$ is a field of $p^2$ elements, ie 
+	\[ \mathbb{F}_p[X]/(X^2 + 1) \cong \mathbb{F}_{p^2} \]
+	
+\textbf{Solution 7.  }\\
+Let $F$ be the splitting field of $X^{p^n}-X$ over $\mathbb{F}_p$ (see lecture notes for proof of existence of $F$). We first show that it is indeed a field with $p^n$ elements. Let $R$ be the set $R\subset F$, $R=\{\alpha\in F | \alpha^{p^n}=\alpha$\} = \{roots of $X^{p^n}-X$\}.
+\begin{itemize}
+\item We start by showing that $X^{p^n}-X$ has $p^n$ distinct roots. We know that this is equivalent to $X^{p^n}-X$ having no common roots with its derivative. Now over $\mathbb{F}_p$, $(X^{p^n}-X)'=p^nX^{p^n-1}-1= -1$ has no roots, so clearly it has no common roots with $X^{p^n}-X$. Hence all $p^n$ roots are distinct: $|R|=p^n$.
+\item We now show the set $R$ is a field. Since $F$ is the smallest field containing $R$ this will imply $R=F$. Clearly $0, 1 \in R$. If $a, b \in R$, then $a+b \in R$ since in characteristic $p$, $(a+b)^{p^n}=a^{p^n}+b^{p^n}=a+b$. Also $ab\in R$ since  $(ab)^{p^n}=a^{p^n}b^{p^n}=ab$. Clearly $a^{-1} \in R$ because $(a^{-1})^{p^n}=(a^{p^n})^{-1}=a^{-1}$. Finally we show $-a\in R$. If $p=2$ then $-a=a$ is clearly in $R$. If $p$ odd $-a \in R$ because $(-a)^{p^n}=(-1)^{p^n}a^{p^n}=-a$.
+\end{itemize}
+So the splitting field $F=R$ has $p^n$ elements. We have shown existence of a field with $p^n$ elements.\\
+To show uniqueness, it suffices to show that any field with $p^n$ elements is the splitting field of $X^{p^n}-X$ over $\mathbb{F}_p$, then uniqueness follows from uniqueness of the splitting field (up to isomorphism). See lecture notes for proof of its uniqueness.\\
+Now let $F'$ be an arbitrary field with $p^n$ elements. Then its characteristic must be $p$, so $F'$ contains $\mathbb{F}_p$ as a subfield. 
+Clearly $0^{p^n}-0=0$. Since $|F'^{\times}|=p^n-1$, for any $a \in F'^{\times}:$ $a^{p^n-1}=1$. Hence the elements of $F'$ are the distinct roots of $X^{p^n}-X$ and thus $X^{p^n}-X=\prod_{a\in F'} (X-a)$ so $F'$ is indeed the splitting field of $X^{p^n}-X$ over $\mathbb{F}_p$. \\
+\textbf{Remark: } The map $a \mapsto a^p$ is called the \textbf{Frobenius endomorphism}. In particular it is injective since for $a,b \in \mathbb{F}_{p^n}$, $a^p=b^p \Rightarrow (a^p-b^p)=0 \Rightarrow (a-b)^p=0 \Rightarrow a-b=0$. An injective map between finite fields is surjective so the Frobenius map is bijective.   
+\\
+
+\textbf{Solution 8. }\\
+
+Let $R$ be an integral domain and $Q(R)$ its field of fractions. Let $i:R\xrightarrow{}Q(R)$ denote the canonical inclusion $r\mapsto \frac{r}{1}$. We leave it to the reader to check that $i:R\xrightarrow{}Q(R)$ is an injective ring homomorphism. Let $\alpha:R\xrightarrow{}K$ be an injection into a field $K$. We define $\alpha':Q(R)\xrightarrow{}K$ by $\alpha'(r/s)=\alpha(r)\alpha(s)^{-1}$ (note that $\alpha(s)\neq 0$ as $\alpha$ is injective and $s\neq 0$). Let $r,r',s,s'\in R$ be arbitrary s.t. $s,s'\neq 0$ 
+
+\begin{itemize}
+    \item \textbf{Well definedness:} If $r/s=r'/s'$ then by definition $rs'=r's$ and we get $\alpha(rs')=\alpha(r's)$. Since $\alpha$ is a ring homomorphism we get $\alpha(r)\alpha(s)^{-1}=\alpha(r')\alpha(s')^{-1}$. 
+    \item \textbf{Ring homomorphism:} We have $\alpha(\frac{r}{s}.\frac{r'}{s'})=\alpha(\frac{rr'}{ss'})=\alpha(rr')\alpha(ss')^{-1}$. Since $\alpha$ is a ring homomorphism, we get  $\alpha(rr')\alpha(ss')^{-1}=\alpha(r)\alpha(s)^{-1}\alpha(r')\alpha(s')^{-1}$. The proof of the fact $\alpha'$ preserves sums is similar and left to the reader.
+    \item \textbf{Injective:} If $\alpha'(r/s)=0$, i.e. $\alpha(r)\alpha(s)^{-1}=0$, then $\alpha(r)=0$. (note that $\alpha(s)\neq 0$ as $\alpha$ is injective and $s\neq 0$). We get $r=0$ and therefore $r/s=0$. 
+\end{itemize}{}
+
+Note that $\alpha'\circ i=\alpha$. In fact $\alpha'$ is the unique extension of $\alpha$ to $Q(R)$ i.e. $\alpha'$ is the unique ring homomorphism $Q(R)\xrightarrow{}K$ s.t. $\alpha'\circ i=\alpha$. \\
+
+\textbf{Solution 9. }\\
+
+Let $R$ be an integral domain. Let $f(X)=a_nX^n+\cdots+a_0$ and $g(X)=b_mX^m+\cdots+b_0$ be non zero elements of $R[X]$, in particular we may assume $a_n\neq 0$ and $b_m\neq 0$. We have $fg(X)=a_nb_mX^{(n+m)}+\cdots+a_0b_0$. It follows since $R$ is an integral domain and $a_n\neq 0$ and $b_m\neq 0$, that $fg(X)\neq 0$. Moreover we have $deg(fg)=deg(f)+deg(g)$. 
+\end{document}
