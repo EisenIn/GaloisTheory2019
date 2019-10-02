@@ -468,11 +468,11 @@ This follows from the isomorphism theorem~\ref{thr:2} by inspecting  ring homomo
 \begin{equation}
   \label{eq:10}
   \begin{array}{rccc}
-    φ: & K[x] &→&  E \\
+    φ: & F[x] &→&  E \\
        &  f(x) & ↦ & f(u). 
   \end{array}
 \end{equation}
-The image $φ(K[x])$ of $φ$ is isomorphic to $ K[x] / 〈p(x)〉$. Since $p(x)$ is irreducible, $〈p(x)〉$ is maximal and thus $ K[x] / 〈p(x)〉$ is a field. The image $φ(K[x])$ is clearly contained in  $F(u)$ and since the image is a field, it is equal to the smallest extension field of $F$ containing $u$, which is $F(u)$. A further consequence of this fact is Kronecker's Theorem.
+The image $φ(F[x])$ of $φ$ is isomorphic to $ F[x] / 〈p(x)〉$. Since $p(x)$ is irreducible, $〈p(x)〉$ is maximal and thus $ F[x] / 〈p(x)〉$ is a field. The image $φ(F[x])$ is clearly contained in  $F(u)$ and since the image is a field, it is equal to the smallest extension field of $F$ containing $u$, which is $F(u)$. A further consequence of this fact is Kronecker's Theorem.
 \begin{theorem}[Kronecker's Theorem]
   \label{thr:11}
   If $F$ is any field and if $f(x) ∈ F[x]$ is a non-constant polynomial, then there exists a field extension of $F$ in which $f(x)$ has a root. 
@@ -521,7 +521,7 @@ The proof is by induction, see diagram below.
   First we observe that the mapping $ F[x] → F'[x]$ with $f ↦ f^π$ is a ring-isomorphism that extends $π$ (Exercise).
   Let $f(x) = p_1(x) \cdots p_k(x) ⋅ (x-a_1) \cdots (x-a_l)$ where the $p_i∈ F[x]$ are irreducibles of degree at least two and $a_i ∈F$. 
   
-  The proof is then by induction on $\deg P_1 + \cdots + \deg p_k$. If this sum is equal to zero,  then $E = F$ and $\overline{E} = \overline{F}$ and the assertion obviously holds. Let $p(x)∈ F[x]$  be an irreducible factor of $f(x)$ of degree at least two and let $u ∈ E$ be a root of $p(x)$. Similarly, let $v ∈ \overline{E}$ be a root of the irreducible factor $p^π(x)$ of $f^π(x)$.
+  The proof is then by induction on $\deg p_1 + \cdots + \deg p_k$. If this sum is equal to zero,  then $E = F$ and $\overline{E} = \overline{F}$ and the assertion obviously holds. Let $p(x)∈ F[x]$  be an irreducible factor of $f(x)$ of degree at least two and let $u ∈ E$ be a root of $p(x)$. Similarly, let $v ∈ \overline{E}$ be a root of the irreducible factor $p^π(x)$ of $f^π(x)$.
 
   We have argued, see~\eqref{eq:8} that $F(u) ≅ F[x] / 〈 p(x) 〉$ and $\overline{F}[x] / 〈p^π(x)〉 ≅ \overline{F}(v)$. Let $Ψ_1: F(u) → F[x] / 〈 p(x) 〉$ and $Ψ_2: \overline{F}[x] / 〈p^π(x)〉 →  \overline{F}(v)$ be the corresponding isomorphisms.   The  mapping  $Ψ_3: F[x] / 〈p(x)〉 → \overline{F}[x] / 〈p^π(x) 〉$ with 
   \begin{equation}
@@ -529,7 +529,7 @@ The proof is by induction, see diagram below.
     Ψ_3 (h(x) + 〈p(x) 〉 ) = h^π(x) + 〈p^π(x)〉
   \end{equation}
   is well defined (Exercise) 
-  and an isomorphism that extends $π$. Clearly $ τ = Ψ_1 \circ  Ψ_3 \circ Ψ_2: F(u) → \overline{F}(v)$ is an isomorphism extending $π$. Since $f$ has at least one linear factor more in $F(u)$ than in $F$, we can apply induction now. There exists an isomorphism $φ: E → \overline{E}$ that extends $τ$ and thus also extends $π$.       
+  and an isomorphism that extends $π$. Clearly $ τ = Ψ_2 \circ  Ψ_3 \circ Ψ_1: F(u) → \overline{F}(v)$ is an isomorphism extending $π$. Since $f$ has at least one linear factor more in $F(u)$ than in $F$, we can apply induction now. There exists an isomorphism $φ: E → \overline{E}$ that extends $τ$ and thus also extends $π$.       
 \end{proof}
 
 
