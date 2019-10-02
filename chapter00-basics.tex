@@ -518,7 +518,7 @@ The proof is by induction, see diagram below.
 
 
 \begin{proof}
-  First we observe that the mapping $ F[x] → F'[x]$ with $f ↦ f^π$ is a ring-isomorphism that extends $π$ (Exercise).
+  First we observe that the mapping $ F[x] → \overline{F}[x]$ with $f ↦ f^π$ is a ring-isomorphism that extends $π$ (Exercise).
   Let $f(x) = p_1(x) \cdots p_k(x) ⋅ (x-a_1) \cdots (x-a_l)$ where the $p_i∈ F[x]$ are irreducibles of degree at least two and $a_i ∈F$. 
   
   The proof is then by induction on $\deg p_1 + \cdots + \deg p_k$. If this sum is equal to zero,  then $E = F$ and $\overline{E} = \overline{F}$ and the assertion obviously holds. Let $p(x)∈ F[x]$  be an irreducible factor of $f(x)$ of degree at least two and let $u ∈ E$ be a root of $p(x)$. Similarly, let $v ∈ \overline{E}$ be a root of the irreducible factor $p^π(x)$ of $f^π(x)$.
@@ -552,16 +552,18 @@ A polynomial $f(x) ∈ F[x] \setminus\{0\}$ is called \emph{separable}, if it do
 
 \begin{theorem}
   \label{thr:15}
-  Let $p(x) ∈ F[x]$ be irreducible. If $\car(F) = 0$, then $p(x)$ is separable. If $\car(F) = p$, then $p$ is not separable if and only if $p(x) = h(x^p)$. 
+  Let $p(x) ∈ F[x]$ be irreducible. If $\car(F) = 0$, then $p(x)$ is separable. If $\car(F) = q$, then $p$ is not separable if and only if $p(x) = h(x^p)$ for some $h(x) ∈ F[x]$. 
 \end{theorem}
 
 \begin{proof}
   If $p' ≠0$ then $\gcd(p,p')=1$, since $p$ is irreducible and with
-  Theorem~\ref{thr:14} it follows that $p$ is then separable. This is
+  Theorem~\ref{thr:14} it follows that
+  $p$ is separable if and only if $p'≠0$. 
+   This is
   the case if $\car(F) = 0$.
   
   Let $p(x) = a_0 + a_1x + \cdots + a_n x^n$ with $n≥1$ and $a_n ≠0$,
-  then $p'(x) = a_1 + 2a_2x + \cdots + n ⋅ a_n x^{n-1}$. This shows that,  $\car(F) =p$, then $p'=0$ if and only if $a_i = 0$ whenever $i ≠ 0 \pmod{p}$. This means that $f(x) = g(x^p)$ with $g(x) = a_0 + a_px^p + a_{2p}x^{2p} + \cdots$. 
+  then $p'(x) = a_1 + 2a_2x + \cdots + n ⋅ a_n x^{n-1}$. This shows that, if  $\car(F) =q$, then $p'=0$ if and only if $a_i = 0$ whenever $i ≠ 0 \pmod{q}$. This means that $f(x) = g(x^q)$ with $g(x) = a_0 + a_qx + a_{2q}x^{2} + \cdots$. 
   
 \end{proof}
 
