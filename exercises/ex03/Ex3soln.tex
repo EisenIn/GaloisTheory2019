@@ -1,0 +1,172 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 3 - Solutions}
+\rhead{October 2, 2019}
+\rfoot{1,4 by J.Baudin \\2,7,8 by S.Giampietro\\3,5,6 by V.A.Nadarajan}
+ 
+
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+
+
+
+
+\begin{document}
+
+
+\vskip 2ex
+
+
+\textbf{Solution 1.}
+
+\begin{enumerate}
+\item Let $f(x) = \sum_{i = 0}^na_ix^i$ and $g(x) = \sum_{j = 0}^mb_jx^j$ and let $c = content(f)$, $d = content(g)$. We may write $a_i = ca_i'$ and $b_j = db_j'$ with $a_i',b_j'\in R$. 
+
+Now define $f'(x) = \sum_{i = 0}^na_i'x^i$ and $g'(x) = \sum_{j = 0}^mb_j'x^j$. We then see that both $f'$ and $g'$ are in $R[x]$ and are primitive (i.e. their content is a unit). Suppose that we have shown that $f'g'$ is also primitive, we would conclude that \[ content(fg) = content(cdf'g') = cd*content(f'g') = cd \] so we would be done.  \\ Hence, we are left to show the following lemma : let $f, g \in R[x]$ be two primitive polynomials, then their product $fg$ is also primitive. 
+
+Suppose the contrary and let $\pi \in R$ be an irreducible divisor of each term of $fg$. Since $R$ is a UFD (unique factorization domain), we deduce that $\pi$ is prime. Therefore, $F = R/\langle \pi \rangle$ is an integral domain (so $F[x]$ is an integral domain too). Let $\overline{f}, \overline{g}$ denote the images of $f, g$ through the quotient by $\langle \pi \rangle$. Since $\pi$ divides $fg$ we obtain that \[ 0 = \overline{fg} = \overline{f}\overline{g} \] Thus, either $\overline{f}$ or $\overline{g}$ is $0$ in the quotient so equivalently, $\pi$ divides either $f$ or $g$. However, this contradicts the fact that both $f$ and $g$ were primitive.
+
+\item Write $f(x) = \sum_{j = 0}^na_jx^j$ (with $a_n = 1$) and $a = b/c$ where $b, c \in R$ are coprime (we can assume that they are coprime because we work in a UFD). Then, since $a$ is a root of $f$, we obtain that \[ 0 = a_0 + a_1\frac{b}{c} + \dots + a_{n- 1} \left(\frac{b}{c}\right)^{n - 1} + \left(\frac{b}{c}\right)^n \] Multiplying by $c^n$ both sides, we have \[ 0 = c^na_0 + c^{n - 1}ba_1  + \dots + a_{n - 1}cb^{n - 1} + b^n \] so \[ -b^n = c(c^{n - 1}a_0 + c^{n - 2}ba_1  + \dots + a_{n - 1}b^{n - 1}) \] Hence, $c$ divides $-b^n$. However, recall that $b$ and $c$ are coprime, so the only way that $c$ divides $-b^n$ is that $c$ has no irreducible divisor, i.e. $c \in R^\times$. Thus, $a = \frac{b}{c} \in R$.
+
+\item Before actually showing this, we show the following lemma : \\ Let $f, g \in R[x]$ be primitive polynomials such that there exists $a \in K$ with $f(x) = ag(x)$. Then $a \in R^\times$. 
+
+Let $a = \frac{b}{c}$, then $cf(x) = bg(x)$. Therefore, $content(cf(x)) = content(bg(x))$. Since $f$ and $g$ are primitive, we obtain that $c = b$ up to a unit (because the content is defined up to a unit). Hence, $a = \frac{b}{c} \in R^\times$. 
+
+Now we go back to our problem. Let $g(x) = \frac{a_0}{b_0} + \dots + \frac{a_n}{b_n}x^n$ and $h(x) = \frac{a_0'}{b_0'} + \dots + \frac{a_m'}{b_m'}x^m$. Define $d_1 = gcd(a_0, \dots, a_n)$, $m_1 = lcm(b_0, \dots, b_n)$ $d_2 = gcd(a_0', \dots, a_m')$ and $m_2 = lcm(b_0', \dots, b_m')$. We then obtain that the polynomials $p(x) = \frac{m_1}{d_1}g(x)$ and $q(x) = \frac{m_2}{d_2}h(x)$ have coefficients in $R$ and are actually primitive. Moreover, we have \[ f(x) = \frac{d_1d_2}{m_1m_2}p(x)q(x) \] By the little lemma we have proven before, the term $\frac{d_1d_2}{m_1m_2}$ is a unit of $R$ so we are done.
+
+\item First suppose that $f$ is irreducible in $K[x]$ and let $g \in R[x]$ be a divisor of $f$ in $R[x]$. Then, $g$ is also a divisor of $f$ in $K[x]$ so $g$ must be a unit of $K[x]$, i.e. $g$ is a constant. However, since $f$ is primitive, $g$ is in fact a unit. Hence, we have proven that $f$ is irreducible in $R[x]$. \\
+Now suppose that $f$ is irreducible in $R[x]$ (in particular, $f$ is primitive). Suppose that there exist $g. h \in K[x]$ such that $f = gh$. Then, by the previous point, there exist $p, q \in R[x]$ primitive polynomials such that $f = pq$ and $deg(p) = deg(g)$, $deg(q) = deg(h)$ (cf the proof of the previous point). Since $f$ is irreducible in $R[x]$, either $p$ or $q$ is a unit. Hence, either $g$ or $h$ is a constant (so a unit in $K[x]$). Therefore, $f$ is indeed irreducible in $K[x]$.
+
+\item Let $f \in R[x]$ and suppose for the moment that $f$ is primitive. We show that there exists a unique decomposition of $f$ as a product of irreducibles in $R[x]$. First, since $K$ is a field, $K[x]$ is a euclidean domain so it is in particular a UFD. Thus, there exist irreducibles $g_1, \dots, g_n \in K[x]$ such that \[f = g_1 \cdots g_n\] Then, using Gauss' Lemma inductively, there exist $f_1, \dots, f_n \in R[x]$ primitive polynomials such that \[f = f_1 \cdots f_n \] and $f_i = a_ig_i$ for some $a_i \in K$. Since the $g_i$ are irreducibles in $K[x]$, the polynomials $f_i$ are also irreducible in $K[x]$ and since they are primitive, by the previous point, they are irreducible in $R[x]$ so we have found a decomposition into irreducibles of $f$. \\ We show that it is unique. Let $f = f_1' \cdots f_m'$ be a decomposition into irreducibles of $R[x]$. By the previous point, all these $f_i$'s are also irreducible in $K[x]$ so, by the uniqueness of the factorization in $K[x]$, $n = m$ and there exist $b_1, \dots, b_n \in K$ such that, up to reordering the indexes, $f_i' = b_ig_i'$ for all $i$. Then, for all $i$, $f_i' = \frac{b_i}{a_i}f_i$. Therefore, by the little lemma we proved in the beginning of $(c)$, $\frac{b_i}{a_i} \in R^\times$ for all $i$. Thus, the decomposition is indeed unique in $R[x]$ for primitive polynomials. \\
+Now let $f \in R[x]$ be any polynomial and let $c = content(f)$. Define $f' = \frac{1}{c}f$ ($f'$ is then primitive). We obtain that there exist a unique factorization for $f'$. Since $R$ is a UFD, there also exists a unique factorization for $c$ and since $f = cf'$, there exists a factorization for $f$ into irreducibles. We now show the uniqueness of this factorization. Let $f = a_1 \cdots a_nf_1 \cdots f_m = a_1' \cdots a_k' f_1' \cdots f_l'$ be two factorizations where all the $a_i, a_j'$ are irreducible constants and all the $f_i, f_j'$ are irreducible polynomials of degree $> 0$ (so they are all primitive in particular). Then, using $(a)$ inductively, we obtain that $c = content(f) = a_1 \cdots a_n = a_1' \cdots a_k'$. Since $R$ is a UFD, this decomposition is unique so, up to a reordering and units, $k = n$ and $a_i = a_i'$ for all $i$. Then, up to a unit, $cf_1 \dots f_m = cf_1' \cdots f_l'$ so since $R[x]$ is an integral domain, $f_1 \cdots f_m = f_1' \cdots f_l'$ up to a unit. Therefore, we can apply what we have proven before for primitive polynomials : $m = l$ and, up to reordering and units, $f_i = f_i'$ for all $i$. We have proven that out two decompositions into irreducibles were the same up to units, which concludes the proof.
+\end{enumerate}
+
+\textbf{Solution 2.  }\\
+
+We assume known that the mapping from $F[x]\rightarrow \bar{F}[x]$ with $f\mapsto f^{\pi}$ is an isomorphism of rings. 
+We consider the map from $F[x]/\langle p(x)\rangle \rightarrow \bar{F}[x]/\langle p^{\pi}(x)\rangle$ given by: 
+$$ \Psi_3(h(x)+\langle p(x)\rangle)=h^{\pi}(x)+\langle p^{\pi}(x)\rangle $$
+\begin{itemize}
+\item We first show it is well defined. We need to show that for $h(x), g(x)\in F[x]$, if $h(x)- g(x)\in \langle p(x)\rangle$, then $h^{\pi}(x)-g^{\pi}(x) \in \langle p^{\pi}(x)\rangle $. Suppose $h(x)- g(x)= p(x)q(x)$ for a certain $q(x)\in F[x]$.
+Since we know the map $f\mapsto f^{\pi}$ is an isomorphism of rings, we have: 
+$$
+h^{\pi}(x)-g^{\pi}(x)=(h(x)- g(x))^{\pi}=(p(x)q(x))^{\pi}=p^{\pi}(x)q^{\pi}(x) \in \langle  p^{\pi}(x)\rangle 
+$$
+So the application is well defined. 
+\item Once we have shown that it is well defined, the fact that it is an isomorphism of fields follows directly from the fact that the map $f\mapsto f^{\pi}$ is an isomorphism of rings:
+\begin{align*}
+\Psi_3((h(x)\langle p(x)\rangle)+(g(x)\langle p(x)\rangle))&=\Psi_3((h(x)+g(x))+\langle p(x)\rangle)\\
+&=h^{\pi}(x)+g^{\pi}(x)+\langle p^{\pi}(x)\rangle \\
+&= \Psi_3(h(x)+\langle p(x)\rangle)+\Psi_3(g(x)+\langle p(x)\rangle)
+ \end{align*}
+Similarly for multiplication. 
+
+
+\end{itemize}
+
+
+ 
+ \textbf{Solution 3. }
+
+\begin{itemize}
+    \item $11\equiv 3 (mod 4)$. By solution to exercise 6 in Sheet 2, $x^2+1$ is irreducible in $\mathbb{F}_{11}[x]$.
+    \item Let K be a field and $p(x)=ax^2+bx+c$ with $a\neq 0$. We have $p(x)=a(x+\frac{b}{2a})^2-(-c+\frac{b^2}{4a})$, from that we see that $p(X)$ is irreducible (which is equivalent to $p(x)$ does not split) iff $b^2-4ac$ (the discriminant of $p$) is not a square in $K$. We compute the discriminant of the polynomial $X^2+X+4$ to be $-15\equiv -4 (mod 11)$ which is not a square since $x^2+1$ is irreducible in $\mathbb{F}_{11}[x]$.
+    \item Now let $K=\mathbb{F}_{11}[y]/<y^2+y+4>$. (which is a field by the previous part) We define a ring homomorphism $\phi: \mathbb{F}_{11}[x] \xrightarrow{} K$ which maps $x$ to the residue class of $y-5$. We see that $(y-5)^2+1=y^2-10y+26=y^2+y+4 (mod 11)$ but the latter is $0$ in $K$, it follows that $ker(\phi)=<x^2+1> $. By first isomorphism theorem this induce an injection $\mathbb{F}_{11}[x]/<x^2+1>\hookrightarrow K$, this is in fact an isomorphism since $\phi(X+5)=y$.
+\end{itemize}{}
+
+\textbf{Solution 4.}\\
+
+First suppose that $f$ and $g$ are coprime in $L[x]$. Then, it is clear that they remain coprime in $K[x]$ (any divisor in $K[x]$ is also a divisor in $L[x]$). \\ Now suppose that $f$ and $g$ are coprime in $K[x]$. Then there exist $a, b \in K[x]$ such that \[af + gb = 1\] Since this equality also holds in $L[x]$, $f$ and $g$ are coprime in $L[x]$. Indeed, let $d$ be any common divisor of $f$ and $g$ in $L[x]$. Then $d$ also divides $af + bg = 1$ so $d$ is a constant (i.e. a unit of $L[x]$). In fact the above argument can be used to show if $f$ and $g$ have g.c.d. $h\in L[x]$ then in fact $h\in K[x]$.\\
+
+
+
+\textbf{Solution 5. }\\
+
+Let $K$ be a field and $f\in K[x]$, $f\neq 0$ be any polynomial. Let $R=K[x]/<f(x)>$ and $\phi:K[x]\twoheadrightarrow R$ be the canonical quotient map.
+
+Let $J\subseteq R$ be an ideal. We know that $\phi^{-1}(J)\in K[x]$ is an ideal and moreover $f\in \phi^{-1}(J)$. Since $K[x]$ is a P.I.D. $\exists$ $p(x)\in K[x]$ s.t. $\phi^{-1}(J)=<p(x)>$. (Note that by our previous observation $p|f$) Since $\phi$ is a surjection, $J=\phi(\phi^{-1}(J))=<\phi(p(x))>$. So any ideal in $R$ is of the form: $J=<\phi(p(x))>$ for some $p|f$. \\
+
+\textbf{Solution 6. }
+
+\begin{itemize}
+    \item Recall that $\zeta_n\in \mathbb{\Bar{Q}}$ is called a primitive n-th root of unity if $\{1, \zeta_n, ..., \zeta_n^{n-1}$ is the set of roots of $x^n-1$. Note that a primitive root of unity exists (not unique in general) for every $n\geq 1$, since the roots of $x^n-1$  form a finite subgroup of the field $\mathbb{\Bar{Q}}$ and so is cyclic.
+    
+    Let $\zeta_3\in\mathbb{\Bar{Q}}$ be the primitive 3 rd root of unity. We leave it to the reader to check $-\zeta_3$ is a primitive 6 th root of unity. (check that ($(-\zeta_3)^k\neq 1$ $\forall$ $k|6$). Let $\zeta_6=-\zeta_3$, we have $\mathbb{Q}[\zeta_6]=\mathbb{Q}[\zeta_3]=\mathbb{Q}[x]/<x^2+x+1>$.(check!) So $[\mathbb{Q}[\zeta_6]:\mathbb{Q}]=2$.
+    
+    \item Let $m,n$ be positive integers. Let $l$ be the least common multiple of $m,n$ and $d$ be their g.c.d. We will show that $\mathbb{Q}[\zeta_m,\zeta_n]=\mathbb{Q}[\zeta_l]$. Since $\zeta_l^{\frac{n}{d}}$ and $\zeta_l^{\frac{m}{d}}$ are primitive mth root and nth root of unity respectively (check!),  $\mathbb{Q}[\zeta_m,\zeta_n]\subseteq \mathbb{Q}[\zeta_l]$. 
+    
+          Assume first that $(m,n)=1$, then $l=mn$. Let $a,b\in \mathbb{Z}$ s.t. $an+bm=1$. We will show that $\zeta_m^a\zeta_n^b$ is a primitive $mn$ th root of unity. This will show that $\zeta_l$ is a power of $\zeta_m^a\zeta_n^b$ and $\mathbb{Q}[\zeta_l]\subseteq \mathbb{Q}[\zeta_m,\zeta_n]$. Clearly $(\zeta_m^a\zeta_n^b)^l=1$ and assume that $(\zeta_m^a\zeta_n^b)^k=1$. We have from our assumption $\zeta_m^{akn}=1$ and $\zeta_n^{bkm}=1$, we get $m|akn\implies l|akn$ and similarly $n|bkm\implies l|bkm$. Therefore we deduce $l|(akn+bkm)\implies l|k$.
+          
+          Then we proceed by induction on number of prime factors of $d=(m,n)$. Let $m=m'p^{r_1}$ and $n=n'p^{r_2}$ s.t. $(m,p)=1$ and $(n,p)=1$ and we may assume without loss of generality that $r_1\geq r_2$. We have $l=l'p^{r_1}$ with $(l',p)=1$. By our proof of the co prime case, we get $\mathbb{Q}[\zeta_l]= \mathbb{Q}[\zeta_{l'},\zeta_{p^{r_1}}]$, and $\mathbb{Q}[\zeta_m,\zeta_n]=\mathbb{Q}[\zeta_{m'},\zeta_{n'}, \zeta_{p^{r_1}}]$ (for the second equality we use $\mathbb{Q}[\zeta_{p^{r_2}}]\subseteq \mathbb{Q}[\zeta_{p^{r_1}}]$ since $\zeta_{p^{r_1}}^{p^{r_1-r_2}}$ is a primitive $p^{r_2}$ root of unity). Since $\mathbb{Q}[\zeta_{l'}]\subseteq \mathbb{Q}[\zeta_{m'},\zeta_{n'}]$ by induction hypothesis, our result follows. 
+\end{itemize}{}
+
+\textbf{Solution 7.}
+
+\begin{itemize}
+\item We search for a primitive element for the extension $\mathbb{Q}(\sqrt{p},\sqrt{q})\supseteq \mathbb{Q}$. By the proof of the primitive element theorem, we know it is of the shape $\sqrt{p}+y\sqrt{q}$. To choose a `good' $y$, we proceed as in the notes. The minimal polynomials of $\sqrt{p}$ and $\sqrt{q}$ are respectively:
+\begin{align*}
+&f_p(x)=x^2-p=(x-\sqrt{p})(x+\sqrt{p})\\
+&f_q(x)=x^2-q=(x-\sqrt{q})(x+\sqrt{q})
+\end{align*}
+Hence by the proof we can choose any $y$ from the set $\mathbb{Q} \setminus \{-\tfrac{\sqrt{p}}{\sqrt{q}}, 0\}$. 
+For example with $y=1$, $\mathbb{Q}(\sqrt{p},\sqrt{q})=\mathbb{Q}(\sqrt{p}+\sqrt{q})$. \\
+\\
+\textit{Remark} We could have shown this last statement without the proof of the primitive element theorem. Indeed we clearly have 
+$\mathbb{Q}(\sqrt{p}+\sqrt{q})\subseteq \mathbb{Q}(\sqrt{p},\sqrt{q})$. For the other direction, observe that $(\sqrt{p}+\sqrt{q})^{-1}\in \mathbb{Q}(\sqrt{p}+\sqrt{q})$ and:
+$$\frac{1}{\sqrt{p}+\sqrt{q}}=\frac{\sqrt{p}-\sqrt{q}}{p-q}$$ Hence $\sqrt{p}-\sqrt{q}\in \mathbb{Q}(\sqrt{p}+\sqrt{q})$. This implies $\sqrt{p}=\tfrac{1}{2}(\sqrt{p}+\sqrt{q})+(\sqrt{p}-\sqrt{q}) \in \mathbb{Q}(\sqrt{p}+\sqrt{q})$ and similarly for $\sqrt{q}$. 
+
+\item By the previous point, we have that $\mathbb{Q}(\sqrt{p},\sqrt{q},\sqrt{r})= \mathbb{Q}(\sqrt{p}+\sqrt{q}, \sqrt{r})$. We again search for a primitive element of the shape $(\sqrt{p}+\sqrt{q})+y\sqrt{r}$. We first need to find the minimal polynomial of $\sqrt{p}+\sqrt{q}$ over $\mathbb{Q}$. 
+We verify that  $\sqrt{p}+\sqrt{q}$ is a root of the polynomial: 
+\begin{align*}
+f_{pq}(x)&=x^4-2x^2(p+q)+(p-q)^2\\
+&=(x-\sqrt{p}-\sqrt{q})(x+\sqrt{p}-\sqrt{q})(x-\sqrt{p}+\sqrt{q})(x+\sqrt{p}+\sqrt{q})
+\end{align*}
+We can verify this polynomial is irreducible over $\mathbb{Q}$ by observing that none of its roots are in $\mathbb{Q}$ and that none of its quadratic factors has rational coefficients. \\
+Again, the minimal polynomial of $\sqrt{r}$ over $\mathbb{Q}$ is: 
+\begin{align*}
+f_r(x)&=x^2-r=(x-\sqrt{r})(x+\sqrt{r})
+\end{align*}
+Hence can choose any $y$ from the set $\mathbb{Q} \setminus \{0, -\tfrac{\sqrt{p}}{\sqrt{r}}, -\tfrac{\sqrt{q}}{\sqrt{r}}, -\tfrac{\sqrt{p}+\sqrt{q}}{\sqrt{r}}\}$. 
+For example with $y=1$, $\mathbb{Q}(\sqrt{p},\sqrt{q}, \sqrt{r})=\mathbb{Q}(\sqrt{p}+\sqrt{q}+\sqrt{r})$. \\
+\end{itemize}
+
+
+
+\textbf{Solution 8.  }\\
+
+Observe first of all that $K$ is the fraction field of $\mathbb{F}_p[x^p, y^p]$ (the polynomial ring in the variables $x^p$ and $y^p$). Similarly, $L$ is the fraction field of $\mathbb{F}_p[x, y]$. 
+
+\begin{enumerate}
+\item Observe that $L=K(x,y)$, hence $[L:K]=[K(x,y):K(x)] [K(x):K]$. 
+
+To compute $[K(x):K]$, we note that the minimal polynomial of $x$ over $K$ is $q_x(t)=t^p-x^p\in K[x]$. To see that this polynomial  is irreducible, by exercise 1, it suffices to show it is irreducible in $\mathbb{F}_p[x^p, y^p][t]$. This is true by Eisenstein's criterion (as $x^p$ is prime in $\mathbb{F}_p[x^p, y^p]$). Hence $[K(x):K]=p$. 
+
+Similarly the minimal polynomial of $y$ over $K(x)$ is $q_y(t)=t^p-y^p$. Observe that $K(x)$ is the fraction field of the polynomial ring $\mathbb{F}_p[x,y^p]$ so again by exercise 1, it suffices to show that $q_y(t)$ is irreducible over $\mathbb{F}[x,y^p]$. We can again apply Eisenstein's criterion since $y^p$ is prime in $\mathbb{F}[x,y^p]$. 
+
+So $[K(x,y):K(x)]=p$ and we conclude that $[L:K]=p^2$. 
+
+Remember that an extension is separable if all its elements are separable. Now, neither $x$ nor $y$ are separable over $K$. Indeed since their minimal polynomials are over a field of characteristic $p$: $q_x(t)=(t-x)^p\in L[t]$, similarly for $q_y(t)$.
+
+\item Since $[L:K]=p^2$, if a primitive element for $L$ exists, its minimal polynomial over $K$ must be of degree $p^2$. \\
+On the other hand, let $\alpha\in L$ be any element. By definition of $L$ we can write $\alpha=\tfrac{f}{g}$ with $f,g\in \mathbb{F}_p[x, y]$. 
+
+Observe that for any $f\in \mathbb{F}_p[x, y]$,  $f=\sum_{i,j}a_{ij}x^{i}y^{j}$, with $a_{ij}\in \mathbb{F}_p$. Again since we are working over a field of characteristic $p$: 
+$$ f^p= \Big(\sum_{i,j}a_{ij}x^{i}y^{j}\Big)^p=\sum_{i,j}a_{ij}(x^p)^{i}(y^p)^{j}\in \mathbb{F}_p[x^p, y^p]$$.
+
+Hence we have shown that for every $f \in \mathbb{F}_p[x, y]$, $f^p\in \mathbb{F}_p[x^p, y^p]$. But this means that for every $\alpha \in L$, 
+$$\alpha^p = (\frac{f}{g})^p =\frac{f^p}{g^p} \in \mathbb{F}_p(x^p, y^p)=K$$
+
+Hence we have shown that for every $\alpha \in L$, $\alpha^p\in K$. But then $\alpha$ is root of the polynomial $p(t)=t^p-\alpha^p \in K[t]$. So the minimal polynomial of all elements of $L$ has degree smaller than $p$, thus the extension $L$ has no primitive element. 
+
+\end{enumerate}
+
+
+\end{document}

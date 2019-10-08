@@ -1,0 +1,66 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 4}
+\rhead{October 8, 2019}
+\rfoot{Problems selected by J.Baudin, F. Eisenbrand S.Giampietro and V.A.Nadarajan}
+
+
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+ 
+\usepackage{../../utf8math}
+
+
+\DeclareMathOperator{\gal}{Gal}
+
+\begin{document}
+
+
+\vskip 2ex
+
+
+
+\begin{enumerate}
+\item A field $K$ is said to be perfect if any finite extension over $K$ is separable. 
+\begin{itemize}
+\item Show that all fields of characteristic $0$ are perfect. 
+\item Show that all finite fields are perfect. 
+\item Show that a field of characteristic $p>0$ is perfect if and only if the Frobenius map ($\alpha\mapsto \alpha^p$) is an automorphism. 
+\item Let $\overline{\mathbb{F}_p}$ denote the algebraic closure of $\mathbb{F}_p$. Show that $\overline{\mathbb{F}_p}$ is perfect.
+\item Show that $\mathbb{F}_p(x)$ is not perfect.
+\end{itemize}
+
+\item Let $K$ be a field. Let $f\in K[x]$ be an irreducible polynomial. Show that if $f$  has one simple root (in its splitting field) then all its roots are simple (in its splitting field).
+
+\item Let $K\subseteq L$ be a field extension. Let $\phi:L\xrightarrow{}L$ be a K-homomorphism (i.e. $\phi:L\xrightarrow{}L$ is a ring homomorphism s.t. $\phi|_K=id_K$). Show that $\phi$ is an automorphism.
+
+\item Show that $x^2-2$ is irreducible in $\mathbb{Q}[x]$, construct a splitting field of this polynomial, what is its degree over $\mathbb{Q}$? 
+
+\item Show that $x^3-2$ is irreducible in $\mathbb{Q}[x]$, construct a splitting field of this polynomial, what is its degree over $\mathbb{Q}$? [Hint: To check if $K=\mathbb{Q}[x]/〈x^3-2〉$ is the splitting field, consider the embedding $K\hookrightarrow \mathbb{C}$ induced by mapping $x$ to the real cube root of 2.]
+
+\item Show that $X^3+10X+5$ is irreducible over $\mathbb{Q}[\sqrt[4]{2}]:=\mathbb{Q}[x]/〈X^4-2〉$. 
+
+\item Let $K\subseteq L\subseteq M$ be a tower of field extensions. Show that if $K\subseteq M$ is seperable then $K\subseteq L$ and $L\subseteq M$  are seperable.
+
+\item Are the following extensions $K\supseteq F$ normal?
+\begin{enumerate} 
+\item $F=\mathbb{Q}$ and $K=\mathbb{Q}(\sqrt[4]{2})$
+\item $F=\mathbb{Q}$ and $K=\mathbb{Q}(\sqrt[3]{3}, \sqrt{-3})$
+\item $F=\mathbb{F}_2$ and $K=F(\alpha)$ with $\alpha^3 + \alpha + 1 = 0$
+\item $F=\mathbb{Q}$ and $K=\mathbb{Q}(\sqrt[7]{11}, \sqrt{11},\sqrt{5})$
+\end{enumerate}
+\item Let $E = ℚ(\sqrt[4]{2},i)$. Show that $\gal(E：ℚ) ≅ D_4$. [Hint: If $u = \sqrt[4]{2}$, find $σ,τ ∈ \gal(E：ℚ)$ with $σ(u) = i⋅u$, $σ(i) = i$ and $τ(u) = u$, $τ(i) = -i$. 
+
+\end{enumerate}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
