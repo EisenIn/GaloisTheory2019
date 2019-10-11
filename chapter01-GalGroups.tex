@@ -19,8 +19,8 @@ The next lemma is simple to prove, but very helpful in understanding the Galois 
   \begin{eqnarray*}
     τ(f(u)) & = & τ (a_0 + a_1u + \cdots + a_n u^n) \\
             & = & τ (a_0) + τ(a_1u)  + \cdots + τ(a_n u^n) \\
-            & = & τ (a_0) + τ(a_1)τ(u)  + \cdots + τ(a_n) τ (u)^n) \\
-            & = &  a_0 + a_1τ(u)  + \cdots + a_n τ (u)^n),
+            & = & τ (a_0) + τ(a_1)τ(u)  + \cdots + τ(a_n) τ (u)^n \\
+            & = &  a_0 + a_1τ(u)  + \cdots + a_n τ (u)^n,
   \end{eqnarray*}
   where the  second and third row follow  from the homomorphism property of $τ$ and the last row from the fact that $τ$ fixes $F$. 
 \end{proof}
@@ -74,9 +74,10 @@ Equipped with this knowledge, we can start determining some Galois groups.
   \label{exe:5}
   Let $E = \mathrm{GF}(p^n) ⊇ ℤ_p$ be an extension of degree $n$ of $ℤ_p$. We show that $\gal(E：F) ≅ C_n$. To this end, denote   $F = ℤ_p$ and since $E$ is cyclic, we have $E = F(u)$. The minimal polynomial $p(x) ∈ F[x]$ has degree $n$ and with Theorem~\ref{thr:17} $|\gal(E：F)| ≤ n$.  Consider the Frobenius automorphism
   \begin{displaymath}
-    φ(x) = x^p, \text{ for each } x ∈E and 
+    φ(x) = x^p, \text{ for each } x ∈E. 
   \end{displaymath}
- $φ^i(x) = x^{p^i}$. Therefore, if the order of $φ$ is $k$, then each element of $E$ satisfies $x^{p^k} -x = 0$. Therefore, the order of $φ$ is $n$ and this shows that $\gal(E：F) ≅ C_n$. 
+  One has  $φ^i(x) = x^{p^i}$
+ Therefore, if the order of $φ$ is $k$, then each element of $E$ satisfies $x^{p^k} -x = 0$. Therefore, the order of $φ$ is $n$ and this shows that $\gal(E：F) ≅ C_n$. 
 \end{example}
 
 
