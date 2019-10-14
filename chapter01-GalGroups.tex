@@ -1,3 +1,4 @@
+
 \chapter{Galois Groups and Galois Extensions}
 \label{cha:galois-groups-galois}
 
@@ -198,6 +199,133 @@ Theorem~\ref{thr:20} has a very important consequence. Let $E ⊇F$ be a finite 
 where $u_1=u$ and $u_2,\dots,u_n$ are the other roots pf $p(x)$. 
 Theorem~\ref{thr:17} tells us that  $\gal(E：F) = \{ τ_1,\dots,τ_n\}$ where $τ_i$ is the unique $F$-automorphism that maps $u$ to $u_i$. Thus we fully understand the Galois group of a finite normal and separable field extensions, once we get a hold on the primitive element, its minimal polynomial and the other roots of the minimal polynomial as $F$-linear combinations of $1,u,\dots,u^{n-1}$. We will elaborate on this further. 
 
+\section{Group characters and Dedekind's lemma}
+\label{sec:group-char-dedek}
+
+\begin{definition}
+  \label{def:4}
+  Let $G$ be a group and $E$ a field. A group homomorphism $σ：G → E^*$ is called a \emph{character} of $G$ in $E$. A set $\{σ_1,\dots,σ_n\}$ of characters is called \emph{independent'} if for $e_1,\dots, e_n ∈ E$
+  \begin{displaymath}
+    e_1 σ_1(g) + \cdots + e_n σ_n(g) = 0 \, \text{ for each } g ∈ G 
+  \end{displaymath}
+  implies $e_1=\cdots=e_n=0$. 
+\end{definition}
+
+
+\begin{lemma}[Dedekind's Lemma]
+  \label{lem:3}
+  A finite set of distinct characters of a group $G$ in a field $E$ is independent. 
+\end{lemma}
+
+\begin{proof}
+  Let $\{σ_1,\dots,σ_n\}$ be a set of distinct characters of $G$ in $E$ for which the assertion is to be shown. We proceed by induction on $n$. For $n=1$ one observes that if $u_1 σ_1(g) = 0$ for each $g ∈G$, then $u_1=0$ since $σ_1(g) ≠0$ for each $g ∈G$.
+
+  For  $n>1$, let $e_1,\dots,e_n ∈E$ with
+  \begin{equation}
+    \label{eq:15}
+   e_1  σ_1(g) + \cdots + e_n  σ_n(g) = 0 \text{ for each } g ∈G.     
+  \end{equation}
+ We need to show that all $e_i$ are zero. If one $e_i$ is zero, then, by the induction hypothesis,  all others are zero as well. Assume that that all $e_i$ are non-zero. For  $h ∈G$ one has $σ_i(h⋅ g) = σ_i(h) ⋅σ_i(g)$  and clearly
+ \begin{equation}
+   \label{eq:16}
+   e_1  σ_1(h) σ_1(g) + \cdots + e_n  σ_n(h) σ_n(g) = 0 \text{ for each } g ∈G.
+ \end{equation}
+%
+By multiplying~\eqref{eq:15} with $σ_1(h)$ and subtracting  equation~\eqref{eq:16} from the result one obtains 
+\begin{displaymath}
+   e_2  (σ_1(h) - σ_2(h))   σ_2(g) + \cdots + e_n  (σ_1(h) - σ_n(h))  σ_n(g) = 0 \text{ for each } g ∈G.
+ \end{displaymath}
+ By the induction hypothesis and the fact that each $e_i$ is non-zero, this means that
+ \begin{displaymath}
+    (σ_1(h) - σ_i(h)) \, ∀ i∈\{2,\dots,n\}, \ h ∈G 
+  \end{displaymath}
+  and thus that the characters are all equal, contrary to the assumption that they are distinct.
+\end{proof}
+
+
+\begin{theorem}
+  \label{thr:21}
+  Let $E ⊇F$ be a finite field extension and denote $\gal(E：F)$ by $G$. One has
+  \begin{displaymath}
+    |G| ≤ [E：F]. 
+  \end{displaymath}
+\end{theorem}
+\begin{proof}
+  Let $[E:F] = n$, $v_1,\dots,v_n ∈E$ be an $F$-basis of $E$ and suppose that there are $n+1$ distinct $F$-automorphisms $σ_0,\dots,σ_n ∈ G$. These are also characters from the group $E^*$ into $E$ and this means that they are independent. Consider the matrix
+  \begin{displaymath}
+    A =
+    \begin{pmatrix}
+      σ_0(v_1) & σ_1(v_1) &  \cdots & σ_n(v_1) \\
+      σ_0(v_2) & σ_1(v_2) &  \cdots & σ_n(v_2) \\
+      \vdots &           &         & \vdots \\
+       σ_0(v_n) & σ_1(v_n) &  \cdots & σ_n(v_n) \\
+    \end{pmatrix} ∈ E^{n ×n+1}. 
+  \end{displaymath}
+  There exists a nonzero vector $(x_0,\dots,x_{n})^T ∈E^{n+1}$ which is in the kernel of this matrix. In particular, one has
+  \begin{equation}
+    \label{eq:17}
+    y^T A x = 0 \text{ for each } y ∈ F^{n}. 
+  \end{equation}
+  The $σ_i$ are $F$-automorphisms and thus 
+  \begin{displaymath}
+    y^T A = \left( σ_0\left(∑_{i=1}^n y_i v_i\right), σ_1\left(∑_{i=1}^n y_i v_i\right), \dots, σ_1\left(∑_{i=1}^n y_i v_i\right) \right). 
+  \end{displaymath}
+  Since each element of $E$ is a linear combination of the $v_i$, this, together with~\eqref{eq:17} means that
+  \begin{displaymath}
+    x_0 σ_0(e)+ \cdots +  x_n σ_n(e) = 0 \text{ for each } e ∈ E. 
+  \end{displaymath}
+  This is a contradiction, since $x ≠ 0$ and the characters $σ_0,\dots,σ_n$ are independent. Therefore, the assertion follows. 
+\end{proof}
+
+\subsection{Galois extensions}
+\label{sec:galois-extensions}
+
+Let $σ: E→E$ be a field automorphism. Let us consider the elements of $E$ that are \emph{fixed} by $σ$, i.e., those $e ∈E$ with $σ(e) = e$. These elements are a field, which is quickly verified: Suppose $a$ and $b≠0$ are fixed. Then
+\begin{eqnarray*}
+  σ(a-b) & = &  σ(a) - σ(b) = a-b\\
+  σ(a/b) & = &  σ(a) / σ(b) = a/b.\\   
+\end{eqnarray*}
+Let $G$ be a group of automorphisms of $E$. The set of elements of $E$ that are fixed by each  $σ ∈G$ is a field, as it is the intersection of all fixed fields of the elements of $G$. We denote this field by $E_G$. 
+
+\begin{definition}
+  \label{def:5}
+  A field extension $E ⊇F$ is called a Galois extension, if $F = E_{\gal(E：F)}$. 
+\end{definition}  
+
+
+\begin{example}
+  \label{exe:8}
+  The extension $ℂ ⊇ ℝ$ is Galois, since the complex conjugate of any non-real complex number is different from that number. 
+\end{example}
+ 
+\begin{example}
+  \label{exe:9}
+  The extension $ℚ(\sqrt[3]{2}) ⊇ ℚ$ is not Galois, as $\gal(ℚ(\sqrt[3]{2}) ： ℚ) = \{id\}$. 
+\end{example}
+
+
+
+\begin{theorem}
+  \label{thr:22}
+  A finite field extension $E ⊇F$ is Galois if and only if it is normal and separable. 
+\end{theorem}
+
+\begin{proof}
+  Suppose that $E ⊇F$ is Galois and let $p(x) ∈F[x]$ be an irreducible polynomial that has a root in $E$. We have to show that $p(x)$ is separable and splits in $E$. To this end, let $u_1,\dots,u_k$ be the different roots of $p(x)$. For an $F$-automorphism $σ$, the elements $σ(u_1),\dots,σ(u_k)$ are the elements $u_1,\dots,u_k$ in a different order. We define the polynomial $g(x)$ as
+  \begin{displaymath}
+    g(x) = (x-u_1) \cdots (x-u_k) = (x-σ(u_1)) \cdots (x-σ(u_k)) = g^σ(x). 
+  \end{displaymath}
+  Since $E⊇F$ is Galois, this means that each coefficient of $g(x)$ is in $F$, i.e., $g(x) ∈ F[x]$. But $p(x)$ divides each polynomial in $F[x]$ that has $u_1$ as a root. Since $\deg(p) ≥ \deg(g)$ and since they both are monic, this implies $g = p$. We have shown that $p(x)$ is separable and splits in $E$.
+
+  For the reverse direction, we assume that $E ⊇ F$ is normal and separable. By Theorem~\ref{thr:16} implies that there exists a primitive element  $u∈E$, i.e., an element with  $F(u) = E$. Let $p(x) ∈ F[x]$ be the minimal polynomial of $u$, $n = \deg(p)$ and $u=u1,\dots,u_n$ be the roots of $p(x)$ which are all different and contained in $E$, as $E⊇F$ is separable and normal. Theorem~\ref{thr:17} implies that $\gal(E：F) = n$. Clearly $\gal(E:F) = \gal(E:E_{\gal(E:F)})$ (exercise). Theorem~\ref{thr:21} implies
+  \begin{displaymath}
+    n ≤ [E：E_{\gal(E:F)}] 
+  \end{displaymath}
+  and since $F ⊆ E_{\gal(E:F)}$ it follows that $E_{\gal(E:F)} = F$. 
+\end{proof}
+
+
+\end{document}
 
 %%% Local Variables:
 %%% mode: latex
