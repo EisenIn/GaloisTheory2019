@@ -325,7 +325,58 @@ Let $G$ be a group of automorphisms of $E$. The set of elements of $E$ that are 
 \end{proof}
 
 
-\end{document}
+\section{The Galois Correspondence}
+\label{sec:galo-corr}
+
+Let $E ⊇ F$ be a field extension with Galois group $G$. The Galois correspondence is a correspondence between the \emph{intermediate fields} $E ⊇ K ⊇F$ of the correspondence and the subgroups $H$ of $G$. We denote these sets as follows
+\begin{eqnarray*}
+  ℱ & = & \{ K ：K \text{ field with }  E⊇K⊇F \} \\
+  ℋ & = & \{ H ： H \text{ subgroup of } G \} \\
+\end{eqnarray*}
+%
+Also, we use the following notation. For $H ∈ ℋ$ we denote $E_H$ by $H^*$ and for $K ∈ℱ$ we denote $\gal(E：K)$  by $K^*$.
+
+\begin{lemma}
+  \label{lem:4}
+  Let $E ⊇ F$ be a field extension and $ℱ$ and $ℋ$ be defined as above. 
+  For $K,L ∈ ℱ$ and $H,I ∈ℋ$ one has
+  \begin{enumerate}[i)]
+  \item $H ⊆ H^{**}$
+  \item  $K ⊆ K^{**}$
+  \item  $K ⊆ L$ implies  $K^* ⊇ L^*$
+  \item  $H ⊆ I$ implies $H^* ⊇ I^*$
+  \end{enumerate}
+\end{lemma}
+
+\begin{theorem}[Fundamental theorem of Galois theory] 
+  \label{thr:23}
+  Let $E ⊇F$ be a finite Galois extension of degree $n$ and $ℱ$ and $ℋ$ be defined as above. Then
+  \begin{enumerate}[i)]
+  \item For each $K ∈ℱ$ one has $K^{**} = K$.
+  \item For each $H ∈ ℋ$ one has $H^{**} = H$.
+  \item For $K ∈ ℱ$ one has
+    \begin{displaymath}
+      [E ： K ]  =  | K^*|
+    \end{displaymath}
+      and 
+      \begin{displaymath}
+        [ K \colon F ]  =  n / |K^*|                 
+      \end{displaymath}
+    \end{eqnarray*}
+  \item For $K ∈ ℱ$ the extension $K ⊇ F$ is normal, if and only if $K^*$ is a normal subgroup of $\gal(E：F)$.
+  \item If $K ⊇F$, $K ∈ ℱ$ is a normal extension, then
+    \begin{displaymath}
+      \gal(K：F) ≅ \gal(E：F) / K^*. 
+    \end{displaymath}
+  \end{enumerate}
+\end{theorem}
+
+
+
+\subsection*{Exercises}
+\begin{enumerate}
+\item Let $E ⊇ F$ be a field extension, $H ∈ ℋ$ and $K ∈ ℱ$,  then $H^* =H^{***}$ and $K^* = K^{***}$. 
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex

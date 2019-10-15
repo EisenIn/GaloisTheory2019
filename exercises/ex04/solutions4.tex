@@ -1,0 +1,103 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 4 - Solutions}
+\rhead{October 14, 2019}
+\rfoot{1,3,6 by J. Baudin \\ 2,8,9 by S. Giampietro\\ 4,5,7 by V.A.Nadarajan}
+ 
+
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{tikz-cd}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+
+\begin{document}
+\noindent
+
+\vskip 2ex
+$\newline$
+\textbf{Solution 1.} \\
+First, note that a field $F$ is perfect if and only if any irreducible polynomial $f(x) \in F[x]$ is separable (indeed the minimal polynomial of any element of an extension over $F$ is irreducible.). \\ In addition, we show the following : let $f(x) \in F[x]$ be an irreducible polynomial, then \[f(x) \mbox{ is separable if and only if } f'(x) \not\equiv 0 \] \\ Indeed, as $f(x)$ is irreducible, its only divisors are $1$ and $f(x)$. Since $deg(f'(x)) < deg(f(x))$, $f(x)$ divides $f'(x)$ if and only if $f'(x)$ is the polynomial $0$. Therefore, we conclude using theorem $1.20$ form the lecture notes. 
+
+\begin{itemize}	
+	\item Let $F$ be a field of characteristic $0$ and let $f(x) \in F[x]$ be a non-constant irreducible polynomial. Now let $a_n \in F \setminus \{0\}$ be the leading coefficient of $f(x)$, then the leading coefficient of $f'(x)$ is $na_n$ and $na_n \neq 0$, since the characteristic is 0, so $f'(x) \not\equiv 0$, hence $f(x)$ separable.
+	\item Let $f(x) \in \mathbb{F}_p[x]$ be an irreducible polynomial (say of degree $n$). By a result about finite fields which you have seen in the class \textit{Rings and Fields}, we know that $f(x)$ divides $g(x) = x^{p^n} - x$. Since $g'(x) = -1$, we obtain that gcd$(g(x), g'(x)) = 1$. Thus, $g(x)$ is separable and since $f(x)$ divides $g(x)$, $f(x)$ is separable too.
+	\item Let $F$ be a field of characteristic $p$. Note that the Frobenius map is always an injective field homomorphism. \\
+	First suppose that the Frobenius map is surjective and let $f(x) \in F[x]$ be an irreducible polynomial. We show that $f'(x) \not\equiv 0$. Write \[ f(x) = a_0 + \dots + a_nx^n \] Then \[ f'(x) = na_nx^{n - 1} + (n - 1) a_{n - 1}x^{n - 2} + \dots + a_1 \] Suppose by contradiction that $f'(x) \equiv 0$. \\ Suppose that there exists some $j \geq 0$ such that $a_j \neq 0$ and $p$ does not divide $j$. Then the monomial $ja_jx^{j - 1}$ appearing in $f'(x)$ would be non-zero, which is not possible because $f'(x) \equiv 0$. Thus, if $a_j \neq 0$, then $j = kp$ for some $k \geq 0$. Hence, \[ f(x) = a_0 + a_px^p + \dots + a_{mp}x^{mp} \] for some $m \geq 1$. For all $i$, let $b_i \in F$ such that $b_i^p = a_i$ (they exist by surjectivity of the Frobenius map). Hence, \[ f(x) = b_0^p + b_1^px^p + \dots b_{mp}^px^{mp} = (b_0 + \dots + b_{mp}x^m)^p \] This contradicts the irreducibility of $f(x)$. Hence, we have proven that $f'(x) \not\equiv 0$, which proves the separability of $f(x)$. \\
+	On the other hand, suppose that $F$ is perfect. We show the surjectivity of the Frobenius map. Let $a \in F$ and consider $f(x) = x^p - a \in F[x]$. Let $L$ be a splitting field of $f(x)$ over $F$ and let $b \in K$ be a root of $f(x)$ Therefore, \[ f(x) = x^p - a = x^p - b^p = (x - b)^p \] Moreover, let $m(x) \in F[x]$ be the mimimal polynomial of $b$ over $F$. Then, $m(x)$ must divide $f(x)$ and hence must be of the form $(x - b)^k$ for some $1 \leq k \leq p$. However, by hypothesis, $m(x)$ is separable, which implies that $k = 1$ (otherwise, $b$ would be a multiple root). Thus, \[ F[x] \ni m(x) = x - b \] which implies that $b \in F$, so the Frobenius map is surjective.
+	\item To show this, we can use the fact that there is always a $p$'th root of any element in any algebraically closed field and hence the Frobenius map being surjective, we conclude with the previous point. An other way to proceed is to say that any irreducible polynomial over an algebraically closed field is of degree $1$, so it will automatically be separable since it has only one (hence single) root. 
+	\item We use the criterion we showed in the third point. More precisely, we show that there exist no $a \in \mathbb{F}_p(x)$ such that $a^p = x$. \\
+	Suppose the contrary and let $\frac{f(x)}{g(x)} \in \mathbb{F}_p(x)$ such that \[ \left(\frac{f(x)}{g(x)}\right)^p = x \] Then, \[ f(x)^p = x(g(x))^p \] Let $n = $ deg$(f(x))$ and $m = $ deg$(g(x))$. From the above equation, we obtain that \[ np = 1 + mp \] which implies that $p$ divides $1$, a contradiction. Thus, the Frobenius map is not surjective ($x$ is not in the image), so we conclude that $\mathbb{F}_p(x)$ is not perfect. 
+\end{itemize}
+\textbf{Solution 2.}\\
+\\
+If the characteristic of $K$ is zero, then irreducible polynomials never have repeated roots. Indeed let $f(x)\in K[x]$ be an irreducible polynomial. Supposing otherwise, if $f$ has a repeated root, $\gcd(f,f')\neq 1$ and since $f$ irreducible, $\gcd(f,f')=f$. But this implies $f'=0$ and $f$ constant, a contradiction. So all the roots of $f$ are simple. \\
+Now suppose the characteristic of $K$ is positive, say $char(K)=p$. Again let $f(x)\in K[x]$ be an irreducible polynomial. We will show the contrapositive: if $f$ has a repeated root, then all its root are repeated. 
+So suppose $f$ has a repeated root. Again this implies, since $f$ irreducible, that $\gcd(f,f')=f$ and hence that $f'\equiv0$. Since we are in a field of characteristic $p$, this means $f(x)=g(x^p)$ for some polynomial $g(x)\in K[x]$. But then since we are working in a field of characteristic $p$, in an algebraic closure of $K$, $\overline{K}$, we have that $g(x^p)=(\overline{g}(x))^p$, where $\overline{g}(x)\in \overline{K}[x]$ is the polynomial whose coefficients are the $p$-th roots of the coefficients of $g$. Hence all roots of $f(x)=(\overline{g}(x))^p$ have multiplicity at least $p$. \\
+\\
+\\
+\textbf{Solution 3.} Note that any homomorphism of fields is injective (because its kernel is an ideal and it cannot be the whole field as the image of $1$ is $1$ by definition). Hence, in this case, $\phi$ must be injective so we only have to show the surjectivity. Let $a \in L$ and let $m(x) \in K[x]$ be its minimal polynomial (there was a typo in the exercise sheet, we ask the extension to be algebraic). Let $a = a_1, \dots, a_n$ be the other roots of $m(x)$ in $L$ and let $A = \{a_1, \dots, a_n\}$. As $\phi$ fixes $K$, it sends roots of $m(x)$ to roots of $m(x)$ (cf the lecture notes). Hence, $\phi$ induces an injective map $A \rightarrow A$ (which sends $a_i$ to $\phi(a_i))$). Since $A$ is finite, this induced map is also surjective so there exists $a_i$ such that $\phi(a_i) = a$. Thus, $\phi : L \rightarrow L$ is indeed surjective. \\
+
+\textbf{Remark.} Note that combining the third point of exercise $1$ and exercise $3$, we obtain that any field of characteristic $p$ which is algebraic over $\mathbb{F}_p$ is in fact perfect, which is much stronger than the fact that $\overline{\mathbb{F}_p}$ is perfect. \\
+\\
+\textbf{Solution 4.}\\
+
+By Eisenstein criterion, $x^2-2\in \mathbb{Q}[x]$ is irreducible. Consider the field $K:=\mathbb{Q}[x]/<x^2-2>$ (a field extension of $\mathbb{Q}$), one can easily check that $\overline{x}$ (the image of $x$ under the canonical map $\mathbb{Q}[x]\twoheadrightarrow\mathbb{Q}[x]/<x^2-2>$) and $-\overline{x}$ are roots of the polynomial $x^2-2\in K[x]$.
+
+Note that $[K:\mathbb{Q}]:=dim_{\mathbb{Q}}(K)=2$ ($1,\overline{x}$ form a basis.) Since $x^2-2\in \mathbb{Q}[x]$ is irreducible, $K$ is a splitting field of $x^2-2\in $ over $\mathbb{Q}$.\\
+\\
+\textbf{Solution 5.}\\
+
+By Eisenstein criterion, $x^3-2\in \mathbb{Q}[x]$ is irreducible. Consider the field $K:=\mathbb{Q}[x]/<x^3-2>$ (a field extension of $\mathbb{Q}$), one can easily check that $\overline{x}$ (the image of $x$ under the canonical map $\mathbb{Q}[x]\twoheadrightarrow\mathbb{Q}[x]/<x^3-2>$) is a root of the polynomial $x^3-2\in K[x]$. 
+
+We wish to show that there are no other roots of this polynomial over $K$. To do this consider the map $\mathbb{Q}[x]\xrightarrow{}\mathbb{C}$ which maps $x$ to the unique real cube root of 2 (the existence follows from basic real analysis -- every real cubic polynomial has a real root, the uniqueness follows from the fact that the only cube root of unity over $\mathbb{R}$ is 1). This induces an embedding from $K\hookrightarrow \mathbb{C}$ (which fixes $\mathbb{Q}$) by the first isomorphism theorem. (Check!) Observe that the image of the embedding is in fact contained in the reals, and by the above argument there is only one root for the equation $x^3-2$ in the image. (and the same holds for $K$ which is $\mathbb{Q}$-isomorphic to its image under the embedding). Similarly $x^2+x+1$ is irreducible over $\mathbb{R}$ (no real roots) and hence a fortiori over K. 
+
+Define $L=K[y]/<y^2+y+1>$ (a field extension of $K$ by above), since $\overline{y}^2+\overline{y}+1=0$ and therefore $\overline{y}^3=1$, we get $\overline{x}, \overline{x}\overline{y}, \overline{x}\overline{y}^2$ are roots of $x^3-2\in L[x]$. They are distinct since $1,\overline{y}$ form a basis of $L$ over $K$.     
+
+Note that $[L:\mathbb{Q}]:=dim_{\mathbb{Q}}(L)=[L:K][K:\mathbb{Q}]=3.2=6$ . Since $K$ is not a splitting field and [L:K]=2, $L$ is a splitting field of $x^3-2$ over $\mathbb{Q}$.\\
+\\
+\textbf{Solution 6.} Suppose the contrary. As this polynomial has degree $3$, it means that $\mathbb{Q}(\sqrt[4]{2})$ has a root $a$ of $x^3 + 10x + 5$. Consider the tower of extension \[ \mathbb{Q} \hookrightarrow \mathbb{Q}(a) \subseteq \mathbb{Q}(\sqrt[4]{2}) \] Then, by the tower law, \[ [\mathbb{Q}(\sqrt[4]{2}) : \mathbb{Q}] = [\mathbb{Q}(\sqrt[4]{2}) : \mathbb{Q}(a)][\mathbb{Q}(a) : \mathbb{Q}] \] However, by Eisenstein's criterion, we know that both $x^4 - 2$ and $x^3 + 10x + 5$ are irreducible over $\mathbb{Q}$, so $[\mathbb{Q}(\sqrt[4]{2}) : \mathbb{Q}] = 4$ and $[\mathbb{Q}(a) : \mathbb{Q}] = 3$. Combining this and the above equation, we obtain that $3$ divides $4$, a contradiction. \\
+\\
+\textbf{Solution 7.}\\
+
+Let $K\subseteq L\subseteq M$ be a tower of field extensions, s.t. $K\subseteq M$ is separable. Recall that an extension of fields $E\subseteq F$ is said to be separable iff $\forall$ $a\in F$ the minimal polynomial of $a$ over $E$ (which we will denote by $\mu_{a,E}$) has no multiple roots (in a splitting field).
+
+It follows readily from $K\subseteq M$ is separable that $K\subseteq L$ is separable. We will show that $L\subseteq M$ is also separable: Let $a\in M$, we have $\mu_{a,L}|\mu_{a,K}$ (since $\mu_{a,K}(a)=0$ and $\mu_{a,L}$ is the generator of the ideal $\{f\in L[x]| f(a)=0\}$ in $L[x]$). Since $\mu_{a,K}$ has no multiple roots (in a splitting field), neither does $\mu_{a,L}$.\\
+\\
+\textbf{Solution 8.}
+\begin{enumerate}[a)]
+\item Observe that $p(x)=x^4-2$ has two real and two complex roots. Now, $\mathbb{Q}(\sqrt[4]{2})$ is a purely real extension i.e. $\mathbb{Q}(\sqrt[4]{2}) \subset \mathbb{R}$ so it cannot contain the complex roots. Hence $\mathbb{Q}(\sqrt[4]{2})\supseteq \mathbb{Q}$ is \textbf{not} a normal extension. 
+
+\item Consider the polynomial $x^3-3$. Then following exactly the same reasoning as in exercise 5, if we set $K=\mathbb{Q}[x]/\langle x^3 -3\rangle$, there is only one root of $x^3-3$ in $K$. Hence as in exercise 5, the splitting field of $x^3-3$ is $L=K[y]/\langle y^2+y+1\rangle$.   Finally observe that $K=\mathbb{Q}[x]/\langle x^3 -3\rangle\simeq \mathbb{Q}(\sqrt[3]{3})$ and $L=K[y]/\langle y^2+y+1\rangle = \mathbb{Q}(\sqrt[3]{3})(\tfrac{-1+\sqrt{-3}}{2})=\mathbb{Q}(\sqrt[3]{3}, \sqrt{-3})$. Hence $\mathbb{Q}(\sqrt[3]{3}, \sqrt{-3})=L$ is the splitting field of $x^3-3$ over $\mathbb{Q}$ and hence by a theorem seen in class it is a normal extension.
+
+\item Let $f(x)=x^3+x+1$. Then $f$ is irreducible over $\mathbb{F}_2$ since its degree is $\leq 3$ and it has no roots in $\mathbb{F}_2$. Then $K=\mathbb{F}_2(\alpha)=\mathbb{F}_2/\langle x^3+x+1\rangle\ \simeq \mathbb{F}_8$ is the finite field of $8$ elements. Now by exercise sheet 2, this is the splitting field of $x^8-x$ hence $K\supset \mathbb{F}_2$ is a normal extension.
+
+\item As in $(a)$, $\mathbb{Q}(\sqrt[7]{11}, \sqrt{11}, \sqrt{5})$ is a purely real extension. On the other hand the polynomial $x^7-11$ has complex roots that are hence not contained in it.  So $\mathbb{Q}(\sqrt[7]{11}, \sqrt{11}, \sqrt{5})\supseteq \mathbb{Q}$ is not a normal extension. 
+ 
+\end{enumerate}
+$\newline$
+\textbf{Solution 9.}\\
+\\
+Let $u=\sqrt[4]{2}$. We know that for $\tau \in$ Gal($E:\mathbb{Q}$), $\tau$ is uniquely determined by the choice of $\tau(u)$ and $\tau(i)$. Since $\tau(u)\in \{u, iu, -u, -iu\}$ and $\tau(i)\in \{i, -i\}$, we have that $|$Gal($E:\mathbb{Q})|\leq 8$.\\ 
+Using theorem 1.18, we can extend the identity on $\mathbb{Q}$ to a homomorphism between the field extensions $\mathbb{Q}(u)$ and $\mathbb{Q}(iu)$ and further to $\mathbb{Q}(u,i)$ and $\mathbb{Q}(iu,i)$: 
+\begin{equation*}
+\begin{tikzcd}
+E=\mathbb{Q}(u,i) \arrow[r, "\sigma"] & \mathbb{Q}(iu,i) =E \\
+\mathbb{Q}(u) \arrow [u] \arrow [r, "\sigma_0"] & \mathbb{Q}(iu)\arrow[u] \\
+\mathbb{Q} \arrow[u] \arrow[r, "id"] & \mathbb{Q} \arrow[u]
+\end{tikzcd}
+\end{equation*}
+We obtain a $\mathbb{Q}$-automorphism with $\sigma(u)=iu$ and $\sigma(i)=i$. Then the order of $\sigma$ is 4. Similarly we can construct a $\mathbb{Q}$ automorphism $\tau$ with $\tau(u)=u$ and $\tau(i)=-i$. Then the order of $\tau$ is 2. We also observe that $\tau\sigma\tau(u)=-iu=\sigma^3(u)$ and $\tau\sigma\tau(i)= i = \sigma^3(i)$, hence $\tau\sigma\tau = \sigma^3$.\\
+This implies that Gal($E:\mathbb{Q}$)= $\langle \sigma, \tau | \sigma^4=1, \tau^2=1, \tau\sigma\tau = \sigma^3\rangle\simeq D_4$
+
+
+\end{document}

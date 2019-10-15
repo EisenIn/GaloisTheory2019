@@ -1,12 +1,12 @@
+
 \documentclass[12pt,a4paper]{article}
 \usepackage{fancyhdr}
  
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{Math-317 Galois Theory \\ Review Problems 1}
-\rhead{October 8, 2019}
+\rhead{October 15, 2019}
 \rfoot{Problems selected by J.Baudin, F. Eisenbrand S.Giampietro and V.A.Nadarajan}
-
 
 \usepackage{times}
 \usepackage{mathptmx}
@@ -22,12 +22,39 @@
 \begin{document}
 
 
+
+
 \vskip 2ex
 
+\noindent
+Hand in your handwritten and carefully prepared solutions on Wednesday, October 23, during the exercise session.
 
+\vskip 2ex
 
 \begin{enumerate}
-\item Let $E ⊇F$ be fields and $u,v ∈E$. If $v$ is transcendental over $F$ but algebraic over $F(u)$, show that $u$ is algebraic over $F(v)$. 
+\item Let $E \supseteq F$ be fields and $u,v \in E$. Show the following.  If $v$ is transcendental over $F$ but algebraic over $F(u)$, show that $u$ is algebraic over $F(v)$. 
+\item Let $F$ be a field of characteristic $p>0$ and $K \supseteq F$ an algebraic extension. We say that $u\in K$ is \textit{purely inseparable} over $F$ if its minimal polynomial of $u$ over $F$ has only one root in $\overline{F}$, an algebraic closure of $F$. Similarly we say that $K \supseteq F$ is a \textit{purely inseparable extension} if every $u \in K$ is purely inseparable over $F$. 
+\begin{enumerate}[a)]
+\item Show that $K \supseteq F$ is a purely inseparable extension if and only if for every $u \in K$ there exists $d\geq 0$ such that $u^{p^d}\in F$ 
+\end {enumerate}
+Again consider $\overline{F} \supseteq F$ its algebraic closure, and let $\overline{F}^{\text{insep}} \subset \overline{F}$ be the set of purely inseparable elements of $\overline{F}$. 
+\begin{enumerate}[b)]
+\item Show that $\overline{F}^{\text{insep}}$ is a sub-field of $\overline{F}$. 
+\end{enumerate}
+\begin{enumerate}[c)]
+\item Show that $\overline{F}^{\text{insep}}$ is a perfect field and is the minimal algebraic extension over $F$ in $\overline{F}$ that has this property (i.e. if $\overline{F} \supseteq L \supseteq F$ and $L$ is a perfect field, then $L\supseteq\overline{F}^{\text{insep}}$).
+\end{enumerate}
+
+
+\item Let $m,n\in\mathbb{N}$. Consider the polynomials $x^m-1$ and $x^n-1$ $\in \mathbb{C}[x]$, let $p(x)$ be their g.c.d. Show the following statements:
+      \begin{enumerate}
+          \item $p(x)\in\mathbb{Z}[x]$.
+          \item $p(x)=x^d-1$ where $d=g.c.d.(m,n)$ [Hint: You may like to compute the g.c.d. in a field extension where $x^m-1$ and $x^n-1$ split.]
+      \end{enumerate}{}
+  
+    \item Let $α$, $β \in \mathbb{C}$ be algebraic numbers (i.e. algebraic over $\mathbb{Q}$) and let $m_α(x)$, $m_β(x) \in \mathbb{Q}[x]$ be their respective  minimal polynomials and suppose that both have degree at most $d$. 
+      Let $P_n$ denote the probability that, if we pick an integer $m \in \{1, \dots, n\}$ uniformly at random, then  $\mathbb{Q}(α, β) = \mathbb{Q}(α + mβ)$. Show that \[ P_n \geq 1 - \frac{d^2}{n} \] 
+
 \end{enumerate}
 \end{document}
 
