@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm}
+\usepackage{xfrac}    
+\usepackage{tikz-cd}
+
+\usepackage{commath}
+\usepackage{enumerate} 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 6}
+\rhead{October 22, 2019}
+\rfoot{Problems selected by J.Baudin, F. Eisenbrand S.Giampietro and V.A.Nadarajan} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Lbar}{\overline{K}}
+
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+ 
+\usepackage{../../utf8math}
+
+
+\DeclareMathOperator{\gal}{Gal}
+
+
+\begin{document}
+
+
+\vskip 2ex
+
+\begin{enumerate}
+\item In each case, show that $E ⊇F$ is Galois, find the lattice of intermediate fields and find a primitive element for each intermediate field.
+  \begin{enumerate}[a)]
+  \item $E = ℚ(e^{2πi/5})$, $F = ℚ$.
+  \item $E = ℚ(e^{2πi/7})$, $F = ℚ$.
+  \item $E = ℚ(i, \sqrt{3})$, $F = ℚ$. 
+  \item $E = ℤ_2(u)$, where $u$ is a root of $x^4 + x +1$ and $F = ℤ_2$. 
+  \item $E = ℚ(\sqrt[4]{2},i)$ and $F = ℚ$. 
+  \end{enumerate}
+\item Show that a finite Galois extension $E ⊇F$ has a finite number of intermediate fields.
+
+\item Here you are asked to prove Lemma~2.11 of the Lecture notes. 
+  Let $E ⊇ F$ be a field extension and $ℱ$ and $ℋ$ be defined as in the notes.  
+  For $K,L ∈ ℱ$ and $H,I ∈ℋ$ one has
+  \begin{enumerate}[i)]
+  \item $H ⊆ H^{**}$
+  \item  $K ⊆ K^{**}$
+  \item  $K ⊆ L$ implies   $K^* ⊇ L^*$ and   $H ⊆ I$ implies  $H^* ⊇ I^*$
+  \item $H^{***} = H^*$ and  $K^{***} = K^*$. 
+  \end{enumerate}
+
+\item Let $E ⊇F$ be fields and consider the correspondence mapping $*$ from the lecture.
+  \begin{enumerate}[a)]
+  \item Show that $*：ℋ → ℱ$ is onto if and only if $K^{**} = K$ for each $K ∈ℱ$.
+    \item  Show that $*：ℱ→ ℋ $ is onto if and only if $H^{**} = H$ for each $H ∈ℋ$.
+  \end{enumerate}
+  
+  
+\item 
+Let $L\supseteq K$ be a finite Galois extension, and let $G=$Gal$(L:K)$ be its Galois group. 
+For an element $a\in L$, we denote by $orb_G(a)=\{\sigma(a) \ | \ \sigma \in G\}$ the orbit of $a$ by $G$. Also, we denote by $Stab_G(a)=\{\sigma \in G\ \ | \ \sigma(a)=a\}$ the stabilizer of $a$ in $G$. Show that:\[p(x)= \prod_{a_i\in orb_G(a)} (x-a_i)\] is an irreducible polynomial in K[x] (hence in particular it is the minimal polynomial of $a$).\\
+\\
+Deduce that if $Stab_G(a)=\{\text{id}\}$, then $a$ is a primitive element for $L\supseteq K$.
+
+\newpage 
+
+\item 
+Let $a_1, ..., a_n$ be pairwise co-prime non-square integers. Consider the extension $\mathbb{Q}(\sqrt{a_1}, ... , \sqrt{a_n})\supseteq \mathbb{Q}$ and let $G$ be its Galois group.
+\begin{itemize}
+\item Compute the Galois group $G$. \\
+\textit{Hint: you can use results from last week's exercise sheet!}
+\item Show that $\sum_{i=1}^{n}\sqrt{a_i}$ is a primitive element. [Hint: Use previous exercise.]
+\item Show that $1 + \sqrt{2} + \sqrt{3} + ... + \sqrt{N} \notin \mathbb{Q}$.
+\end{itemize}
+
+\end{enumerate}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
