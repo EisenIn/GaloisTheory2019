@@ -1,0 +1,76 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 7}
+\rhead{October 29, 2019}
+%\rfoot{Problems selected by J. Baudin, S. Giampietro and V.A.Nadarajan}
+\usepackage{times}
+\usepackage{mathptmx}
+
+\usepackage[utf8]{inputenc} 
+\usepackage{mathrsfs}
+\usepackage{mathtools} 
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+
+\usepackage{enumerate}
+
+
+
+\begin{document} 
+\noindent
+$\newline$
+ \textbf{Exercise 1}\\
+ Let $L\supseteq K$ be a field extension with $n=[L:K]$ and denote by Hom$_K(L, \overline{K})$ the set of homomorphisms $L\rightarrow \overline{K}$ that extend a given embedding of $K$ into $\overline{K}$. Show that $L\supseteq K$ is a separable extension if and only if $|$Hom$_K(L,\overline{K})|=n$. \\
+Recall that for any finite extension $L\supseteq K$, $|$Hom$_K(L,\overline{K})|\leq [L:K]$.\\
+ \\
+\textit{Remark: }$|$Hom$_K(L,\overline{K})|$ is called the separability degree of $L$ over $K$ and is denoted by $[L:K]_{\text{sep}}$ \\
+ \\
+ \textbf{Exercise 2}\\
+ Let $M\supseteq L \supseteq K$ be a tower of field extensions. Show that if $M\supseteq L$ is a separable extension and also $L\supseteq K$ is separable, then $M\supseteq K$ is a separable extension. \\
+ For this, you may want to prove that $[M:K]_{\text{sep}}=[M:L]_{\text{sep}}[L:K]_{\text{sep}}$. \\
+ \\
+ \textbf{Exercise 3}\\
+ Consider the extension $K(a_1,  ..., a_n)\supseteq K$ obtained by adjoining $n$ algebraic elements to $K$.\\
+ Show that  $K(a_1,  ..., a_n)\supseteq K$ is separable if and only if each $a_i$ is separable.
+ \\
+ \\
+ \textbf{Exercise 4}
+ \begin{itemize}
+     \item[a.] Let $K\subseteq L$ be a finite extension with char(K)=p.   We denote by $L^{\text{sep}}$ the set of elements of $L$ which are separable over $K$. Show that this is a subfield of L. Moreover show that $[L:K]_{sep}=[L^{sep}:K]$.
+
+     \item[b.] Show that $L^{sep}\subseteq L$ is a purely inseparable extension, i.e. $\forall$ $a\in L$, $\exists$ $n\in\mathbb{N}$ s.t. $a^{p^n}\in L^{sep}$.
+ \end{itemize}
+ $\newline$
+ \textbf{Exercise 5}\\
+For each of the following elements, find a radical extension of $\mathbb{Q}$ that contains it:
+\begin{itemize} 
+\item $\sqrt{3}(\sqrt[3]{5} - \sqrt[5]{7})$
+\item $(\sqrt{5}-3)(4-3\sqrt[5]{6})$
+\end{itemize}
+$\newline$
+\textbf{Exercise 6}\\
+Let $p$ be a prime and $f\in \mathbb{Q}[x]$ an irreducible polynomial of degree $p$. Show that if $f$ has exactly two nonreal roots, then $f$ has Galois group $S_p$, (i.e. the Galois group of the splitting field of $f$ over $\mathbb{Q}$ is $S_p$.)\\
+\\
+\\
+ \textbf{Exercise 7}\\
+ Let $f\in F[x]$, where $F$ is a field and char$(F)\neq 2$. Assume that $f$ is of degree $n$ and that its roots $u_1, ... , u_n$ in a splitting field $E\supseteq F$ are distinct. Let $G=\text{Gal}(E:F)$ viewed as a group of permutations in $S_X$, where $X=\{u_1, ..., u_n\}$ is the set of roots. 
+ Define $\Delta\in E$ by $\Delta:=\prod_{i<j}(u_i-u_j)$ (for example if $n=3$, $\Delta=(u_1-u_2)(u_1-u_3)(u_2-u_3)$). We call the element $\Delta^2$ the \textit{discriminant} of $f$. 
+ \begin{enumerate}[a)]
+ \item Show that $\Delta^2 \in F$.
+ \item Show that the permutation $\sigma \in S_X$ is even if and only if $\sigma(\Delta)=\Delta$ and that $\sigma$ is odd if and only if $\sigma(\Delta)=-\Delta$. (Recall that the parity of a permutation $\sigma$ is defined as the parity of the number of inversions for $\sigma$).
+ \item Show that $G$ consists of even permutations if and only if $\Delta \in F$. 
+ \item If $f=x^2+bx+c$, show that $\Delta^2=b^2-4c$, the usual discriminant. 
+ \item If $f=x^3+bx+c$, show that $\Delta^2=-4b^3-27c^2$, the usual discriminant. [\textit{Hint: } $u_1+u_2+u_3 =0$ \textit{ and } $u_1u_2+u_1u_3+u_2u_3=b$ \textit{ imply that }$(u_i-u_j)^2= -b-3u_iu_j$.]
+ \end{enumerate}
+ $\newline$
+ \textbf{Exercise 8}\\
+ Show that no root of  $p(x) = x^5 - 6x -2$ lies in a radical extension of $\mathbb{Q}$. [\textit{Hint: You may use the fact that the roots of any  real polynomial of degree at most 4 are radical expressions involving the coefficients of the polynomial.}]
+ 
+
+
+
+\end{document}
