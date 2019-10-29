@@ -1,0 +1,55 @@
+\chapter{Applications}
+\label{cha:applications}
+
+
+\section{Insolvability of polynomials}
+\label{sec:insolv-polyn}
+
+In this section, we will show a connection between the Galois group of a polynomial and the solvability of a polynomial in radicals.
+
+\begin{definition}
+  \label{def:6}
+  Let $f(x) ∈ F[x]$ be a polynomial, where $F$ is a field. The \emph{Galois group} of  $f(x)$ is $\gal(E：F)$, where $E$ is a splitting field of $f(x)$. 
+\end{definition}
+
+This definition makes sense because if $E'$ is another splitting field of $F$, then $E$ and $E'$ are isomorphic and therefore, also $\gal(E:F)$ and $\gal(E'：F)$ are isomorphic. (Exercise)
+
+
+\begin{definition}
+  \label{def:7}
+  A field extension  $E ⊇F$  is called \emph{radical extension}, if a chain of intermediate fields  $E = E_0 ⊇ E_1 ⊇ \cdots ⊇ E_n = F$ exists, such that
+  \begin{displaymath}
+    E_i = E_{i+1}(u_i), \text{ where } u_i^{n_i} ∈ E_{i+1} \text{ for some } n_i≥1. 
+  \end{displaymath}
+  A polynomial $f(x) ∈F[x]$ is called \emph{solvable} if some radical extension of $f(x)$ contains a splitting field of $f(x)$. 
+\end{definition}
+Thus, if a polynomial is solvable, then each of its roots can be written as a nested finite  expression involving elements of $F$, addition, subtraction, multiplication and division, as well as taking $n$-th roots. Our goal is to show that there exists a  polynomial $f(x) ∈ℚ[x]$ of degree $5$ that is not solvable. 
+%
+We next recall the definition and some characterization of a solvable group. 
+\begin{definition}
+  \label{def:8}
+  A group  $G$ is \emph{solvable} if there exists a chain of subgroups
+  \begin{displaymath}
+    G = G_0 ⊇ G_1 ⊇ \cdots ⊇ G_n = \{1\}
+  \end{displaymath}
+  such that
+  $G_{i+1} ◁ G_i$ and $G_i / G_{i+1}$ is abelian for each $1≤i <n$. 
+\end{definition}
+
+\begin{lemma}
+  \label{lem:7}
+  If $G$ is a group and $K ◁ G$, then $G$ is solvable if and only if $K$ and $G/K$ are solvable. 
+\end{lemma}
+
+We will show the if direction of the Galois criterion. This will enable us to show that a certain polynomial is not solvable by showing that its Galois group is not solvable. 
+\begin{theorem}[Galois criterion] 
+  \label{thr:26}
+  Let $F$ be a field of characteristic zero and $f(x) ∈ F[x]$. The Galois group of $f(x)$ is solvable if and only if $f(x)$ is a solvable polynomial. 
+\end{theorem}
+The group $S_5$ is not solvable. We will construct a polynomial of degree $5$ in $ℚ[x]$ whose Galois group is $S_5$. 
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:

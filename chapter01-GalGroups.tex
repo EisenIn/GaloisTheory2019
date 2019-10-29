@@ -1,12 +1,12 @@
 
-\chapter{Galois Groups and Galois Extensions}
+\chapter{Galois Groups and the Main Theorem of Galois Theory}
 \label{cha:galois-groups-galois}
 
 We now come to a central definition of this course. 
 
 \begin{definition}
   \label{def:2}
-  If $E ⊇F$ are fields, an automorphism $σ: E → E$ that satisfies $σ(a) = a$ for each $a ∈ F$ is said to \emph{fix} $F$ and it is called an \emph{$F$-automorphism}.  The set of $F$-automorphisms are, together with composition a group. It is called the \emph{Galois group} of the extension $E ⊇F$ and we denote it by $\gal(E:F)$.
+  If $E ⊇F$ is an extension of fields, an automorphism $σ: E → E$ that satisfies $σ(a) = a$ for each $a ∈ F$ is said to \emph{fix} $F$ and it is called an \emph{$F$-automorphism}.  The set of $F$-automorphisms are, together with composition a group. It is called the \emph{Galois group} of the extension $E ⊇F$ and we denote it by $\gal(E:F)$.
 \end{definition}
 
 The next lemma is simple to prove, but very helpful in understanding the Galois group.
@@ -277,8 +277,6 @@ By multiplying~\eqref{eq:15} with $σ_1(h)$ and subtracting  equation~\eqref{eq:
   This is a contradiction, since $x ≠ 0$ and the characters $σ_0,\dots,σ_n$ are independent. Therefore, the assertion follows. 
 \end{proof}
 
-\subsection{Galois extensions}
-\label{sec:galois-extensions}
 
 Let $σ: E→E$ be a field automorphism. Let us consider the elements of $E$ that are \emph{fixed} by $σ$, i.e., those $e ∈E$ with $σ(e) = e$. These elements are a field, which is quickly verified: Suppose $a$ and $b≠0$ are fixed. Then
 \begin{eqnarray*}
@@ -286,6 +284,62 @@ Let $σ: E→E$ be a field automorphism. Let us consider the elements of $E$ tha
   σ(a/b) & = &  σ(a) / σ(b) = a/b.\\   
 \end{eqnarray*}
 Let $G$ be a group of automorphisms of $E$. The set of elements of $E$ that are fixed by each  $σ ∈G$ is a field, as it is the intersection of all fixed fields of the elements of $G$. We denote this field by $E_G$. 
+
+
+\begin{theorem}[Dedekind-Artin Theorem]
+  \label{thr:25}
+  Let $E$ be a field and $G$ be a finite group of automorphisms of $E$, then $E ⊇ E_G$ is a finite extension and 
+  \begin{displaymath}
+    |G| = [E ：E_G]. 
+  \end{displaymath}
+\end{theorem}
+\begin{proof}
+  Let $n = |G|$. Assume that there are $n+1$ $E_G$-linear independent elements $u_0,\dots,u_n$ of $E$. We will lead this assumption to a contradiction. This implies the statement, since $|G| ≤ |\gal(E： E_G)| ≤ [E ：E_G]$, where the latter inequality is Theorem~\ref{thr:25}.
+
+Consider the following set of $n$ linear equations in $n+1$ variables $x_0,\dots,x_n$
+  \begin{equation}
+    \label{eq:19}
+    σ(u_0) x_0 + \dots +  σ(u_n) x_n = 0,  \, σ ∈G. 
+  \end{equation}
+This has a nontrivial solution in $E^{n+1}$ and among these solutions let $x^* ∈E^{n+1}$ be a nontrivial solution with  a minimal number $r+1$ of nonzero components. By re-labeling, we can assume that the first $r+1$ components of $x^*$ are non-zero. Furthermore, by multiplying $x^*$ with $1/x^*_0$, we can assume  $x^*_0=1$. This means that 
+  \begin{equation}
+    \label{eq:21}
+     σ(u_0)  + σ(u_1) x^*_1 \dots +  σ(u_n) x^*_r = 0, \, σ ∈G
+   \end{equation}
+   holds. 
+  Since the identity is contained in $G$, one has 
+  \begin{equation}
+    \label{eq:20}
+    u_0 + u_1 x^*_1 + \dots + u_r x^*_r = 0
+  \end{equation}
+  which implies that one of the $x^*_i$ is not contained in the fixed-field $E_G$. Thus, there exists a $τ ∈ G$ with $τ(x^*_i)≠ x^*_i$. By applying $τ$ to~\eqref{eq:21} we obtain
+  \begin{equation}
+    \label{eq:22}
+     τ(σ(u_0))  + τ(σ(u_1)) τ( x^*_1) + \dots +  τ(σ(u_n))τ( x^*_r) = 0, \, σ ∈G.
+   \end{equation}
+   and since $τ \circ σ$ runs through the entire group as well, we can re-write~\eqref{eq:22} as
+   \begin{equation}
+     \label{eq:23}
+      σ(u_0)  + σ(u_1) τ( x^*_1) \dots +  σ(u_n) τ( x^*_r) = 0, \, σ ∈G.
+    \end{equation}
+    Subtracting~\eqref{eq:23} from~\eqref{eq:21} yields
+    \begin{equation}
+      \label{eq:24}
+      σ(u_1) (x^*_1- τ(x^*_1)) +  \dots +  σ(u_n) (x^*_r - τ(x^*_r))= 0, \, σ ∈G.
+    \end{equation}
+    This is a nontrivial solution to~\eqref{eq:19} with fewer than $r+1$ nonzero components. Namely the solution $y^*$ with
+    \begin{displaymath}
+      y^*_i =
+      \begin{cases}
+        (x^*_i- τ(x^*_i)) & 1 ≤ i  ≤ r \\
+        0 & \text{ otherwise.}
+      \end{cases}
+    \end{displaymath}
+\end{proof}
+
+\section{Galois extensions}
+\label{sec:galois-extensions}
+
 
 \begin{definition}
   \label{def:5}
@@ -317,18 +371,31 @@ Let $G$ be a group of automorphisms of $E$. The set of elements of $E$ that are 
   \end{displaymath}
   Since $E⊇F$ is Galois, this means that each coefficient of $g(x)$ is in $F$, i.e., $g(x) ∈ F[x]$. But $p(x)$ divides each polynomial in $F[x]$ that has $u_1$ as a root. Since $\deg(p) ≥ \deg(g)$ and since they both are monic, this implies $g = p$. We have shown that $p(x)$ is separable and splits in $E$.
 
-  For the reverse direction, we assume that $E ⊇ F$ is normal and separable. By Theorem~\ref{thr:16} implies that there exists a primitive element  $u∈E$, i.e., an element with  $F(u) = E$. Let $p(x) ∈ F[x]$ be the minimal polynomial of $u$, $n = \deg(p)$ and $u=u1,\dots,u_n$ be the roots of $p(x)$ which are all different and contained in $E$, as $E⊇F$ is separable and normal. Theorem~\ref{thr:17} implies that $\gal(E：F) = n$. Clearly $\gal(E:F) = \gal(E:E_{\gal(E:F)})$ (exercise). Theorem~\ref{thr:21} implies
+  For the reverse direction, we assume that $E ⊇ F$ is normal and separable. By Theorem~\ref{thr:16} implies that there exists a primitive element  $u∈E$, i.e., an element with  $F(u) = E$. Let $p(x) ∈ F[x]$ be the minimal polynomial of $u$, $n = \deg(p)$ and $u=u_1,\dots,u_n$ be the roots of $p(x)$ which are all different and contained in $E$, as $E⊇F$ is separable and normal. Theorem~\ref{thr:17} implies that $\gal(E：F) = n$. Clearly $\gal(E:F) = \gal(E:E_{\gal(E:F)})$ (exercise). Theorem~\ref{thr:21} implies
   \begin{displaymath}
     n ≤ [E：E_{\gal(E:F)}] 
   \end{displaymath}
   and since $F ⊆ E_{\gal(E:F)}$ it follows that $E_{\gal(E:F)} = F$. 
 \end{proof}
+%
+In fact we also proved the following theorem. 
+\begin{theorem}
+  \label{thr:24}
+  Let $E ⊇ F$ be a finite Galois extension, then $[E：F] = |\gal(E：F)|$. 
+\end{theorem}
 
+\begin{proof}
+  Let $n = [E：F]$.  The extension $E⊇F$ is primitive, $E = F(θ)$. Let $p(x) ∈ F[x]$ be the minimal polynomial of $θ$ and let $θ=θ_1,\dots,θ_n ∈ E$ be the other roots of $p(x)$. They are all different (separable) and in $E$ (normal).  Theorem~\ref{thr:17} implies  that
+\begin{displaymath}
+  \gal(E：F) = \{ τ_1,\dots,τ_n\},
+\end{displaymath}
+ where $τ_i$ is the unique $F$-automorphism that maps $θ$ to $θ_i$. 
+\end{proof}
 
 \section{The Galois Correspondence}
 \label{sec:galo-corr}
 
-Let $E ⊇ F$ be a field extension with Galois group $G$. The Galois correspondence is a correspondence between the \emph{intermediate fields} $E ⊇ K ⊇F$ of the correspondence and the subgroups $H$ of $G$. We denote these sets as follows
+Let $E ⊇ F$ be a field extension with Galois group $G$. The Galois correspondence is a correspondence between the \emph{intermediate fields} $E ⊇ K ⊇F$ and the subgroups $H$ of $G$. We denote these sets as follows
 \begin{eqnarray*}
   ℱ & = & \{ K ：K \text{ field with }  E⊇K⊇F \} \\
   ℋ & = & \{ H ： H \text{ subgroup of } G \} \\
@@ -343,18 +410,63 @@ Also, we use the following notation. For $H ∈ ℋ$ we denote $E_H$ by $H^*$ an
   \begin{enumerate}[i)]
   \item $H ⊆ H^{**}$
   \item  $K ⊆ K^{**}$
-  \item  $K ⊆ L$ implies  $K^* ⊇ L^*$
-  \item  $H ⊆ I$ implies $H^* ⊇ I^*$
+  \item  $K ⊆ L$ implies   $K^* ⊇ L^*$ and   $H ⊆ I$ implies  $H^* ⊇ I^*$
+  \item $H^{***} = H^*$ and  $K^{***} = K^*$. 
   \end{enumerate}
 \end{lemma}
+
+The next lemma prepares to understand the connection between normal subgroups of the Galois group and intermediate fields $E ⊇ K ⊇F$ that are normal extensions of $F$. 
+\begin{lemma}
+  \label{lem:6}
+  Let $E ⊇ F$ be fields and $G = \gal(E：F)$. Then one has the following.
+  \begin{enumerate}[i)] 
+  \item If $H$ is a normal subgroup of $G$ (we write $H ◁ G$), then \label{item:9}
+    \begin{displaymath}
+      σ(H^*) ⊆ H^*, \text{ for each } σ ∈ G.
+    \end{displaymath}
+  \item  If $K$ is an intermediate field with\label{item:10}
+    \begin{displaymath}
+       σ(K) ⊆ K, \text{ for each } σ ∈ G,
+     \end{displaymath}
+     then $K^*◁ G$ and
+     \begin{displaymath}
+       G / K^* ≡ \{ ρ ∈ \gal(K：F) ：ρ \text{ extends to an automorphism of } E\}. 
+     \end{displaymath}     
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  To show~\ref{item:9}) we need to verify that $σ(u) ∈ E_H$ for each $σ ∈ G$. Since $H ◁ G$ one has $σ^{-1} ○ τ ○ σ ∈ H$ for each $τ ∈ H$. This implies
+  \begin{displaymath}
+    (σ^{-1} ○ τ ○ σ ) (u) = u \text{ for each } u ∈E_H
+  \end{displaymath}
+  and thus that
+  \begin{displaymath}
+    τ(σ(u)) = σ(u)  \text{ for each } u ∈E_H. 
+  \end{displaymath}
+  In other words $σ(E_H) ⊆ E_H$.
+
+ For~\ref{item:10}) we observe that, for each $σ ∈G$,  the restriction $σ_{|K}$ is an $F$-automorphism of the extension $K ⊇F$. The mapping $φ：G → \gal(K：F)$ with $φ(σ) = σ_{|K}$ is a group homomorphism. The kernel consists exactly of $K^* = \gal(E：K)$. The assertion follows from the group-isomorphism theorem. 
+\end{proof}
+
+% \begin{lemma}
+%   \label{lem:5}
+%   Let $E ⊇ F$ be a Galois extension and $E ⊇ K ⊇F$ be an intermediate field. Then $E ⊇ K$ and $K ⊇ F$ are Galois extensions. 
+% \end{lemma}
+
+% \begin{proof}
+%   The extensions $E ⊇K$ and $K ⊇ F$ are separable. The extension $K ⊇ F$ is separable, by definition.  The extension $E ⊇K$ is separable  because the minimal polynomial of an element $α ∈ E$ over $K$ divides the minimal polynomial of $α$ over $F$.
+
+%   The extension $E ⊇K$ is normal, since it remains to be a splitting field of a polynomial $f(x) ∈ F[x] ⊆ K[x]$.
+  
+% \end{proof}
 
 \begin{theorem}[Fundamental theorem of Galois theory] 
   \label{thr:23}
   Let $E ⊇F$ be a finite Galois extension of degree $n$ and $ℱ$ and $ℋ$ be defined as above. Then
   \begin{enumerate}[i)]
-  \item For each $K ∈ℱ$ one has $K^{**} = K$.
-  \item For each $H ∈ ℋ$ one has $H^{**} = H$.
-  \item For $K ∈ ℱ$ one has
+  \item For each $K ∈ℱ$ one has $K^{**} = K$. \label{item:4}
+  \item For each $H ∈ ℋ$ one has $H^{**} = H$. \label{item:5}
+  \item For $K ∈ ℱ$ one has \label{item:6}
     \begin{displaymath}
       [E ： K ]  =  | K^*|
     \end{displaymath}
@@ -362,9 +474,8 @@ Also, we use the following notation. For $H ∈ ℋ$ we denote $E_H$ by $H^*$ an
       \begin{displaymath}
         [ K \colon F ]  =  n / |K^*|                 
       \end{displaymath}
-    \end{eqnarray*}
-  \item For $K ∈ ℱ$ the extension $K ⊇ F$ is normal, if and only if $K^*$ is a normal subgroup of $\gal(E：F)$.
-  \item If $K ⊇F$, $K ∈ ℱ$ is a normal extension, then
+  \item For $K ∈ ℱ$ the extension $K ⊇ F$ is normal, if and only if $K^*$ is a normal subgroup of $\gal(E：F)$. \label{item:7}
+  \item If $K ⊇F$, $K ∈ ℱ$ is a normal extension, then \label{item:8}
     \begin{displaymath}
       \gal(K：F) ≅ \gal(E：F) / K^*. 
     \end{displaymath}
@@ -373,10 +484,43 @@ Also, we use the following notation. For $H ∈ ℋ$ we denote $E_H$ by $H^*$ an
 
 
 
-\subsection*{Exercises}
-\begin{enumerate}
-\item Let $E ⊇ F$ be a field extension, $H ∈ ℋ$ and $K ∈ ℱ$,  then $H^* =H^{***}$ and $K^* = K^{***}$. 
-\end{enumerate}
+\begin{proof}
+  We first note that, for each intermediate field $K$, the extension $E⊇ K$ is normal and separable, i.e., Galois. This is straightforward and was shown in the exercises.
+
+For~\ref{item:4}), we apply Theorem~\ref{thr:22} and observe $E_{\gal(E：K)} = K$. In other words, the fixed field of the Galois group of $E⊇K$ is $K$ itself.  This is precisely the statement $K^{**} = K$.
+
+Also,   $|K^*|$ is equal to the degree of the extension $[E：K]$ by Theorem~\ref{thr:24} and $[K：F] = n / |K^*|$ follows from the tower law.  This is \ref{item:6}).
+
+We next show~\ref{item:5}). Recall that $H^* = E_H = \{e ∈ E：σ(e) = e \text{ for each } σ ∈ H\}$ and that $H^{**} = \gal(E：E_H)$. The extension $E ⊇ E_H$ is Galois. Theorem~\ref{thr:24} implies
+\begin{equation}
+  \label{eq:18}
+  |H^{**}| = [E：E_{H}]. 
+\end{equation}
+The Dedekind-Artin Theorem states
+\begin{displaymath}
+  |H| = [E：E_H].
+\end{displaymath}
+As  $H^{**} ⊇ H$ this means $H^{**} = H$. 
+
+We next show  \ref{item:7}). Let $K ⊇ F$ be a normal extension. Since it is also separable, one has $K = F(α)$ for some $α ∈K$. The minimal polynomial $p(x) ∈ F[x]$ of $α$ splits in $K$ and any $σ ∈ \gal(E：F)$ carries $α$ to another root of $p(x)$. This means that $σ(K) ⊆ K$ for each $σ ∈ \gal(E：F)$. Lemma~\ref{lem:6}~\ref{item:10}) implies $K^* ◁ \gal(E：F)$.
+
+On the other hand, if $K^*◁ \gal(E：F)$, then Lemma~\ref{lem:6}~\ref{item:9}) shows $σ(K^{**}) = K^{**}$. Since $K^{**} = K$ by \ref{item:4}) of this theorem, one has $σ(K) = K$. The field $K$ is a simple extension, i.e., $K = F(α)$. Each $σ ∈ \gal(E：F)$ carries $α$ to another root of the minimal polynomial $p(x) ∈F[x]$ of $α$ which is, by assumption, an element of  $K$. This means that $p(x)$ splits in $K = F(α)$. In other words, $K ⊇F$ is normal by Theorem~\ref{thr:20}.
+
+Finally,~\ref{item:8}), follows from Lemma~\ref{lem:6}~\ref{item:10}) once we show that each $τ∈ \gal(K：F)$ extends to an automorphism of $E$. But this follows from~Theorem~\ref{thr:13}.
+
+\end{proof}
+
+As a first application, we now describe the intermediate fields  of the extension  $E = \mathrm{GF}(p^n) ⊇ ℤ_p$. In Example~\ref{exe:5}, we developed   $\gal(E：ℤ_p) ≅ C_n$.
+
+\begin{corollary}
+  \label{co:2}
+  Consider the extension $E = \mathrm{GF}(p^n) ⊇ ℤ_p$. The intermediate fields are precisely the $\mathrm{GF}(p^m)$, where $m$ divides $n$. 
+\end{corollary}
+
+\begin{proof}
+Let $m$ be a divisor of $n$. The cyclic group   $C_n$ has precisely one subgroup of order $m$. Since $E ⊇ℤ_p$  is Galois, the Galois correspondence shows that there is precisely one intermediate field of order $n/m$, for each divisor $m$ of $n$. 
+\end{proof}
+
 
 %%% Local Variables:
 %%% mode: latex
