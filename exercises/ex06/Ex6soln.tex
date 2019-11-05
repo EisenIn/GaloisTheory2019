@@ -1,0 +1,183 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 5 - Solutions}
+\rhead{October 18, 2019}
+\rfoot{1 (a)-(d) by J.Baudin \\1(e),2,3,4 by S.Giampietro\\5,6 by V.A.Nadarajan}
+ 
+
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{xfrac}    
+\usepackage{tikz-cd}
+\usepackage{enumitem}
+\usepackage{commath}
+
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Lbar}{\overline{K}}
+
+
+
+
+
+\begin{document}
+
+
+\vskip 2ex
+
+\textbf{Solution 1.  }\\
+Recall the fact that an extension $E \supseteq F$ is Galois if and only if it is normal and separable. \\ Furthermore, recall that an extension $E \supseteq F$ is finite and normal if and only if it is a splitting field of some polynomial. \\
+Throughout this exercise, the Galois group of $E \supseteq F$ will be denoted $G$.
+
+\begin{enumerate}[label = \alph*)]
+	\item Let $\zeta = e^{2i\pi / 5}$. Since $\mathbb{Q}$ is perfect, we know that is extension is separable. In addition. note that $\mathbb{Q}(\zeta)$ is a splitting field of $f(x) = x^5 - 1$ over $\mathbb{Q}$. Indeed, the roots of $f$ in $\mathbb{C}$ are the elements $\zeta^k = e^{2ik\pi / 5}$, $k = 0, 1, 2, 3, 4$ and all these roots belong to $\mathbb{Q}(\zeta)$. Hence, this extension is Galois. \\ \\
+	Let us now find the Galois group of this extension. Recall the following fact : \\
+	Let $p$ be a prime number, then the polynomial $g_p(x) = 1 + x + \dots + x^{p - 1}$ is irreducible over $\mathbb{Q}$ (this is proven by applying Eisenstein's criterion to the polynomial $g_p(x + 1)$). \\ \\
+	Since $x^5 - 1 = (x - 1)(1 + x + x^2 + x^3 + x^4)$, the minimal polynomial of $e^{2i\pi / 5}$ is $1 + x + x^2 + x^3 + x^4 = g_5(x)$ so $[\mathbb{Q}(\zeta) : \mathbb{Q}] = 4$. Thus, $|G| = 4$. Furthermore, we know from the lecture that any element $\varphi \in G$ send $\zeta$ to an other root of $g_5$ (a.k.a $\zeta^k$, $k = 1, 2, 3, 4$) and is completely determined by this assignment. Rephrasing this, there are at most $4$ elements in $G$ (say $\varphi_k$, $1 \leq k \leq 4$) and these maps are determined by \[\varphi_k(\zeta) = \zeta^k \]
+	Since we know that $|G| = 4$, these maps must be the desired automorphisms we were looking for (note that this technique allowed us not to prove that the maps $\varphi_k$ were actually field homomorphisms, which is painful). \\
+	Hence, \[ G = \langle \varphi_2 \rangle \cong \mathbb{Z}/{4\mathbb{Z}} \]
+	so there are exactly $3$ subgroups of $G$, i.e. $3$ intermediate field extensions beetween $E$ and $F$. Note that two of them are basically $E$ and $F$ so we just have to find the "middle" field.\\ \\
+	Let $K$ be this field we are looking for. Then from the Galois correspondance, we know that $K = H^*$ where $H$ denotes the "middle" subgroup of $G$. Note that $H = \langle \varphi_4 \rangle$. Thus, \[K = \{a \in E, \varphi_4(a) = a\}\]
+	As $[K : \mathbb{Q}] = 2$, any element which is not in $\mathbb{Q}$ is a primitive element for the extension $K$ so we just have to find some $a \in E \setminus \mathbb{Q}$ such that $\varphi_4(a) = a$. \\ We present you two different strategies to do it.
+	
+	\begin{itemize}
+		\item Let \[a = a_0 + a_1\zeta + a_2\zeta^2 + a_3\zeta^3\] be a generic element of $E$ for some $a_k \in \mathbb{Q}$ (recall that $\{1, \zeta, \zeta^2, \zeta^3 \}$ is a $\mathbb{Q}$-basis of $\mathbb{Q}(\zeta)$). We just want to find $a_0, a_1, a_2, a_3 \in \mathbb{Q}$ so that $\varphi_4(a) = a$ and at least one of the $a_i \neq 0$ ($i \geq 1$). We have that \[ \varphi_4(a) = a_0 + a_1\zeta^4 + a_2\zeta^8 + a_3\zeta^{12} \] Using the fact that $\zeta^5 = 1$, $\zeta^4 = -1 - \zeta - \zeta^2 - \zeta^3$ and imposing that $\zeta(a) = a$, we obtain that \[ a_0 + a_1\zeta + a_2\zeta^2 + a_3\zeta^3 = (a_0 - a_1) - a_1\zeta + (a_3 - a_1)\zeta^2 + (a_2 - a_1)\zeta^3 \] Thus, we conclude that $a_1 = 0$ and $a_2 = a_3$ so any element of the form $a_0 + a(\zeta^2 + \zeta^3)$ works. For example, $K = \mathbb{Q}(\zeta^2 + \zeta^3)$
+		\item The second strategy relies on the following observation : \[\zeta^4 = \bar{\zeta}\] where $\bar{(\cdot)}$ denotes the standard complex conjugation. Hence, we obtain that $\zeta + \zeta^4$ is fixed by $\varphi_4$ but does not belong to $\mathbb{Q}$ because $\zeta + \zeta^4 = -1 - \zeta^2 - \zeta^3$.
+	\end{itemize}
+	Thus, we have found that $K = \mathbb{Q}(\zeta + \zeta^4) = \mathbb{Q}(\zeta^2 + \zeta^3)$. We obtain the following lattice : \[  
+	\begin{tikzcd}
+	\mathbb{Q}(\zeta) \\
+	\mathbb{Q}(\zeta^2 + \zeta^3) \arrow [u] \\
+	\mathbb{Q} \arrow[u]
+	\end{tikzcd} \]
+	
+	\item Let $\zeta = e^{2i\pi / 7}$. Note that in this case, the proof that the extension is Galois and the computation of the Galois Group is exactly the same as before (because $7$ is prime). \\
+	Therefore, let $\varphi_k$ be the element of $G$ that sends $\zeta$ to $\zeta^k$ for $k = 1, \dots, 6$. Then \[ G = \langle \varphi_3 \rangle \cong \mathbb{Z}/6\mathbb{Z} \] Thus, there are four intermediate extensions, corresponding to the subgroups $\{id = \varphi_1\}, H_1 = \langle \varphi_2 \rangle, H_2 = \langle \varphi_6 \rangle$ and $G$. Let $K_i = H_i^*$ for $i = 1, 2$. \\ First, note that \[ [K_i : \mathbb{Q}] = |G|/|H_i| \] which is either $2$ or $3$, so $[K_i : \mathbb{Q}]$ is prime for all $i$. Hence, there are no intermediate fields beetween $\mathbb{Q}$ and $K_i$ for all $i$ (use the tower law to see this). Thus, $K_i = \mathbb{Q}(a)$ for all $a \in K_i \setminus \mathbb{Q}$. We now find such elements. \\
+	As in part $a)$, note that $\zeta^6 = \bar{\zeta}$. Therefore, by the same trick we used before, \[ K_2 = \mathbb{Q}(\zeta + \zeta^6) = \mathbb{Q}(\zeta^2 + \zeta^3 + \zeta^4 + \zeta^5)\]
+	To find the element for $K_1$, we use the first strategy to find, for example, that $a = \zeta + \zeta^2 + \zeta^4$ satisfies the required properties. Thus, \[ K_1 = \mathbb{Q}(\zeta + \zeta^2 + \zeta^4) \] 
+	
+	We obtain the following lattice : \[  
+	\begin{tikzcd}
+	&\mathbb{Q}(\zeta)& \\
+	\mathbb{Q}(\zeta^2 + \zeta^3 + \zeta^4 + \zeta^5) \arrow[ur] & &\mathbb{Q}(\zeta + \zeta^2 + \zeta^4) \arrow[ul] \\
+	&\mathbb{Q} \arrow[ul] \arrow[ur]&
+	\end{tikzcd} \]
+	
+	\item Since $\mathbb{Q}$ is perfect, we know that this extension is separable. Furthermore, this extension is the splitting field of $f(x) = (x^2 + 1)(x^2 - 3)$. Therefore, it is Galois. \\
+	Note that $[\mathbb{Q}(i, \sqrt{3}) : \mathbb{Q}] = [\mathbb{Q}(i, \sqrt{3}) : \mathbb{Q}(\sqrt{3})] [\mathbb{Q}(\sqrt{3}) : \mathbb{Q}] = 4$ (note that $[\mathbb{Q}(i, \sqrt{3}) : \mathbb{Q}(\sqrt{3})] \geq 2$ because $i \notin \mathbb{R} \supseteq \mathbb{Q}(\sqrt{3}))$. \\
+	Thus, we know that $|G| = 4$. Furthermore, let $\sigma \in G$. Then $\sigma(\sqrt{3}) = \pm \sqrt{3}$ and $\sigma(i) = \pm i$. Furthermore, any map $\sigma \in G$ is completely determined by its image of $\sqrt{3}$ and $i$, so there are at most $4$ candidates. Since $|G| = 4$, the $4$ possible candidates are actually field automorphisms (otherwise $|G| < 4$...) so $G = \{id, \sigma_1, \sigma_2, \sigma_1\sigma_2\}$ where $\sigma_1$ sends fixes $i$ and sends $\sqrt{3}$ to $-\sqrt{3}$ and the opposite for $\sigma_2$. Note that \[G \cong \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z} \] Hence, $G$ has $5$ subgroups : $\{id\}$, $\langle \sigma_1 \rangle$, $\langle \sigma_2 \rangle$, $\langle \sigma_1\sigma_2 \rangle$ and $G$ so there are $5$ intermediate fields. \\ Furthermore, one sees that the five following intermediate fields are distincts : $\mathbb{Q}, \mathbb{Q}(i), \mathbb{Q}(\sqrt{3}), \mathbb{Q}(i\sqrt{3}), \mathbb{Q}(i, \sqrt{3})$. Hence, we have found all intermediate fields ! \\
+	Finally, note that $i +\sqrt{3}$ is fixed by none of the non-trivial elements of $G$, so the subgroup corresponding to $\mathbb{Q}(i + \sqrt{3})$ must be $\{id\}$, i.e. $\mathbb{Q}(i + \sqrt{3}) = \mathbb{Q}(i, \sqrt{3})$ Galois correspondance. We obtain the following lattice : \[  
+	\begin{tikzcd}
+	&\mathbb{Q}(i, \sqrt{3})& \\
+	\mathbb{Q}(i) \arrow[ur] & \mathbb{Q}(i\sqrt{3}) \arrow[u] &\mathbb{Q}(\sqrt{3}) \arrow[ul] \\
+	&\mathbb{Q} \arrow[ul] \arrow[u] \arrow[ur]&
+	\end{tikzcd} \]
+	\item Since all finite fields are perfect, we know that this extension is separable. Furthermore, any finite field (say of size $p^n$) is the splitting field of $x^{p^n} - x$ over $\mathbb{F}_p$, so any field extension of finite fields is normal. Hence, we have proven that any field extension of finite fields is in fact Galois. \\
+	We know compute the Galois group of this extension and to do so, as usual, we compute $[\mathbb{F}_2(u) : \mathbb{F}_2]$ to obtain the order of the Galois group $G$. \\
+	We show that $p(x) = x^4 + x + 1$ is irreducible over $\mathbb{F}_2$. Note that this polynomial has no root over $\mathbb{F}_2$ so the only thing to show is that it is not divisible by any irreducible of degree $2$. We present you two strategies : 
+	\begin{itemize}
+		\item Suppose that an irreducible polynomial of degree $2$ divides $p$, then there exists a root of $p$ is $\mathbb{F}_4$, the field with $4$ elements. However, we know that the map $a \mapsto a^4$ fixes $\mathbb{F}_4$ so, if $a \in \mathbb{F}_4$ was a root of $p$, then \[0 = a^4 + a + 1 = a + a + 1 = 1\] which is a contradiction.
+		\item Suppose that $p(x) = f_1(x)f_2(x)$. Since $p$ has no root in $\mathbb{F}_2$, then $f_i$ is an irreducible polynomial of degree $2$ for all $i$. We show that the only irreducible polynimial of degree $2$ over $\mathbb{F}_2$ is $x^2 + x + 1$ (the technique we will use is generalizable, try to get better results if you are interested !). \\
+		Recall the following fact about finite fields (say of characteristic $p$) : for all $n \geq 1$, \[ x^{p^n} - x = \prod_{d|n}\mbox{irreducible polynomials of degree }d \] where the product is taken over all divisors of $n$. \\
+		In our case, we get that \[x^4 - x = x^{2^2} - x = x(x - 1)(\mbox{all irreducible polynomials of degree }2)\] Comparing the degrees, we see that there is a unique irreducible polynomial of degree $2$ and one can find that it is $x^2 + x + 1$. \\
+		Furthermore, we see that $x^4 + x + 1 \neq (x^2 + x + 1)^2$.
+	\end{itemize}
+	Thus, $|G| = [\mathbb{F}_2(u) : \mathbb{F}_2] = 4$. In particular, $\mathbb{F}_2(u) \cong \mathbb{F}_{16}$, so $G$ is a cyclic group of order $4$ generated by the Frobenius map $\sigma$, i.e. $\sigma(a) = a^2$. Then there are three intermediate fields : $\mathbb{F}_2$, $K$ and $\mathbb{F}_2(u)$ where $K = \langle \sigma^2 \rangle^*$. As we did in part $a)$, we find that the element $u + u^2$ is fixed by $\sigma^2$ and does not belong to $\mathbb{F}_2$, so $K = \mathbb{F}_2(u + u^2)$. We obtain the following lattice : \[  
+	\begin{tikzcd}
+	\mathbb{F}_2(u) \\
+	\mathbb{F}_2(u + u^2) \arrow [u] \\
+	\mathbb{F}_2 \arrow[u]
+	\end{tikzcd} \]
+	
+\end{enumerate}
+
+\textbf{Solution 1}\\
+\begin{enumerate}[e)]
+\item $\mathbb{Q}(\sqrt[4]{2}, i)\supseteq \Q$ is separable as it is a finite extension over a field of characteristic $0$. It is also normal since it is the splitting field of the polynomial $p(x)=x^4-2$. This shows that it is a Galois extension. We have shown in problem set $4$ that $G=$Gal($\mathbb{Q}(\sqrt[4]{2}, i): \Q)\sim D_4$. We know $D_4 \sim \langle r, s\ | \ r^4=1, \ s^2=1, \ srs=r^{-1}\rangle $. We then identify $r$ with the element $\sigma \in G$: $\sigma(\sqrt[4]{2})=i\sqrt[4]{2}$, $\sigma(i)=i$, $s$ with the element $\tau \in G$: $\tau(\sqrt[4]{2})=\sqrt[4]{2}$, $\tau(i)=-i$.
+We will use the notations for the Galois correspondence as used in course notes. 
+All the possible non trivial subgroups of $D_4$ are: 
+\begin{itemize}
+\item $H_1=\{\id, \sigma, \sigma^2, \sigma^3\}$. Then Gal($\mathbb{Q}(\sqrt[4]{2}, i): H_1^*)=H_1$, hence $[H_1^*:\Q]=|D_4|/|H_1|= 2$. Since this subroup fixes $i$ and $[\mathbb{Q}(i):\Q]=2$, $i$ is a primitive element, i.e. $H_1^*=\Q(i)$. 
+\item $H_2=\{\id, \sigma^2\}$. Then Gal($\mathbb{Q}(\sqrt[4]{2}, i): H_2^*)=H_2$, hence $[\mathbb{Q}(i):H_2^*]=|D_4|/|H_2|= 4$. Observe that $H_2$ fixes $i + \sqrt{2}$ and this element is of degree $4$ over $\Q$, so it is a primitive element and $H_1^*=\Q(i+\sqrt{2})$. 
+\item$H_3=\{\id, \tau\}$. Then Gal($\mathbb{Q}(\sqrt[4]{2}, i): H_3^*)=H_3$, hence $[H_3^*:\Q]=|D_4|/|H_3|= 4$. Since this subgroup fixes $\sqrt[4]{2}$ and $[\mathbb{Q}(\sqrt[4]{2}):\Q]=4$, $\sqrt[4]{2}$ is a primitive element, i.e. $H_3^*=\Q(\sqrt[4]{2})$.
+\item $H_4 = \{\id, \tau\sigma\}$. Then Gal($\mathbb{Q}(\sqrt[4]{2}, i): H_4^*)=H_4$, hence $[H_4^*:\Q]=|D_4|/|H_4|= 4$. Since this subgroup fixes $\sqrt[4]{2} -i\sqrt[4]{2}$ and no other element of $G$ fixes it, $\sqrt[4]{2} -i\sqrt[4]{2}$ is a primitive element, i.e. $H_4^*=\Q(\sqrt[4]{2} -i\sqrt[4]{2})$.
+\item $H_5=\{\id, \tau\sigma^2\}$. Then Gal($\mathbb{Q}(\sqrt[4]{2}, i): H_5^*)=H_5$, hence $[H_5^*:\Q]=|D_4|/|H_5|= 4$. Since this subgroup fixes $i\sqrt[4]{2}$ and $[\mathbb{Q}(i\sqrt[4]{2}):\Q]=4$ (minimal polynomial of $i\sqrt[4]{2}$ is also $p(x)=x^4-2$), $i\sqrt[4]{2}$ is a primitive element, i.e. $H_5^*=\Q(i\sqrt[4]{2})$.
+\item $H_6=\{\id, \tau\sigma^3\}$. Then Gal($\mathbb{Q}(\sqrt[4]{2}, i): H_6^*)=H_6$, hence $[H_6^*:\Q]=|D_4|/|H_6|= 4$. Since this subgroup fixes $\sqrt[4]{2} +i\sqrt[4]{2}$ and no other element of $G$ fixes it, $\sqrt[4]{2} + i\sqrt[4]{2}$ is a primitive element, i.e. $H_6^*=\Q(\sqrt[4]{2} +i\sqrt[4]{2})$.
+\item $H_7=\{\id, \sigma^2, \tau\sigma, \tau\sigma^3\}$. Then Gal($\mathbb{Q}(\sqrt[4]{2}, i): H_7^*)=H_7$, hence $[H_7^*:\Q]=|D_4|/|H_7|= 2$. Since this subgroup fixes $i\sqrt{2}$ and clearly $[\Q(i\sqrt{2}):\Q]=2$ (minimal polynomial is $x^2+2$), $i\sqrt{2}$ is a primitive element, i.e. $H_7^*=\Q(i\sqrt{2})$.
+\item $H_8=\{\id, \sigma^2, \tau, \tau\sigma^2\}$. Then Gal($\mathbb{Q}(\sqrt[4]{2}, i): H_8^*)=H_8$, hence $[H_8^*:\Q]=|D_4|/|H_7|= 2$. Since this subgroup fixes $\sqrt{2}$ and clearly $[\Q(\sqrt{2}):\Q]=2$ (minimal polynomial is $x^2-2$), $\sqrt{2}$ is a primitive element, i.e. $H_8^*=\Q(\sqrt{2})$.
+\end{itemize}
+\end{enumerate}
+Finally we can draw the lattice of intermediate fields:
+\begin{equation*}
+\begin{tikzcd}
+& & \mathbb{Q}(\sqrt[4]{2},i) & & \\
+\mathbb{Q}(\sqrt[4]{2}) \arrow [urr, "2"] & \mathbb{Q}(i\sqrt[4]{2})\arrow[ur, "2"] &\mathbb{Q}(\sqrt{2} + i)\arrow[u, "2"] & \mathbb{Q}(\sqrt[4]{2} - i\sqrt[4]{2})\arrow[ul, "2"] & \mathbb{Q}(\sqrt[4]{2} + i\sqrt[4]{2})\arrow[ull, "2"]\\
+& \mathbb{Q}(\sqrt{2}) \arrow[ul, "2"]\arrow[u,"2"] \arrow[ur,"2"]&  \mathbb{Q}(i)\arrow[u, "2"] & \mathbb{Q}(i\sqrt{2})\arrow[ul, "2"]\arrow[u, "2"]\arrow[ur, "2"] &\\
+& & \Q \arrow[ul, "2"] \arrow[u, "2"] \arrow[ur, "2"]& &
+\end{tikzcd}
+\end{equation*}
+Where the inclusions are the reverse inclusions of the lattice of subgroups of $D_4$:
+\begin{equation*}
+\begin{tikzcd}
+& & \{\id\} \arrow [drr] \arrow [dr] \arrow [d] \arrow [dl] \arrow [dll] & & \\
+\{\id, \tau\} \arrow[dr]& \id \{\tau\sigma^2\} \arrow[d] & \{\id, \sigma^2\} \arrow[dl] \arrow[d]\arrow[dr]& \{\id, \tau\sigma\} \arrow[d] & \{\id, \tau\sigma^3\} \arrow[dl] \\
+& \{\id, \sigma^2, \tau, \tau\sigma^2 \} \arrow[dr] & \{\id, \sigma, \sigma^2, \sigma^3 \} \arrow[d]  &\{\id, \sigma^2, \tau\sigma , \tau\sigma^3 \} \arrow[dl] &\\
+& & D_4 & &
+\end{tikzcd}
+\end{equation*}
+\textit{Remark:} Observe that if two subgroups of the Galois group are conjugate to one other, then the corresponding subfields are conjugate over $\Q$ (the primitive elements of the corresponding subfields are roots of the same minimal polynomial).  In $D_4$, the subgroups $\{\id, \tau\}$ and  $\{\tau\sigma^2\}$ are conjugate, and indeed we have that the corresponding subfields $\Q(\sqrt[4]{2})$ and $\Q(i\sqrt[4]{2})$ are conjugate. Similarly $ \{\id, \tau\sigma\}$ and $\{\id, \tau\sigma^3\}$ are conjugate, and indeed so are the corresponding subfields $Q(\sqrt[4]{2} -i\sqrt[4]{2})$ and $\Q(\sqrt[4]{2} +i\sqrt[4]{2})$.\\
+\\
+\\
+\textbf{Solution 2} \\
+\\
+You have shown in class that for a finite Galois extension $E\supseteq F$, there is a bijection between the intermediate fields $E\supseteq K\supseteq F$ and the subgroups $H$ of $G$.  Let $G$ be the Galois group of $E\supseteq F$. Since $G$ is finite, because $[E:F]$ finite, it has a finite number of subgroups, hence there are also a finite number of intermediate fields. 
+\\
+\\
+\textbf{Solution 3}\\
+\\
+Let $E\supseteq F$ a field extension and $\mathcal{F}, \mathcal{H}$ as defined in lecture notes. In the following, $H,I\in \mathcal{H}$ and $K,L\in \mathcal{F}$. 
+\begin{enumerate}[i)] 
+\item By definition, $H^*= E_H=\{x\in E \ | \ \tau(x)=x \ \forall \tau \in H\}$ and $H^{**}=$Gal$(E:H^{*})=\{ \tau \in \text{Gal}(E:F) \ | \ \tau(x)=x \ \forall x \in H^{*}\}$. Let $\sigma \in H$. To show $\sigma \in H^{**}$, we need to show $\sigma(x)=x\ \forall x \in H^*$. But by defintion of $H^*$, for $x \in H^*$ then  $\tau(x)=x \ \forall \tau \in H $, hence in particular $\sigma(x)=x$. This is true for all $x \in H^*$ so indeed $\sigma \in H^{**}$. Since $\sigma$ was arbitrary, this shows $H\subseteq H^{**}$.
+\item By definition, $K^*=$Gal$(E:K)=\{ \tau \in \text{Gal}(E:F) \ | \ \tau(x)=x \ \forall x \in K\}$. $K^{**}=\{x\in E \ | \ \tau(x)=x \ \forall \tau \in K^*\}$. Again, let $x\in K$. To show $x\in K^{**}$ we need to show $\tau(x)=x$ for all $\tau \in K^*$. But again this is true by the definition of $K^*$. Since $x$ was arbitrary this shows that $K\subseteq K^{**}$. 
+\item Suppose $K\subseteq L$. Again, $L^*=\{ \tau \in \text{Gal}(E:F) \ | \ \tau(x)=x \ \forall x \in L\}$. In particular this means that for every $\tau$ in $L^*$, since $\tau$ fixes $L$, it also fixes $K\subseteq L$. Hence if $\tau \in L^*$, $\tau(x)=x \ \forall x \in K$. This means that $\tau \in K^*=\{ \tau \in \text{Gal}(E:F) \ | \ \tau(x)=x \ \forall x \in K\}$. Since $\tau$ arbitrary, this shows that $L^*\subseteq K^*$.\\
+\\
+Now suppose $H\subseteq I$. Again, $I^*=\{x\in E \ | \ \tau(x)=x \ \forall \tau \in I\}$. This means that for every $x$ in $I^*$, since $x$ is stabilised by every element of $I$, and elements of $H$ are also elements of $I$, $x$ is in particular stabilised by $H$. Hence if $x \in I^*$, $\tau(x)=x \ \forall \tau \in H$. This means that $x \in H^*=\{x \in E \ | \ \tau(x)=x \ \forall x \in H\}$. Since $x$ arbitrary, this shows that $I^*\subseteq H^*$.
+\item We have by applying $ii)$ on $H^*\in \mathcal{F}$, that $H^*\subseteq (H^*)^{**}$. For the other direction, observe that by $i)$, $H\subseteq H^{**}$. Now applying $iii)$, this implies that $H^*\supseteq (H^{**})^*$ which is what we wanted to show. Hence $H^*=H^{***}$. We can show that $K^*=K^{***}$ in exactly the same way. 
+\end{enumerate}
+$\newline$
+\textbf{Solution 4}
+\begin{enumerate}[(a)]
+\item Suppose that $K^{**}=K$ for each $K\in \mathcal{F}$. Then clearly $*:\mathcal{H}\rightarrow \mathcal{F}$ is surjective since for any $K\in \mathcal{F}$, $K^{*}\in \mathcal{H}$ and $(K^*)^*=K$. Similarly, if $*:\mathcal{H}\rightarrow \mathcal{F}$ is surjective, for any $K\in \mathcal{F}$ we can write $K=H^*$ for some $H\in \mathcal{H}$. Then $K^{**}=H^{***}=H^{*}=K$ by point $(iv)$ of Exercise 3. 
+\item The argument is analogous. 
+\end{enumerate}
+
+\textbf{Solution 5.}\\
+Let $L\supseteq K$ be a finite Galois extension, and let $G=$Gal$(L:K)$ be its Galois group. 
+For an element $a\in L$, we denote by $orb_G(a)=\{\sigma(a) \ | \ \sigma \in G\}$ the orbit of $a$ by $G$. Also, we denote by $Stab_G(a)=\{\sigma \in G\ \ | \ \sigma(a)=a\}$ the stabilizer of $a$ in $G$. Let $p(x)= \prod_{a_i\in orb_G(a)} (x-a_i)\in L[x]$
+
+First observe that $\sigma(p(x))=p(x)$ $\forall \sigma \in$  Gal$(L:K)$ and since $K\subseteq L$ is Galois we deduce that $p(x)\in K[x]$.
+
+Let $\mu_{a,K}(x)\in K[x]$ be the minimal polynomial of $a$ over $K$. Observe that $\mu_{a,K}(a)=0$ $\implies$ $\sigma(\mu_{a,K}(a))=0$ $\implies$ $\mu_{a,K}(\sigma(a))=0$ $\forall$ $\sigma\in Gal(L:K)$. We have therefore $p(x)|\mu_{a,K}(x)$ and by the previous observation $p(x)=\mu_{a,K}(x)$.
+
+Further if $Stab_G(a)$ is trivial $|orb_G(a)|=\#Gal(L:K)$ (by the Orbit-stabiliser theorem) and by the previous result $deg(\mu_{a,K})=\#Gal(L:K)$. We conclude that $deg(\mu_{a,K})=[L:K]$ (since $K\subseteq L$ Galois), which implies that $L=K[a]$.
+
+\textbf{Solution 6.}\\
+Without loss of generality we may assume that $a_1,...,a_n$ are square free integers.
+\begin{itemize}
+    \item The extension $\mathbb{Q}(\sqrt{a_1}, ... , \sqrt{a_n})\supseteq \mathbb{Q}$ is the splitting field of the separable polynomials $x^2-a_1$,..., $x^2-a_n$ and is therefore Galois. We have a group homomorphism $Gal(\mathbb{Q}(\sqrt{a_1}, ... , \sqrt{a_n})\supseteq \mathbb{Q})\xrightarrow{} \prod_{i=1}^n C_2$ (where $C_2$ is the group ${1, -1}$ under multiplication) which is defined by $\sigma\in Gal(L:K)\mapsto (\frac{\sigma(a_1)}{a_1}, \dots, \frac{\sigma(a_n)}{a_n})$. This map is clearly injective, it is also surjective because $\#Gal(\mathbb{Q}(\sqrt{a_1}, ... , \sqrt{a_n}):\mathbb{Q})=[\mathbb{Q}(\sqrt{a_1}, ... , \sqrt{a_n}):\mathbb{Q}]$ (since the extension is Galois) and $[\mathbb{Q}(\sqrt{a_1}, ... , \sqrt{a_n})]:\mathbb{Q}=2^n$ (by last week's exercise sheet). We have $Gal(\mathbb{Q}(\sqrt{a_1}, ... , \sqrt{a_n})\supseteq \mathbb{Q})\simeq \prod_{i=1}^n C_2$. 
+    
+    \item By our explicit description of the Galois group (which we will henceforth denote by $G$), $G$ is generated by $\sigma_i$ which satisfies $\sigma_i(\sqrt{a_j})=(-1)^{\delta_{ij}}\sqrt{a_j}$. Since $\sum_{i=1}^{n}\sqrt{a_i}$ is not fixed by any $\sigma_i$, it is a primitive element. (by Ex. 5).
+    
+    \item Consider the tower of extensions $\mathbb{Q}\subseteq \mathbb{Q}[1 + \sqrt{2} + \sqrt{3} + ... + \sqrt{N}]\subseteq \mathbb{Q}[\sqrt{2},...,\sqrt{p_k}]$ (the top field is $\mathbb{Q}$ adjoined with the square roots of the primes less than $N$). There is a $\sigma\in G$ ($G:=Gal(\mathbb{Q}[\sqrt{2},...,\sqrt{p_k}]:\mathbb{Q})$ ) s.t. $\sigma(\sqrt{2})=-\sqrt{2}$ and $\sigma(\sqrt{p})=\sqrt{p}$ for all other primes $p$. We have $\sigma(\Sigma_{k=1}^{\floor{N}}\sqrt{k})-\Sigma_{k=1}^{\floor{N}}\sqrt{k}=\Sigma_{k=1}^{\lfloor{N/2}\rfloor}\sqrt{2k}\neq 0$. Since $\mathbb{Q} \subseteq \mathbb{Q}[\sqrt{2},...,\sqrt{p_k}]$ is Galois, we have the required result.
+    
+    \end{itemize}
+\end{document}

@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm}
+\usepackage{xfrac}    
+\usepackage{tikz-cd}
+\usepackage{enumitem}
+\usepackage{commath}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 5 - Solutions}
+\rhead{October 22, 2019}
+\rfoot{1 by J. Baudin \\4 by S. Giampietro\\2,3 by V.A. Nadarajan}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Lbar}{\overline{K}}
+%\newcommand\restrict[1]{\raisebox{-.5ex}{$|$}_{#1}}
+
+
+
+\begin{document}
+
+
+\vskip 2ex
+
+
+\textbf{Solution 1.  }\\
+We denote by $Hom_{\phi, K}(L,\overline{K})$ the set of field homomorphisms $L\rightarrow \overline{K}$ that extend the given field homomorphism $\phi: K\rightarrow \overline{K}$.
+\begin{enumerate}[label = (\alph*)]
+	\item We now suppose that $L=K(a)$ for some $a\in L$. Let $p(x)\in K[x]$ be the minimal polynomial of $a$, so that $L\simeq K[x]/\langle p(x)\rangle$.\\
+	\\
+	We first consider the case in which $\phi: K\rightarrow \overline{K}$ is the inclusion, and hence we want to bound $|Hom_{\text{id}, K}(L, \overline{K})|$, the number of homomorphisms $ L\rightarrow \overline{K}$ that fix $K$. Let $\theta$ be such a homomorphism. Since $L$ is simple, we know that $\theta$ is uniquely determined by the value of $\theta(a)$. Since $\theta$ fixes $K$, we also have that $p(\theta(a))=\theta(p(a))=\theta(0)=0$ hence $\theta(a)$ must be a root of $p(x)$. Since this uniquely determines $\theta$, we have shown that $|Hom_{\text{id}, K}(L, \overline{K})|\leq \#\{$roots of $p(x)\} \leq $ deg$(p)=[L:K]$\\
+	\\
+	We now prove the statement for a general $\phi: K\rightarrow \overline{K}$. Let $\theta\in \text{Hom}_{\phi, K}(L,\overline{K})$. Again, since we still suppose $L$ simple, $\theta$ is uniquely determined by the value of $\theta(a)$. Let $p^{\theta}(x)$ be the polynomial obtained by applying $\theta$ to each coefficient of $p$ (hence $p^{\theta}(x)=p^{\phi}(x)$ since the coefficients are in $K$). Then $p^{\theta}(\theta(a))=\theta(p(a))=0$. Hence $\theta(a)$ must be a root of $p^{\theta}(x)=p^{\phi}(x)$. 
+	Observe that since $\phi$ is a field homomorphism and hence injective, deg$(p^{\phi})=$ deg$(p)$. Since this uniquely determines the homomorphism: 
+	$|$Hom$_{\phi, K}(L, \overline{K})|\leq \#\{$roots of $p^{\phi}(x)\} \leq $ deg$(p^{\phi})=$ deg$(p)=[L:K]$
+	
+	\item We prove the statement by induction on $n=[L:K]$. For $n=1$ it is clear. For $n=2$, $L$ is simple and we have shown the statement in point $(a)$. Now suppose the statement true for all extensions of degree smaller than $n$ and let $L\supseteq K$ be a non simple extension. 
+	Let $a\in L\setminus K$ such that $K\subsetneq K(a)\subsetneq(L)$. Such an $a$ must exist, otherwise $L$ would be simple.\\
+	\\
+	Observe that $[L:K(a)]<[L:K]$, so by induction hypothesis, for any $\lambda:K(a)\rightarrow \overline{K}$, $|$Hom$_{\lambda, K(a)}(L,\overline{K})|\leq [L:K(a)]$. \\
+	\\
+	Now let $\phi: K\rightarrow \overline{K}$ be the given field homomorphism. Observe that for a morphism $\theta: L\rightarrow \overline{K}$ that extends $\phi$, the restriction of $\theta$ to $K(a)$ is a field homomorphism $\theta|_{K(a)}:K(a)\rightarrow \overline{K}$ that extends $\phi$. By part $(a)$ we know that, since $K(a)$ simple, the number of such homomorphisms is at most $[K(a):K]$.
+	Now to count the morphisms $\theta$ from $L$ that extend $\phi$, we remark that they are just extensions of their restriction to $K(a)$, i.e. they belong to Hom$_{\theta|_{K(a)}, K(a)}(L,\overline{K})$.  By induction hypothesis, we can extend each of these morphisms in $\leq [L:K(a)]$ different ways, hence in total we have $\leq [L:K(a)]\cdot[K(a):K] = [L:K]$ field homomorphisms that extend $\phi$. 
+	
+	
+\end{enumerate}
+
+\noindent
+\textbf{Solution 2.}\\
+Let $K\subseteq L$ be a finite field extension.
+
+\begin{itemize}
+	\item First assume that $K\subseteq L$ is Galois, by first part of the proof of theorem 2.8 in the notes (which does not use the result of this exercise!) we get that $K\subseteq L$ is normal and separable. Let $\alpha\in L$ be a primitive element of the extension $K\subseteq L$ i.e. $L=K(\alpha)$. Consider the polynomial $p(x):=\prod_{\sigma\in Gal(L:K)}(x-\sigma(\alpha))\in L[x]$. This polynomial is stabilized by all  $\sigma\in $ Gal$(L : K)$ and since $K\subseteq L$ is Galois, we have $p(x)\in K[x]$. The minimal polynomial of $\alpha$ over $K$, $\mu_{K,\alpha}(x)$ divides $p(x)$ and it follows that $[L:K]=deg(\mu_{K,\alpha})\leq deg(p)= |$Gal$(L : K)|$. The other inequality is true for all finite extensions -- theorem 2.7 in the notes.
+	
+	\item Now assume $|$Gal$(L:K)|=[L:K]$. Denote by $L_{G}$ the fixed field of $L$ by $G$ ($:=$ Gal$(L:K)$). Since $G$ fixes $L_G$, $G$ is a subgroup of $Gal(L:L_G)$. We get the following string of inequalities: $$ |G|\leq |Gal(L:L_G)|\leq [L:L_G]\leq [L:K]$$ (the second inequality is theorem 2.7 in the notes and the third inequality follows from the tower $K\subseteq L_G\subseteq L$). Since $|G|=[L:K]$ all the inequalities above are equality and we get $L_G=K$ from $[L:L_G]=[L:K]$.
+\end{itemize}{}
+
+\noindent
+\textbf{Solution 3.}\\
+Let $p$ be a prime number and $q:=p^m$ for some $m\geq 1$. We want to show that the extension $\mathbb{F}_q\subseteq \mathbb{F}_{q^n}$ is normal and separable.
+\begin{itemize}
+	\item \textbf{Normality} 
+	
+	By problem set 2, exercise 7, $\mathbb{F}_{q^n}$ is the splitting field of $x^{q^n}-x$ over $\mathbb{F}_p$ and so $\mathbb{F}_{q^n}$ is the splitting field of the same polynomial over $\mathbb{F}_q$. The result follows by theorem 2.5 in the lecture notes.
+	
+	\item \textbf{Separability} 
+	
+	By problem set 4, exercise 1, $\mathbb{F}_p$ is perfect and so $\mathbb{F}_p\subseteq \mathbb{F}_{q^n}$ is separable. It follows then by exercise 7 in the same sheet that $\mathbb{F}_q\subseteq \mathbb{F}_{q^n}$ is also separable. 
+\end{itemize}{}
+
+
+\noindent
+\textbf{Exercise 4.}
+\begin{enumerate}
+	\item Since the polynomial $x^2 - a_1 \in \Q[x]$ annihilates $\sqrt{a_1}$, we just have to show that this polynomial is irreducible. If there exists a prime $p$ dividing $a_1$, we can use Eisenstein's criterion to conclude since $a_1$ is squarefree. If there exists no such $p$, then $a_1 = -1$ and we know that $x^2 + 1$ is irreducible in $\Q[x]$.
+	
+	\item Suppose that we know that $\sqrt{a_n} \notin \Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 1}})$. Consider $x^2 - a_n \in \Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 1}})[x]$. Since this polynomial annihilates $\sqrt{a_n}$, \[ [\Q(\sqrt{a_1}, \dots, \sqrt{a_n}) : \Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 1}})] \leq 2 \] and by the assumption we have made, we obtain an equality in the previous equation. Thus, by induction, \[ [\Q(\sqrt{a_1}, \dots, \sqrt{a_n}) : \Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 1}})][\Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 1}}) : \Q]  = 2^n \] so by the tower law, \[ [\Q(\sqrt{a_1}, \dots, \sqrt{a_n}) : \Q] = 2^n \]
+	
+	\item Squaring both sides, we obtain \[ a_n = a^2 + 2ab\sqrt{a_{n - 1}} + b^2a_{n - 1} \] so \[ ab\sqrt{a_{n - 1}} = \frac{1}{2}(a_n - a^2 - b^2a_{n - 1}) \] Note that the right hand side lives in $\Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 2}})$. Hence, if $ab \neq 0$, then we obtain that $\sqrt{a_{n - 1}} \in\Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 2}})$ which contradicts our induction hypothesis. Indeed, we would obtain that \[ 2^{n - 1} = [\Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 1}}) : \Q] = [\Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 2}}) : \Q] = 2^{n - 2} \] Thus, $ab = 0$ so either $a$ or $b$ is $0$. \\
+	Suppose that $b = 0$, then $\sqrt{a_n} \in \Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 2}})$ which contradicts our induction hypothesis by the same argument as before (the induction hypothesis is on any $1 \leq j < n$ and on any pairwise coprimes and squarefree integers $b_1, \dots, b_j$ that are not $1$).
+	
+	\item Hence, $\sqrt{a_n} = b\sqrt{a_{n - 1}}$. By multiplying both sides by $\sqrt{a_{n - 1}}$, we obtain \[ \sqrt{a_na_{n - 1}} = ba_{n - 1} \] so $\sqrt{a_na_{n - 1}} \in \Q(\sqrt{a_1}, \dots, \sqrt{a_{n - 2}})$. However, by the assumptions made on the $a_i$'s, $a_na_{n - 1}$ is a squarefree integer coprime to all the $a_j$ with $j < n - 1$. Thus, we again have a contradiction to our induction hypothesis.
+	\end{enumerate}
+
+\end{document}
