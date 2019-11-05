@@ -364,23 +364,73 @@ This has a nontrivial solution in $E^{n+1}$ and among these solutions let $x^* �
 \end{theorem}
 
 
+Our goal now  is to understand when a finite extension $E ⊇F$ is Galois. We need a refined version of Theorem~\ref{thr:13}.
+
+
+
+\begin{theorem}
+\label{thr:27}
+Let $π: F → \overline{F}$ be an isomorphism of fields and let $f(x) = a_0+ \dots+a_nx^n ∈ F[x]$ be a non-constant separable polynomial.  Let $f^π(x) = π(a_0)+\dots+π(a_n) x^n ∈ \overline{F}[x]$. If $E⊇F$ is a splitting field of $f(x)$ over $F$ and  $\overline{E}⊇\overline{F}$ is a splitting field of $f^π(x)$ over $\overline{F}$, then there exists precisely $[E：F]$ isomorphisms $φ: E → \overline{E}$ that extend $π$, i.e. for which $π(r) = φ(r)$ for each $ r ∈ F$ holds. 
+\end{theorem}
+
+The proof is by induction, see diagram below. 
+
+\begin{figure}
+  \centering    
+\begin{displaymath}
+  \begin{CD}
+    E @>φ>> \overline{E} \\
+    @AAA     @AAA \\
+    F(u) @>τ_i >>\overline{F}(v_i) \\
+    @AAA     @AAA \\
+     F @>π >>\overline{F}
+  \end{CD}
+\end{displaymath}
+\caption{The diagram explaining the proof of Theorem~\ref{thr:27}}
+  \label{fig:2}
+\end{figure}
+\begin{proof}
+  First we observe that the mapping $ F[x] → \overline{F}[x]$ with $f ↦ f^π$ is a ring-isomorphism that extends $π$.  Also $p(x) ∈ F[x]$ is irreducible and separable if and only if $p^π(x)∈ \overline{F}[x]$ is irreducible and separable. 
+
+  The proof is by induction on $[E：F]$. If $[E：F] =1$, then $E = F$ and $\overline{E} = \overline{F}$ and $φ = π$ is the only isomorphism from $E$ into $\overline{E}$ that extends $π$.
+
+
+  If $[E：F] >1$, then there exists an irreducible factor $p(x) ∈F[x]$ of $f(x)$. Let $d$ be the degree of $p(x)$ and  let $u ∈ E$ be a root of $p(x)$. The polynomial $p^π(x)$ is irreducible, separable and of degree $d$ as well. Let $v_1,\dots,v_d ∈ \overline{E}$ be the distinct roots  of $p^π(x)$. For each $i$, there exists a unique isomorphism $τ_i: F(u) → \overline{F}(v_i)$ that extends $π$. For this  $τ_i$ one has  $τ_i(u) = v_i$. Furthermore, the restriction $φ_{|F(u)}$ of an isomorphism $φ:E → \overline{E}$ that extends $π$ is one of these $τ_i$.
+
+  Clearly $f^π(x) = f^{τ_i}(x)$, $E$ is a splitting field of $f(x)$ and $\overline{E}$ is a splitting field of $f^{τ_i}(x)$. By induction, there exist exactly
+  \begin{displaymath}
+    [E：F(u)] = [E：F] / d
+  \end{displaymath}
+isomorphisms $φ:E → \overline{E}$ that extend $τ_i$ for each $i$. Since the number of different $τ_i$ to choose from is exactly $d$, this shows that there exist exactly $[E：F]$ isomorphisms $φ：E → \overline{E}$ that extend $π$. 
+\end{proof}
+
+
+
+
+
 \begin{theorem}
   \label{thr:22}
+  The following are equivalent for a finite field extension:
+  \begin{enumerate}[i)]
+  \item  The extension $E ⊇F$ is Galois. \label{item:12}
+  \item The extension $E ⊇F$ is normal and separable.\label{item:13}
+  \item The field $E$ is the splitting field of a separable polynomial. \label{item:14}
+  \end{enumerate}
   A finite field extension $E ⊇F$ is Galois if and only if it is normal and separable. 
 \end{theorem}
 
 \begin{proof}
+  We begin by showing the implication \ref{item:12}) $⇒$ \ref{item:13}). 
   Suppose that $E ⊇F$ is Galois and let $p(x) ∈F[x]$ be an irreducible polynomial that has a root in $E$. We have to show that $p(x)$ is separable and splits in $E$. To this end, let $u_1,\dots,u_k$ be the different roots of $p(x)$. For an $F$-automorphism $σ$, the elements $σ(u_1),\dots,σ(u_k)$ are the elements $u_1,\dots,u_k$ in a different order. We define the polynomial $g(x)$ as
   \begin{displaymath}
     g(x) = (x-u_1) \cdots (x-u_k) = (x-σ(u_1)) \cdots (x-σ(u_k)) = g^σ(x). 
   \end{displaymath}
   Since $E⊇F$ is Galois, this means that each coefficient of $g(x)$ is in $F$, i.e., $g(x) ∈ F[x]$. But $p(x)$ divides each polynomial in $F[x]$ that has $u_1$ as a root. Since $\deg(p) ≥ \deg(g)$ and since they both are monic, this implies $g = p$. We have shown that $p(x)$ is separable and splits in $E$.
 
-  For the reverse direction, we assume that $E ⊇ F$ is normal and separable. By Theorem~\ref{thr:16} implies that there exists a primitive element  $u∈E$, i.e., an element with  $F(u) = E$. Let $p(x) ∈ F[x]$ be the minimal polynomial of $u$, $n = \deg(p)$ and $u=u_1,\dots,u_n$ be the roots of $p(x)$ which are all different and contained in $E$, as $E⊇F$ is separable and normal. Theorem~\ref{thr:17} implies that $\gal(E：F) = n$. Clearly $\gal(E:F) = \gal(E:E_{\gal(E:F)})$ (exercise). Theorem~\ref{thr:21} implies
-  \begin{displaymath}
-    n ≤ [E：E_{\gal(E:F)}] 
-  \end{displaymath}
-  and since $F ⊆ E_{\gal(E:F)}$ it follows that $E_{\gal(E:F)} = F$. 
+  To see \ref{item:13}) $⇒$ \ref{item:14}), we apply Theorem~\ref{thr:20} and understand that $E$ is the splitting field of a polynomial $f(x) ∈ F[x]$. Each irreducible factor of $f(x)$ is separable, since $E ⊇F$ is a separable extension. Furthermore, the respective root sets of two different monic irreducible factors of $f$ are disjoint (see exercises). Thus, the product $g(x)$  of the distinct monic irreducible factors of $f$ is a separable polynomial. Clearly, $E$ is the splitting field of $g(x)$.
+
+ The implication  \ref{item:13}) $⇒$ \ref{item:12}) follows from Theorem~\ref{thr:27} and the Dedekind Lemma and Theorem~\ref{thr:21}. The Galois group $G = \gal(E：F)$  has cardinality $ |G| = [E：F]$, by Theorem~\ref{thr:27}. Theorem~\ref{thr:21} provides   $[E：E_G] ≥ |G| $ and since $E_G$ is an intermediate field of $E ⊇F$,  we conclude  $E_G = F$, i.e., the extension $E ⊇F$ is Galois. 
+  
 \end{proof}
 %
 In fact we also proved the following theorem. 

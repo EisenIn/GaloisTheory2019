@@ -77,6 +77,10 @@ We will now prepare for the proof of the \emph{if} direction of the Galois crite
   If $G$ is a cyclic group of order $n$, then $\mathrm{aut}(G)≅ ℤ_n^*$. 
 \end{lemma}
 
+\begin{proof}
+  Since $G$ is isomorphic to $(ℤ_n,+)$ we only have to show $\mathrm{aut}(ℤ_n)≅ ℤ_n^*$. Let $σ：ℤ_n →ℤ_n$ be an automorphism and let $σ(1) = m$. Clearly, $m$ has to be a generator of $ℤ_n$ and this is the case if and only of $\gcd(n,m)=1$. On the other hand,  each $σ_m: ℤ_n → ℤ_n$ with $σ(a) = a ⋅m$  and $\gcd(n,m)=1$ is an automorphism. This shows that the mapping $τ： ℤ_n^* →\mathrm{aut}(ℤ_n)$ with $τ(m) = σ_m$ is an isomorphism of groups.  
+\end{proof}
+
 Let $E ⊇F$ be a field extension. An element  $ω ∈ E$ is a \emph{primitive $n$-th root of unity over $F$} if it is a root of $x^n -1$ and if its order is $n$. 
 
 \begin{theorem}
@@ -84,9 +88,25 @@ Let $E ⊇F$ be a field extension. An element  $ω ∈ E$ is a \emph{primitive $
   If $F$ is a field and $n≥1$ is an integer, then a primitive $n$-th root of unity $ω$ over $F$ exists if and only if $\car(F)$ does not divide $n$. In this case,
   \begin{enumerate}[i)]
   \item $F(ω)$is the splitting field of $x^n-1$ over $F$. \label{item:11} 
-  \item $F(ω) ⊇ F$ is a finite Galois extension and $\gal(F(ω)：F)$ is isomorphic to a subgroup of $ℤ_n^*$. 
+  \item $F(ω) ⊇ F$ is a finite Galois extension and $\gal(F(ω)：F)$ is \label{item:15} isomorphic to a subgroup of $ℤ_n^*$. 
   \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+  If $p = \car(F) | n$, then consider the polynomial
+  \begin{displaymath}
+    x^n - 1 = (x^{n/p} -1)^p. 
+  \end{displaymath}
+  If a primitive $n$-th root of unity  would $ω$ would exist, then $1,ω,\dots,ω^{n-1}$ are n different roots of $x^{n/p} -1$ which is impossible, since the degree of this polynomial is less than $n$.
+
+  If $p$ does not divide $n$, then consider the polynomial
+  \begin{displaymath}
+    x^n -1. 
+  \end{displaymath}
+  The derivative of this polynomial is $n x^{n-1}$ and this is not equal to zero since $p$ does not divide $n$. The greatest common divisor of $n x^{n-1}$ and $x^n -1$ is one and, by  Theorem~\ref{thr:14}, $x^n-1$ has multiple roots. Let $E ⊇F$ be a splitting field of $x^n-1$.  The roots $G = \{ r ∈ E ：r^n =1\}$ are a subgroup of $E^*$. Each finite subgroup of the units in a field is cyclic. The generator $ω ∈ G$ with $〈 ω 〉 = G$ is a primitive $n$-th root of unity.
+
+The assertion~\ref{item:11}) is immediate. Since $x^n-1$ is separable, \ref{item:11}) together with Theorem~\ref{thr:22}) implies that $F(ω) ⊇F$   is Galois. By restriction to $\{1,ω,\dots, ω^{n-1}\}$, each $σ ∈ \gal(F(ω) ：F)$ is an automorphism of the cyclic (multiplicative) group $\{1,ω,\dots, ω^{n-1}\}$. This, together with Lemma~\ref{lem:9} shows that $\gal(F(ω) ：F)$ is isomorphic to a subgroup of $ℤ_n^*$.   
+\end{proof}
 
 
 \begin{theorem}
