@@ -114,11 +114,61 @@ The assertion~\ref{item:11}) is immediate. Since $x^n-1$ is separable, \ref{item
   Let $F$ be a field containing a primitive $n$-th root of unity and consider an extension $F(u) ⊇ F$,where $u^n ∈ F$. Then $F(u) ⊇ F$ is a Galois extension and $\gal(F(u)：F)$ is abelian. 
 \end{theorem}
 
+\begin{proof}
+  Let $ω$ be a primitive $n$-th root of unity and let $u^n = a ∈ F$. The polynomial $f(x) = x^n -a$ has $n$ distinct roots $u, ωu, \dots, ω^{n-1} u$. Since the minimal polynomial $p(x)∈ F[x]$  of $u$ divides $f(x)$ this shows that $p(x)$ is separable and splits in $F(u)$. This means that $F(u)$ is a normal and separable extension of $F$ and thus that $F(u) ⊇ F$ is Galois. Each $F$-automorphism of $F(u)$ is uniquely specified by the image of $u$ which is a root of $p(x)$ and thus of the form $ω^i u$ for some $i ∈ \{0,\dots,n-1\}$. We denote the element of $\gal(F(u)：F)$ that maps $u$ to $ω^i u$ by $τ_i$. For two roots  $ω^iu$ and $ω^ju$ of $p(x)$ one has 
+  \begin{eqnarray*}
+    (τ_i \circ τ_j ) (u) & = & τ_i(  ω^ju ) \\
+                         & = &  ω^jτ_i( u ) \\
+                         & = & ω^{j+i} u \\
+                         & = & ω^{i+j} u \\
+                         & = &  ω^iτ_j( u ) \\
+                         & = &  τ_j( ω^iu ) \\
+                         & = & (τ_j \circ τ_i ) (u).
+  \end{eqnarray*}
+  This shows that $\gal(F(u) ：F)$ is abelian. 
+\end{proof}
+
 
 \begin{theorem}
   \label{thr:30}
   Let $E ⊇F$ be a radical Galois extension, where $\car(F) = 0$, then  $\gal(E：F)$ is a solvable group. 
 \end{theorem}
+
+\begin{proof}
+  We find an extension $K ⊇ E ⊇ F$ such that
+  \begin{enumerate}[a)]
+  \item $K ⊇F$ is Galois and,
+  \item $\gal(K：F)$ is solvable. 
+  \end{enumerate}
+  This will be sufficient since Theorem~\ref{thr:23}~\ref{item:8}) implies
+  \begin{displaymath}
+    \gal(E：F) ≅ \gal(K：F) / \gal(K：E)  
+  \end{displaymath}
+  and in particular $\gal(E：F)$ is a homomorphic image of $\gal(K：F)$. And the homomorphic image of a solvable group is again a solvable group.
+
+  To this end let
+  \begin{displaymath}
+    E = E_0 ⊇E_1 ⊇ \cdots ⊇ E_r = F
+  \end{displaymath}
+  be a tower of intermediate fields with $E_i = E_{i+1}(u_i)$ and $u_i^{n_i} ∈ E_{i+1}$ for $i=0,\dots,r-1$. Let $n = n_1\cdots n_{r-1}$ and let $ω$ be a primitive $n$-th root of unity, which exists, since $\car(F) = 0$. Define $K_i = E_i(ω)$ for $i=0,\dots,r$. Let
+  \begin{equation}
+    \label{eq:25}
+    K = K_0 ⊇ K_1 ⊇ \cdots K_r ⊇K_{r+1} = F
+  \end{equation}
+  be the corresponding chain of intermediate fields. Inspect the extensions  $K_i ⊇ K_{i-1}$ for $i=i,\dots,r-1$.   We have  $K_i = K_{i+1}(u_i)⊇ K_{i+1}$ with  $u_i^{n_i} ∈ K_{i+1}$ and   $ K_{i+1} $ contains a primitive $n_i$-th root of unity. Thus $K_i ⊇ K_{i-1}$ is Galois with an abelian Galois group by Theorem~\ref{thr:29}. Also $K_r ⊇ K_{r+1}$ is Galois with an abelian Galois group by Theorem~\ref{thr:28}. Now consider the chain of subgroups of $\gal(K ：F)$
+  \begin{equation}
+    \label{eq:26}
+    \{ id\} = \gal(K:K_0) ⊆  \gal(K:K_1) ⊆ \cdots ⊆ \gal(K:K_r) ⊆ \gal(K:K_{r+1}).  
+  \end{equation}
+  The fundamental theorem gives
+  \begin{enumerate}[i)]
+  \item $\gal(K：K_i) ⊲ \gal(K：K_{i+1})$  by Theorem~\ref{thr:23}~\ref{item:7}), and
+    \item $\gal(K_i ： K_{i+1}) ≅ \gal(K : K_{i+1}) / \gal(K：K_i)$ by Theorem~\ref{thr:23}~\ref{item:8}). In particular, $\gal(K : K_{i+1}) / \gal(K：K_i)$ is abelian. 
+  \end{enumerate}
+This shows that $\gal(K：F)$ is solvable. 
+  
+\end{proof}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "notes"
