@@ -1,0 +1,92 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 9 }
+\rhead{November 12, 2019}
+\rfoot{Problems selected by J. Baudin, F. Eisenbrand, S. Giampietro and V.A.Nadarajan}
+\usepackage{times}
+\usepackage{mathptmx}
+
+\usepackage[utf8]{inputenc} 
+\usepackage{mathrsfs}
+\usepackage{mathtools} 
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{hyperref}
+\usepackage{enumerate}
+
+
+
+\begin{document} 
+
+\begin{enumerate} 
+\item 
+Let $K\subseteq L\subseteq M$ be a finite field extension. 
+
+\begin{itemize}
+    \item If $K\subseteq L$ is a normal subextension of $K\subseteq M$, then every $K$-automorphism of $M$ induces a $K$-automorphism of $L$. (i.e. if $\sigma\in Gal(M:K)$ then $\sigma|_L(L)\subseteq L$).
+    \item Now assume that $K\subseteq M$ is normal and L is an arbitrary subfield, then every $K$-algebra homomorphism $\phi:L\xrightarrow{}M$ lifts to an $K$-automorphism $\widetilde{\phi}:M\xrightarrow{}M$ i.e. $\widetilde{\phi}|_L=\phi$. [Hint: \textit{Use exercise 1 of sheet 8 and the fact that for any finite field extension $E\subseteq F \subseteq K$ a non-zero homomorphism $F\xrightarrow{} \overline{E}$ can be lifted to $K\xrightarrow{} \overline{E}$}]
+\end{itemize}{}
+
+\item 
+Let $M\supseteq K$ be a finite Galois extension, and let $G=$Gal$(M:K)$ be its Galois group. 
+\begin{enumerate}
+    \item Let $L$ be an intermediate field in the extension $M\supseteq K$. Show that $\forall$ $\sigma\in G$ $\sigma(L)$ is also an intermediate field and $(\sigma(L))^*=\sigma L^* \sigma^{-1}$.  
+    \item Let $L$ be an intermediate field in the extension $M\supseteq K$. Show that $L$ is normal over $K$ iff $\sigma(L)=L$ $\forall$ $\sigma\in G$. Using the previous result show that $L$ is normal over $K$ iff $L^*$ is a normal subgroup of $G$.
+    \item Let $L$ be an intermediate field in the extension $M\supseteq K$ such that $L$ is normal over $K$. Show that $Gal(L:K)\simeq G/L^*$.
+    [Hint: \textit{Consider the map $G\xrightarrow{}Gal(L:K)$ defined by $\sigma\in G\mapsto \sigma|_{L}$.}]
+    
+\end{enumerate}{}
+
+\textbf{Remark:} The first statement implies that conjugate subgroups give rise to $K$-isomorphic field extensions under the Galois correspondence, so to understand the lattice of intermediate fields it is sufficient to consider subgroups up to conjugation.\\
+
+\item
+  Consider the polynomial $p(x)=x^5+ax+b\in \mathbb{Q}[x]$. Show that the Galois group of $p$ i.e. the Galois group of the splitting field of $p$ is $D_5$ (the dihedral group of order 10) iff the following conditions hold:
+
+\begin{enumerate}
+    \item $p(x)\in\mathbb{Q}[x]$ is irreducible.
+    \item The discriminant $D(p)$ is a perfect square in $\mathbb{Q}$.
+    \item $p(X)$ is solvable by radicals.
+\end{enumerate}{}
+
+[Hint: By looking at the derivative of p, conclude that p has at least two non real roots. You may then want to look at the following table of subgroups of $A_5$: \url{https://groupprops.subwiki.org/wiki/Subgroup_structure_of_alternating_group:A5}]
+
+\item 
+Let $K\subseteq L$ be a finite separable extension. Show that there exists (up to isomorphism) a unique minimal extension $L\subseteq M$ such that $M$ is Galois. Here minimal means given an extension $L\subseteq N$ such that $N$ is Galois, it can be factored as $L\subseteq M\subseteq N$.  Moreover show that the extension $L\subseteq M$ is finite.
+
+\textbf{Remark}: We call the extension $L\subseteq M$ as the normal closure of $L$.
+
+\item
+   \begin{enumerate}[a)]
+  \item 
+ Show that
+ \begin{displaymath}
+   G = \left\{
+     \begin{pmatrix}
+       1 & a & b \\
+       0 & 1 & c \\
+       0 & 0 & 1
+     \end{pmatrix} \colon a,b,c \in F \right\}
+\end{displaymath}
+is a solvable group for any field $F$.
+\item
+Show that
+ \begin{displaymath}
+   G = \left\{
+     \begin{pmatrix}
+       x & a & b \\
+       0 & y & c \\
+       0 & 0 & z
+     \end{pmatrix} \colon x,y,z,a,b,c \in F; \, xyz \neq 0 \right\}
+\end{displaymath}
+is a solvable group for any field $F$.
+\end{enumerate}
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
