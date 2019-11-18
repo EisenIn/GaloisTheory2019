@@ -169,6 +169,51 @@ This shows that $\gal(K：F)$ is solvable.
   
 \end{proof}
 
+\section{A Galois extension whose Galois group is ismorphic to $S_n$}
+\label{sec:galo-extens-whose}
+
+Let $F$ be a field and 
+$F[x_i] = F[x_1,\dots,x_n]$  be the polynomial ring in indeterminants $x_1,\dots,x_n$.  A polynomial $f(x) ∈F[x_i]$ is \emph{symmetric} if
+\begin{displaymath}
+  f(x_1,\dots,x_n) = f(x_{σ_1},\dots,x_{σ_n}) \, \, \text{ for each } σ ∈S_n. 
+\end{displaymath}
+The \emph{elementary symmetric polynomials} $s_0,\dots,s_n ∈ F[x_i]$  are defined as follows
+\begin{eqnarray*}
+  s_0 & = & 1 \\
+  s_k & = & ∑_{i_1<i_2< \cdots < i_k} x_{i_1}x_{i_2} \cdots x_{i_k} \, \text{ for } k=1,\dots,n. 
+\end{eqnarray*}
+One has the formula
+\begin{displaymath}
+  (x-u_1) \cdots (x- u_n) = ∑_{i=0}^n (-1)^i s_i(u_1,\dots,u_n) x^i. 
+\end{displaymath}
+
+Let $E = F(x_1,\dots,x_n)$ be the field of fractions of $F[x_1,\dots,x_n]$. An element $r(x_1,\dots,x_n) = f(x_1,\dots,x_n) / g(x_1,\dots,x_n)$  with $g ≠0$ is called a \emph{symmetric rational form} if $r(x_{σ_1},\dots,x_{σ_n}) = r(x_1,\dots,x_n)$ holds for each $σ ∈S_n$.
+
+Each element $σ ∈S_n$ can be mapped to a corresponding element $σ' ∈ \gal(E：F)$, where $σ'(r(x_1,\dots,x_n))  =  r(x_{σ_1},\dots,x_{σ_n}$. This mapping is a one-to-one group homomorphism. Let $S⊆E$ be the subfield of symmetric rational forms. 
+
+
+\begin{theorem}
+  \label{thr:31}
+  Let $F$ be a field, $E = F(x_1,\dots,x_n)$ and $S ⊆E$ be the subfield of all symmetric rational forms.
+  \begin{enumerate}[i)]
+  \item $E ⊇S$ is Galois, $[E:S] = n!$ and $\gal(E:S) ≅ S_n$.
+\item $S = F(s_0,\dots,s_n)$ and $E$ is the splitting field of the polynomial
+  \begin{displaymath}
+    f(t) = t^n - s_1 t^{n-1} + s_2 t^{n-2} + \dots + (-1)^n s_n 
+  \end{displaymath}
+  over $S$. 
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  The polynomial $f(t)$ splits as
+  \begin{displaymath}
+    f(t) = (t - x_1) \cdots (t-x_n)  ∈ S[x_1,\dots,x_n]
+  \end{displaymath}
+  in $E$. Clearly, $f(t)$ is separable and $E$ is the splitting field
+  of $f(t)$. This shows that $E ⊇S$ is Galois and that $[E：S] ≤ n!$.  Furthermore, each $σ'$ fixes $S$.  
+\end{proof}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "notes"
