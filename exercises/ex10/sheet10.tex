@@ -1,0 +1,83 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 10 }
+\rhead{November 19, 2019}
+\rfoot{Problems selected by J. Baudin, F. Eisenbrand, S. Giampietro and V.A.Nadarajan}
+\usepackage{times}
+\usepackage{mathptmx}
+
+\usepackage[utf8]{inputenc} 
+\usepackage{mathrsfs}
+\usepackage{mathtools} 
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{hyperref}
+\usepackage{enumerate}
+
+\usepackage{../../utf8math}
+
+
+\begin{document} 
+\noindent
+
+
+\begin{enumerate}
+\item 
+Let E be a finite Galois extension of F with Galois group G, and let L be the fixed field of a subgroup H of G i.e. $L=H^*$. Show that the automomorphism group of L $Gal(L:E)=N/H$ where N is the normalizer of H in G. (This is a refinement of Sheet 9 Ex 2).
+
+\item 
+Let $K$ be a field. We will call the Galois group of the splitting field of a separable polynomial $f\in K[x]$ as the Galois group of $f$ over $K$ and denote it by $G_f$. (if $K$ is perfect every polynomial in $K[x]$ has a Galois group associated to it.)
+\begin{enumerate}
+    \item Show that the Galois group of $X^3-3X+1\in\mathbb{Q}[x]$ is the alternating group $A_3$.
+    \item Show that the Galois group of $X^3+3X+1\in\mathbb{Q}[x]$ is the symmetric group $S_3$.
+    \item Find an algorithm to compute the Galois group (over $\mathbb{Q}$) of a monic cubic polynomial with coefficients in $\mathbb{Z}$. 
+\end{enumerate}{}
+
+\item 
+We state a theorem which we will not prove: Recall that (with the notation above) $G_f$ acts on the roots of the polynomial $f$. If we denote $deg(f)=m$, this action induces (up to conjugation) an embedding of $G_f$ in $S_m$.\\
+
+\textbf{Theorem [Dedekind]}\\
+
+Let $f\in\mathbb{Z}[x]$ be a monic polynomial of degree m, and let p be a prime such that $f \mod p$ has simple roots. Suppose that $f=\Pi_{i=1}^{r} f_i \in \mathbb{F}_p[x]$ with $f_i\in\mathbb{F}_p[x]$ irreducible of degree $m_i$. Then the image of $G_f$ in $S_m$ contains an element whose cycle decomposition is of type $(m_1,...,m_r)$.\\
+
+\begin{enumerate}[i)]
+    \item Show that for $f$ as above $D(f)\in\mathbb{Z}$, $f \mod p$ has simple roots iff $p \nmid D(f)$, where $D(f)$ is the discriminant of $f$. This shows that the theorem of Dedekind applies to all but finitely many primes.
+    \item Show that the Galois group of $X^5-X-1$ (over $\mathbb{Q}$) is $S_5$. [Hint: Consider factorisations of this polynomial modulo small primes.]
+    \item Show that a transitive subgroup of $S_n$ containing a $n-1$-cycle and a transposition is $S_n$. (Recall that a transitive subgroup is a subgroup s.t. its action on $\{1,...,n\}$ is transitive.)
+    \item Use the above fact and the theorem of Dedekind to give a construction of a polynomial of degree $n$ with Galois group (over $\mathbb{Q}$) $S_n$ for $n\geq 1$. Note that this shows that the upper bound on the degree of the splitting field over $\mathbb{Q}$ is tight. 
+    
+\end{enumerate}
+
+\textbf{Remark}
+
+The theorem of Dedekind plays a key role in algorithms to calculate Galois group of monic polynomials with integral coefficients. If you are interested in learning more, you can look at \textbf{L. Soicher, J. McKay, Computing Galois groups over the rationals, J. Number Theory 20 (1985), 273–281}.
+
+\item Let $φ： G →  G'$  be a surjective  group homomorphism.
+  \begin{enumerate}[a)]
+  \item If $N $ is a normal subgroup of $G$ then $φ(N)$ is a normal subgroup of $G'$.
+  \item If $N'$ is a normal subgroup of $G'$ then $\{ g ∈ G ： φ(g) ∈ N'\}$ is a normal subgroup of $G$. 
+  \end{enumerate}
+
+\item
+  Let $G$ be a group and $M$ be a subgroup of $G$. Then $M$ is an inclusion-wise maximal normal subgroup of $G$ if and only if $G/M$ is simple.
+
+  \emph{Recall that  a group $G$ is simple if the only normal subgroups of $G$ are $\{1\}$ and $G$.}
+\item Show that a finite group $G$ is solvable, if and only if there are subgroups
+  \begin{displaymath}
+    \{1\} = G_n ⊆G_{n-1}⊆ \cdots G_1 ⊆G_0 = G  
+  \end{displaymath}
+  such that
+  \begin{enumerate}[a)]
+  \item $G_i$ is normal in $G_{i-1}$
+  \item $|G_{i-1}| : |G_i|$ is a prime. 
+  \end{enumerate}
+\end{enumerate}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
