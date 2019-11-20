@@ -273,7 +273,7 @@ In this section, we assume throughout that the characteristic of $F$ is zero.
 \begin{proof}
   In the exercises you show that a finite group $G$ is solvable if and only if there are subgroups
    \begin{displaymath}
-    \{1\} = G_n ⊆G_{n-1}⊆ \cdots G_1 ⊆G_0 = G  
+    \{1\} = G_n ⊆G_{n-1}⊆ \cdots ⊆ G_1 ⊆G_0 = G  
   \end{displaymath}
   such that
   \begin{enumerate}[a)]
@@ -281,13 +281,17 @@ In this section, we assume throughout that the characteristic of $F$ is zero.
   \item $|G_{i-1}| : |G_i|$ is a prime.
   \end{enumerate}
 
-  Let $E_{G_i}$ be the fixed field of the corresponding chain of the Galois group $G = \gal(E：F)$. We can apply Theorem~\ref{thr:32} once we have shown that
+  Let $E_{G_i}$ be the fixed field of the corresponding chain of the Galois group $G = \gal(E：F)$, i.e., we have
+  \begin{displaymath}
+    E = E_{G_n} ⊇ E_{G_{n-1}} ⊇ \cdots ⊇ E_{G_1} ⊇ E_{G_0} = F.
+  \end{displaymath}
+  We can apply Theorem~\ref{thr:32} once we have shown that
   \begin{enumerate}[i)]
   \item $E_{G_i} ⊇ E_{G_{i-1}}$ is Galois for each $i∈\{n,\dots,1\} $and \label{item:16}
   \item $[E_{G_i}: E_{G_{i-1}}]$ is a prime dividing $[E：F] = |\gal(E：F)|$. \label{item:17}
   \end{enumerate}
 
-   By the main Theorem~\ref{thr:23}~\ref{item:7}) we  have that $E_{G_{n-1}} ⊇F$ is Galois. By applying   Theorem~\ref{thr:23}~\ref{item:7}) again, we see that $E_{G_{n-2}} ⊇F$ is Galois and by iterating, $E_{G_{i}} ⊇F$ is Galois for each $i$. This shows that $E_{G_i} ⊇ E_{G_{i-1}}$ is Galois for each $i∈\{n,\dots,1\}$ thus we established \ref{item:16}).
+  By the main Theorem~\ref{thr:23}~\ref{item:7}) we  have that $E_{G_{1}} ⊇ E_{G_{0}}=F$ is Galois since $G_1 ⊲ G$. The extension $E = E_{G_n} ⊇ E_{G_1}$ is Galois with Galois group $G_1$. We have $G_2 ⊲ G_1$ and again by the main theorem we have $ E_{G_2} ⊇  E_{G_1}$ is Galois. Again the extension $ E_{G_n} ⊇  E_{G_2}$ is Galois with Galois group $G_2$. Continuing in this way, we see that~\ref{item:16}) holds. 
 
   By the main Theorem~\ref{thr:23}~\ref{item:8}) we have
   \begin{displaymath}
@@ -295,6 +299,16 @@ In this section, we assume throughout that the characteristic of $F$ is zero.
   \end{displaymath}
   which shows that the index $[E_{G_i} ：  E_{G_{i-1}}]$ is a prime. Notice that $[E_{G_i}: E_{G_{i-1}}]$ divides $[E：F] = |\gal(E：F)|$ by the tower law.  This shows \ref{item:17})  
 \end{proof}
+
+
+We now are able to prove the missing direction of the Galois criterion. You will be asked for a proof of this theorem in the exercises.
+
+\begin{theorem}
+  \label{thr:34}
+  Let $E ⊇F$ be a finite Galois extension with $\car(F) = 0$ and let $ω$ be a primitive $m$-th root of unity, where $m = [E:F]$. Then $E(ω) ⊇ F$ is a radical extension. 
+\end{theorem}
+
+
 
 %%% Local Variables:
 %%% mode: latex
