@@ -1,0 +1,44 @@
+\chapter{Algorithms to compute the Galois group of a rational polynomial}
+\label{cha:algor-comp-galo}
+
+
+We will now deal with the problem  to compute the Galois group of a polynomial $f(x) ∈ ℚ[x]$, i.e., $\gal(E：ℚ)$, where $E$ is a splitting field of $f$. We will proceed as follows.
+
+\begin{enumerate}[i)]
+\item We will compute the minimal polynomial $p_α(x) ∈ ℚ[x]$ of a primitive element $α$ of $E$, i.e. the complex number $α$ with $ℚ(α) = E$.
+\item Let $α= α_0, α_1,\dots,α_{n-1}$ be the roots of $p(x)$.  We will then compute the matrices $A_i ∈ℚ^{n ×n}$,  such that
+  \begin{displaymath}
+    \begin{pmatrix}
+      α_{i}^{0} \\
+      α_{i}^{1} \\
+      \vdots \\
+       α_{i}^{n-1}       
+    \end{pmatrix} = A_i \begin{pmatrix}
+      α_{0}^{0} \\
+      α_{0}^{1} \\
+      \vdots \\
+       α_{0}^{n-1}       
+    \end{pmatrix}
+  \end{displaymath} holds.
+\item With the list of matrices $A_i$ t hand, we can then completely describe the group table of the Galois group. 
+\end{enumerate}
+
+
+Our aim is to design an algorithm that is polynomial in the binary encoding length of the input polynomial $f(x) ∈ ℚ[x]$  and the cardinality of the Galois Group. 
+
+\subsubsection*{Exercises}
+
+\begin{enumerate}
+\item How does the first row of $A_i$ look like? Justify your answer.
+\item Explain how to compute the other rows of $A_i$ quickly with the following input:
+  \begin{enumerate}[a)] 
+  \item The second row of $A_i$
+  \item The minimal polynomial $p(x) ∈ℚ[x]$ of $α = α_0$. 
+  \end{enumerate}
+
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:
