@@ -182,6 +182,98 @@ If $p(x) ∈ℤ[x]$ is an irreducible polynomial and $α∈ℂ$ is a root of $p(
       \end{displaymath}
 \end{proof}
 
+
+
+Suppose now that $p(x) ∈ℤ[x]$ is irreducible of degree $n$  with root $α∈ℂ$ with $|α|≤1$ and suppose one has approximations $ \br{α}_0 =1, \br{α}_1,\dots, \br{α}_n  ∈ℂ$ such that 
+\begin{displaymath}
+ | \br{α}_i - α^i| < 1/ 2^s
+\end{displaymath}
+for some $s ∈ℕ$. Then with $p(x) = a_0 + a_1x + \cdots + a_n x^n$ one has
+\begin{equation}
+  \label{eq:29}
+  \begin{array}{rcl}
+    | a_0 + a_1 \br{α}_1 + \cdots + a_n \br{α}_n|  & = &   | a_1 (\br{α}_1 - α) + \cdots + a_n (\br{α}_n - α^n) |\\
+                                                 & ≤ & n ⋅ \|p\|_∞ / 2^s.
+  \end{array}
+\end{equation}
+%
+On the other hand, if $q(x) = b_0+ b_1 x + \cdots + b_n x^n ∈ℤ[x]$ is a polynomial of degree at most $n$ and of which $α$ is not a root, then the root separation Lemma~\ref{lem:10} implies
+\begin{equation}
+  \label{eq:30}
+  \begin{array}{rcl}
+    |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n|  & = & |b_0+b_1 α + \cdots +b_n α^n + b_1 (\br{α}_1-α) + \cdots +b_n (\br{α}_n -  α^n)| \\
+                                               & ≥ & |b_0+b_1 α + \cdots +b_n α^n+ - n \|q\|_∞ / 2^s \\
+    & ≥ & 1/ (n \|p\|^n \|q\|^n) - n \|q\|_∞ / 2^s. 
+  \end{array}
+\end{equation}
+
+For a reason that will become clear later, we will only need to worry about polynomials $q(x)$ with $\|q\| ≤2^n \|q\|$. In this case, the bound~\eqref{eq:30} becomes
+\begin{equation}
+  \label{eq:31}
+  \begin{array}{rcl}
+    
+    |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n| & ≥ &1/ (n 2^n \|p\|^{2n}) - n \|p\|_∞ / 2^{s-n} \\
+    & ≥ &  1/ (n 2^n \|p\|^{2n}) -  \|p\|/ 2^{s-n}.
+  \end{array}                                          
+\end{equation}
+We conclude the following. If
+\begin{enumerate}[i)]
+\item $\deg(q) ≤n$,   
+\item $2^s ≥ 2n 2^{2n} \|p\|^{2n+1}$, 
+\item $q(α) ≠0$, and
+\item $\|q\| ≤ 2^n \|p\|$, 
+\end{enumerate}
+then the bound \eqref{eq:31} implies 
+\begin{equation}
+  \label{eq:32}
+  |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n|  ≥ 1/ (2 n 2^n \|p\|^{2n}). 
+\end{equation}
+On the other hand, if $2^s ≥ 2n^2 2^{2n} \|p\|^{2n +1}$, then the bound~\eqref{eq:29} implies
+\begin{equation}
+  \label{eq:33}
+   | a_0 + a_1 \br{α}_1 + \cdots + a_n \br{α}_n| ≤ 1/ (2 n 2^{2n} \|p\|^{2n}) 
+ \end{equation}
+ which is a $2^n$ factor smaller than the lower bound~\eqref{eq:32}. 
+
+
+ \subsection{A corresponding lattice problem}
+ \label{sec:corr-latt-probl}
+ Let $\br{α}_i = r_i + i \ell_i$ and consider the rational matrix
+ \begin{displaymath}
+  B =  \begin{pmatrix}
+     M ⋅ r_0 & M ⋅ r_1 & \cdots & M ⋅r_n \\
+     M ⋅ \ell_0 & M ⋅ \ell_1 & \cdots & M ⋅\ell_n \\
+     1 & \\
+     0 & 1 \\
+     &  & \ddots \\
+     & & & 1
+   \end{pmatrix}
+ \end{displaymath}
+ where $M = 2 n 2^{2n} \|p\|^{2n}$. Let 
+ \begin{displaymath}
+   v = B ⋅y
+ \end{displaymath}
+ where $y ∈ℤ^{n+1}$ can be understood as containing the coefficients of $q(x)$,
+ \begin{displaymath}
+y =     \begin{pmatrix}
+     b_0 \\ \vdots \\ b_n
+   \end{pmatrix}
+ \end{displaymath}
+ one obtains with the notation from above
+ \begin{equation}
+   \label{eq:34}
+   \|v\|^2 = M^2 ⋅ |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n|^2 + \|q\|^2. 
+ \end{equation}
+ Unless $α$ is a root of $q(x)$, we have just argued that
+ $\|v\|^2 ≥ 2^{2n} \|w\|^2$ holds, where $w$ is the vector
+ \begin{displaymath}
+    v = B \begin{pmatrix}
+     a_0 \\ \vdots \\ a_n
+   \end{pmatrix}
+ \end{displaymath}
+
+ 
+ 
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "notes"
