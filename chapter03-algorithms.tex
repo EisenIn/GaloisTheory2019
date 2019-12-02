@@ -208,19 +208,19 @@ On the other hand, if $q(x) = b_0+ b_1 x + \cdots + b_n x^n ∈ℤ[x]$ is a poly
   \end{array}
 \end{equation}
 
-For a reason that will become clear later, we will only need to worry about polynomials $q(x)$ with $\|q\| ≤2^n \|q\|$. In this case, the bound~\eqref{eq:30} becomes
+For a reason that will become clear later, we will only need to worry about polynomials $q(x)$ with $\|q\| ≤2^n \|p\|$. In this case, the bound~\eqref{eq:30} becomes
 \begin{equation}
   \label{eq:31}
   \begin{array}{rcl}
     
-    |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n| & ≥ &1/ (n 2^n \|p\|^{2n}) - n \|p\|_∞ / 2^{s-n} \\
-    & ≥ &  1/ (n 2^n \|p\|^{2n}) -  \|p\|/ 2^{s-n}.
+    |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n| & ≥ &1/ (n 2^n \|p\|^{2n}) - n \|q\|_∞ / 2^{s} \\
+    & ≥ &  1/ (n 2^n \|p\|^{2n}) -  n \|p\|/ 2^{s-n}.
   \end{array}                                          
 \end{equation}
-We conclude the following. If
+We summarize this as follows.  If
 \begin{enumerate}[i)]
 \item $\deg(q) ≤n$,   
-\item $2^s ≥ 2n 2^{2n} \|p\|^{2n+1}$, 
+\item $2^s ≥ 2n^2 2^{2n} \|p\|^{2n+1}$, 
 \item $q(α) ≠0$, and
 \item $\|q\| ≤ 2^n \|p\|$, 
 \end{enumerate}
@@ -234,12 +234,32 @@ On the other hand, if $2^s ≥ 2n^2 2^{2n} \|p\|^{2n +1}$, then the bound~\eqref
   \label{eq:33}
    | a_0 + a_1 \br{α}_1 + \cdots + a_n \br{α}_n| ≤ 1/ (2 n 2^{2n} \|p\|^{2n}) 
  \end{equation}
- which is a $2^n$ factor smaller than the lower bound~\eqref{eq:32}. 
+ which is a $2^n$ factor smaller than the lower bound~\eqref{eq:32}.
+ We have shown the following.
+
+ \begin{theorem}
+   \label{thr:36}
+   Let $p(x) =a_0+a_1x+\cdots+a_nx^n∈ℤ[x]$ be an irreducible polynomial of degree $n$ and $α ∈ℂ$ be a root of $p(x)$ with $|α|≤1$.  Let $q(x) = b_0+b_1x+\cdots+b_nx^n ∈ ℤ[x]$ of degree at most $n$ with $\|q\| ≤ 2^n \|p\|$ and suppose that $α$ is not a root of $q(x)$.  Given approximations  $ \br{α}_0 =1, \br{α}_1,\dots, \br{α}_n  ∈ℂ$ such that 
+\begin{displaymath}
+ | \br{α}_i - α^i| < 1/ 2^s,
+\end{displaymath}
+where $2^s ≥ 2n^2 2^{2n} \|p\|^{2n +1}$, one has
+\begin{equation}
+  \label{eq:35}
+  | a_0 + a_1 \br{α}_1 + \cdots + a_n \br{α}_n| ≤ 1/ (2 n 2^{2n} \|p\|^{2n}) 
+\end{equation}
+and
+\begin{equation}
+  \label{eq:36}
+ |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n|  ≥ 1/ (2 n 2^n \|p\|^{2n}). 
+\end{equation}
+\end{theorem}
 
 
  \subsection{A corresponding lattice problem}
  \label{sec:corr-latt-probl}
- Let $\br{α}_i = r_i + i \ell_i$ and consider the rational matrix
+ In the following, we use the notation of Theorem~\ref{thr:36}. 
+ Let $\br{α}_i = r_i + i \ell_i$ with $r_i,\ell_i ∈ℚ$ and consider the rational matrix
  \begin{displaymath}
   B =  \begin{pmatrix}
      M ⋅ r_0 & M ⋅ r_1 & \cdots & M ⋅r_n \\
@@ -250,30 +270,42 @@ On the other hand, if $2^s ≥ 2n^2 2^{2n} \|p\|^{2n +1}$, then the bound~\eqref
      & & & 1
    \end{pmatrix}
  \end{displaymath}
- where $M = 2 n 2^{2n} \|p\|^{2n}$. Let 
+ where $M =  \|p\| ⋅ 2 n 2^{2n} \|p\|^{2n}$. Let 
  \begin{displaymath}
-   v = B ⋅y
- \end{displaymath}
- where $y ∈ℤ^{n+1}$ can be understood as containing the coefficients of $q(x)$,
- \begin{displaymath}
-y =     \begin{pmatrix}
+   v = B    \begin{pmatrix}
      b_0 \\ \vdots \\ b_n
    \end{pmatrix}
  \end{displaymath}
- one obtains with the notation from above
- \begin{equation}
-   \label{eq:34}
-   \|v\|^2 = M^2 ⋅ |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n|^2 + \|q\|^2. 
- \end{equation}
- Unless $α$ is a root of $q(x)$, we have just argued that
- $\|v\|^2 ≥ 2^{2n} \|w\|^2$ holds, where $w$ is the vector
+ where
  \begin{displaymath}
-    v = B \begin{pmatrix}
-     a_0 \\ \vdots \\ a_n
-   \end{pmatrix}
+     \begin{pmatrix}
+     b_0 \\ \vdots \\ b_n
+   \end{pmatrix} ∈ℤ^{n+1}
  \end{displaymath}
-
+  can be understood as the integer vector containing the coefficients of an integer polynomial  $q(x)$. We compute 
+  \begin{displaymath}
+   \|v\|^2 = M^2 ⋅ |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n|^2 + \|q\|^2.     
+ \end{displaymath}
+ If $q(x) = p(x)$, then
+ \begin{equation}
+   \label{eq:37}
+   \|v\|^2 ≤\|p\|^2 + \|p\|^2 = 2 \|p\|^2. 
+ \end{equation}
+ If $q(x)$ is not a multiple of $p(x)$ and $\|q\| ≤ 2^{n} \|p\|$, then Theorem~\ref{thr:36} implies
+ \begin{equation}
+   \label{eq:38}
+   \|v\|^2 ≥ 2^{2n} \|p\|^2 + \|q\|^2 > 2^{2n} \|p\|^2.  
+ \end{equation}
+ And if $q(x)$ is a polynomial with $\|q\|> 2^n \|p\|$, then 
+ \begin{equation}
+   \label{eq:39}
+    \|v\|^2 > 2^{2n} \|p\|^2.
+ \end{equation}
  
+ We will next see that there exists an efficient algorithm, that will compute a nonzero integer vector $(a_0,a_1,\dots,a_n)^T$ such that
+$   \|v\| $ is at most $2^{n/2}$ times the minimum norm that can possibly be attained. Since $2^n ⋅2 \|p\|^2 <  2^{2n} \|p\|^2$ for $n>1$, the corresponding polynomial must be an integer  multiple of $p(x)$, which means that we can efficiently retrieve the minimal polynomial of $α$. 
+ 
+
  
 %%% Local Variables:
 %%% mode: latex
