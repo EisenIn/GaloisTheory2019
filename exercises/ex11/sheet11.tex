@@ -8,7 +8,8 @@
 \rfoot{Problems selected by J. Baudin, F. Eisenbrand, S. Giampietro and V.A.Nadarajan}
 \usepackage{times}
 \usepackage{mathptmx}
-
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\br}[1]{\overline{#1}}
 \usepackage[utf8]{inputenc} 
 \usepackage{mathrsfs}
 \usepackage{mathtools} 
@@ -19,6 +20,16 @@
 \usepackage{enumerate}
 
 \usepackage{../../utf8math}
+
+\def \N {\mathbb N}
+\def \R {\mathbb R}
+\def \Q {\mathbb Q}
+\def \Z {\mathbb Z}
+\def \id {{\rm id}\,}
+\def \Ker {{\rm Ker}\,}
+\def \Im {{\rm Im}\,}
+\def \Vect {{\rm Vect}\,}
+\DeclareMathOperator{\vol}{vol}
 
 \DeclareMathOperator{\gal}{Gal}
 
@@ -44,19 +55,52 @@ Let $K \subseteq E \subseteq M$, $K \subseteq F \subseteq M$ be finite field ext
   \item The minimal polynomial $p(x) ∈ℚ[x]$ of $α = α_0$. 
   \end{enumerate}
  \item We use the notation from the beginning of Chapter~4, currently page~39. Describe how to fill in the group table that describes $\gal(E：ℚ)$, once the matrices $A_i$ are computed. 
-\item If $α ∈ℂ \setminus \{0\}$ is a root of $p(x) = a_0 + a_1x + \cdots + a_n x^n ∈ℂ[x]$, then $1/α$ is a root of $\wt{f}(x) = a_n + a_{n-1}x + \cdots + a_0x^n$.  Also if $f(x)$ can be factored into $f(x) = p(x) q(x)$, then $\wt{f}(x) = \wt{p}(x) \wt{q}(x)$, where $\wt{p}(x)$ and $\wt{q}(x)$ are analogously defined. \label{item:20}
+%\item If $α ∈ℂ \setminus \{0\}$ is a root of $p(x) = a_0 + a_1x + \cdots + a_n x^n ∈ℂ[x]$, then $1/α$ is a root of $\widetilde{f}(x) = a_n + a_{n-1}x + \cdots + a_0x^n$.  Also if $f(x)$ can be factored into $f(x) = p(x) q(x)$, then $\widetilde{f}(x) = \wt{p}(x) \wt{q}(x)$, where $\wt{p}(x)$ and $\wt{q}(x)$ are analogously defined. \label{item:20}
 
 \item Let $α = (a + ib)∈ℂ$ be a complex number with $|α|<1$, the binary expansion of $a$ and $b$ being $a = ∑_{i=1}^∞ a_i 2^{-i}$ and  $b = ∑_{i=1}^∞ b_i 2^{-i}$, where the $a_i, b_i ∈ \{0,1\}$. The numbers $a_1,\dots,a_k$ and $b_1,\dots,b_k$ are called the first $k$ bits of the real and imaginary part of $α$ respectively. In the following, let $\br{α} ∈ℂ$ be a complex number of absolute value at most one. 
   \begin{enumerate}[a)]
   \item If the first $k$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α - \br{α}| ≤2^{k-1}$.
   \item If the first $k+1$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α^2 - \br{α}^2| ≤2^{k-2}$.
   \item If the first $k+1$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α^j - \br{α}^j| ≤2^{k-1} j$.
-  \item Conclude that, $\br{α}_i$ in Theorem~\ref{thr:35} can be set to $\br{α}_1^i$, if the real and imaginary parts of $\br{α_1}$ coincide with those of $α$ in the first $c' (n^3 + n^2 \log \|p\|_∞)$ bits, where $c'$ is an absolute constant, depending only on $c$. 
+%  \item Conclude that, $\br{α}_i$ in Theorem~\ref{thr:35} can be set to $\br{α}_1^i$, if the real and imaginary parts of $\br{α_1}$ coincide with those of $α$ in the first $c' (n^3 + n^2 \log \|p\|_∞)$ bits, where $c'$ is an absolute constant, depending only on $c$. 
   \end{enumerate}
+
+\item Let $B_1, B_2 \in \Q^{n \times d}$, and recall the notations
+\begin{align*}
+\Lambda(B_i) &= \{ B_i z \mid z \in \Z^d\} \subseteq \R^n, \\
+\mathcal{P}(B_i) &= \{B_i x \mid x \in [0,1)^d\} \subseteq \R^n.
+\end{align*}
+Show the following.
+\begin{enumerate}
+\item
+\[
+\Lambda (B_1) = \Lambda (B_2) \quad \Leftrightarrow \quad \exists U \in \Z^{d \times d}: (\det(U) = 1) \wedge (B_1 = B_2 U)
+\]
+\item Let $\Lambda \subseteq \R^n$ be a lattice and $B$ any basis of $\Lambda$.
+Show that $\det (\Lambda(B)) := \sqrt{B^\intercal B}$ is well-defined.
+\item Show that $\vol(\mathcal{P}(B)) = | \det (B) |$ for $B \in \R^{n \times n}$.
+\item Show that $\vol_d(\mathcal{P}(B)) = \det (\Lambda)$ for any $d$-dimensional lattice $\Lambda \subseteq \R^n$.
+\end{enumerate}
+\item Let $L \subset \R^n$ be a lattice and $L^\prime \subseteq L$ a sublattice such that $\dim(L) = \dim(L^\prime) =: d$.
+Let $B^\prime$ be a basis of $\Lambda^\prime$.
+Show that
+\[
+ | \mathcal{P}(B^\prime) \cap \Lambda | = \frac{\det(\Lambda^\prime)}{\det (\Lambda)} = [\Lambda : \Lambda^\prime].
+\]
+\textit{Hint:} Show this first for full-dimensional lattices, then conclude for lower-dimensional lattices.
 \end{enumerate}
 
 \end{document}
-%%% Local Variables:
+
+
+
+
+
+
+
+
+
+%%%Local Variables:
 %%% mode: latex
 %%% TeX-master: t
 %%% End:
