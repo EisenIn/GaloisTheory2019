@@ -36,9 +36,245 @@ Our aim is to design an algorithm that is polynomial in the binary encoding leng
   \item The second row of $A_i$
   \item The minimal polynomial $p(x) ∈ℚ[x]$ of $α = α_0$. 
   \end{enumerate}
-
+\item Let $σ_i ∈ \gal(E：ℚ)$ be the $ℚ$-automorphism of $E$ with $σ(α_0) = α_i$. Then $σ_i:E → E$ is also an automorphism of the $ℚ$-vector space $E$. An element $e ∈E$ is a linear combination of the basis elements $α^0_0,α^1_0,\dots,α^{n-1}_0$. If $φ:E →ℚ^n$ is the coordinate isomorphism with $φ(x_0 α^0_0+x_1 α_1^0+\cdots+ x_{n-1}α^{n-1}_0) =(x_0,\dots,x_{n-1})^T $, then which matrix makes the following diagram commute:
+  \begin{displaymath}
+    \begin{CD}
+      E @>σ_i>> E \\
+      @VVφV  @VVφV \\
+      ℚ^n @> A x >> ℚ^n
+    \end{CD}
+  \end{displaymath}
+\item Describe how to fill in the group table that describes $\gal(E：ℚ)$, once the matrices $A_i$ are computed. 
 \end{enumerate}
 
+\section{Retrieving the minimal polynomial of an algebraic number}
+\label{sec:retr-minim-polyn}
+
+We deal with the problem of identifying the minimal polynomial $p(x) ∈ℤ[x]$ of an algebraic number $α ∈ℂ$, provided that we are given:
+\begin{enumerate}[i)]
+\item A sufficiently good approximation $\br{α} ∈ℂ$  of $α$.\label{item:18}
+\item An upper bound on the norm $\|p\|_2$ of $p(x)$. \label{item:19}
+\item An upper bound on the degree of $p(x)$. 
+\end{enumerate}
+
+
+
+We can assume that $|α|≤1$, since we can otherwise retrieve the minimal polynomial of $1/α$ instead, see Exercise~\ref{item:20}) below.  We will show the following result.
+
+\begin{theorem}[(Kannan, Lovàsz and  Lenstra \cite{kannan1988polynomial})] \label{thr:35}
+  Let $α ∈ℂ$ be an algebraic number with minimal polymomial $p(x) ∈ℤ[x]$ of degree $n$. Provided that one is given  approximations $\br{α}_i$ $i=0,\dots,n$  of $α^i$ that satisfy
+  \begin{displaymath}
+    | \br{α}_i - α^i| < 1 / 2^{c (n^2 + n \log \|p\|_∞)} ,  
+  \end{displaymath}
+  where $c>1$ is an absolute constant, then one can find $p(x)$ in time polynomial in $n$ and $\log \|p\|_∞$. 
+\end{theorem}
+
+Let us discuss why this algorithm enables us to factor polynomials in $ℚ[x]$. Let $f(x)∈ℤ[x]$ be a polynomial of degree $n$ and content one. We would like to be able to decide whether $f(x)$ is irreducible and if not, find an irreducible factor $p(x) ∈ℤ[x]$ of $f(x)$. Theorem~\ref{thr:7} shows that any irreducible factor $p(x) ∈ℤ[x]$ of $f(x)$ satisfies
+\begin{displaymath}
+\|p\|_∞ ≤  \|p\|_1 ≤ 2^n  ⋅ \|f\|_2≤ 2^{2 n} \|f\|_∞. 
+\end{displaymath}
+With variants of Newtons method, we can efficiently compute an approximation of a root $α ∈ℂ$ and complex numbers  $\br{a}_i∈ℂ$ with 
+ \begin{displaymath}
+    | \br{α}_i - α^i| < 1 / 2^{c (n^2 + n \log(2^{2 n} \|f\|_∞)  )} ≤ 1 / 2^{c' (n^3 + n \log( \|f\|_∞)  )},
+    \end{displaymath}
+    where $c'$ is an absolute constant that only depends on $c$. A course on numerical methods treats algorithms that make this computation in the desired running time.  Now we can use Theorem~\ref{thr:35} and compute the minimal polynomial of $α$ efficiently. This minimal polynomial is either $f(x)$, in which case $f$ is irreducible, or a nontrivial factor of $f(x)$. A corollary is the celebrated result of Lenstra, Lenstra and Lovàsz~\cite{lenstra1982factoring}.
+
+    \begin{corollary}[\cite{lenstra1982factoring}]
+      \label{co:3}      
+      There exists a polynomial time algorithm that, given a polynomial $f(x) ∈ℤ[x]$ of content one, decides whether $f(x)$ is irreducible and in the case in which it is not, finds a nontrivial factor $p(x) ∈ℤ[x]$ of $f(x)$. 
+    \end{corollary}
+
+
+\subsubsection*{Exercises}
+
+\begin{enumerate}
+\item If $α ∈ℂ \setminus \{0\}$ is a root of $p(x) = a_0 + a_1x + \cdots + a_n x^n ∈ℂ[x]$, then $1/α$ is a root of $\wt{f}(x) = a_n + a_{n-1}x + \cdots + a_0x^n$.  Also if $f(x)$ can be factored into $f(x) = p(x) q(x)$, then $\wt{f}(x) = \wt{p}(x) \wt{q}(x)$, where $\wt{p}(x)$ and $\wt{q}(x)$ are analogously defined. \label{item:20}
+
+\item Let $α = (a + ib)∈ℂ$ be a complex number with $|α|≤1$, the binary expansion of $a$ and $b$ being $a = ∑_{i=1}^∞ a_i 2^{-i}$ and  $b = ∑_{i=1}^∞ b_i 2^{-i}$, where the $a_i, b_i ∈ \{0,1\}$. The numbers $a_1,\dots,a_k$ and $b_1,\dots,b_k$ are called the first $k$ bits of the real and imaginary part of $α$ respectively. In the following, let $\br{α} ∈ℂ$ be a complex number of absolute value at most one. 
+  \begin{enumerate}[a)]
+  \item If the first $k$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α - \br{α}| ≤2^{k-1}$.
+  \item If the first $k+1$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α^2 - \br{α}^2| ≤2^{k-2}$.
+  \item If the first $k+1$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α^j - \br{α}^j| ≤2^{k-1} j$.
+  \item Conclude that, $\br{α}_i$ in Theorem~\ref{thr:35} can be set to $\br{α}_1^i$, if the real and imaginary parts of $\br{α_1}$ coincide with those of $α$ in the first $c' (n^3 + n^2 \log \|p\|_∞)$ bits, where $c'$ is an absolute constant, depending only on $c$. 
+  \end{enumerate}
+\end{enumerate}
+
+
+
+\subsection{Root separation}
+\label{sec:root-separation}
+
+If $p(x) ∈ℤ[x]$ is an irreducible polynomial and $α∈ℂ$ is a root of $p(x)$, then we would like to have good bounds on $|q(α)|$, where $q(x) ∈ℤ[x]$ is a polynomial of degree at most $\deg(p)$ which is not a multiple of $p(x)$, i.e., of  which $α$ is not a root. A good bound is given in the next lemma which makes use of the \emph{resultant}. 
+
+
+\begin{lemma}[Root separation]\label{lem:10}\
+  Let $p(x), q(x) ∈ℤ[n]$ be polynomials with $\deg(p) = n$ and $\deg(q) ≤ n$. If $α∈ℂ$ is a root of $p(x)$ but not a root of $q(x)$  and if $p(x)$ is irreducible, then
+  \begin{displaymath}
+    | q(α)| ≥ n^{-1} \|p\|^{-n} \|q\|^{-n}. 
+  \end{displaymath}
+\end{lemma}
+
+\begin{proof}
+  Let $p(x) = a_0 + a_1 x + \cdots + a_n x^n$ and $q(x) = b_0+b_1x+ \cdots+ b_nx^n$. We consider the $2n × 2n$ integer matrix
+  \begin{displaymath}
+    A = 
+    \begin{pmatrix}
+      a_0  &   0   &     &    &  b_0  &   0   &     &\\
+      a_1  &   a_0 &     &    & b_1  &   b_0 &     &  \\
+      \vdots &  a_1&  \ddots &  & \vdots &  b_1&  \ddots &   \\
+              & \vdots&       & a_0 &  & \vdots&       & b_0 \\
+              a_n    &       &       & a_1  &b_n    &       &       & b_1  \\
+              \hline
+               &   a_n  & &    &  &   b_n  & & \\
+               &       & \ddots & &  &       & \ddots &\\
+               &       &        & a_n & &       &        & b_n 
+    \end{pmatrix}
+  \end{displaymath}
+  The determinant $\det(A)$ of $A$ is called the \emph{resultant} of $A$. If the resultant was zero, then there would be a nonzero element
+  \begin{displaymath}
+    \begin{pmatrix}
+      g_0\\
+      g_1\\
+      \vdots\\
+      g_{n-1} \\
+       h_0\\
+      h_1\\
+      \vdots\\
+      h_{n-1} 
+    \end{pmatrix}
+  \end{displaymath}
+  in the kernel of $A$. With the polynomials $g(x) = g_0 + \cdots + g_{n-1}x^{n-1}$ and $h(x) = h_0 + \cdots + h_{n-1}x^{n-1}$ this implies
+  \begin{displaymath}
+    p(x) g(x) = - q(x) h(x),
+  \end{displaymath}
+  with nonzero polynomials $g(x)$ and $h(x)$ of degree at most $n-1$. But then $p(x)$ divides $h(x)$, as $q(x)$ is not a multiple of $p(x)$. This is a contradiction as $p(x)$ is of degree $n$ and $h(x)$ is of degree at most $n-1$.
+
+
+  We next multiply the $i$-th row with $α^{i-1}$ and add the result  to the first row. This is an elementary operation that does not change the determinant.  The new first row the reads
+  \begin{displaymath}
+    \begin{matrix}
+          p(α)  & α p(α) & \cdots & α^{n-1} p(α) &  q(α)  & α q(α) & \cdots & q^{n-1} p(α). 
+        \end{matrix}        
+      \end{displaymath}
+      and since $α$ is a root of $p(x)$ this reads as
+       \begin{displaymath}
+    \begin{matrix}
+          0  & 0 & \cdots & 0 &  q(α)  & α q(α) & \cdots &q^{n-1} p(α). 
+        \end{matrix}        
+      \end{displaymath}
+      Developing the determinant according to the first row, we obtain an expression
+      \begin{equation}
+        \label{eq:27}
+        \det(A) = q(α) A_0 + αq(α) A_1 + \cdots + α^{n-1} q(α) A_{n-1}, 
+      \end{equation}
+      where $A_i$ is $\pm1$ times a $(2n-1) ×(2n-1)$ sub-determinant of $A$.
+      From this we conclude
+      \begin{equation}
+        \label{eq:28}
+        q(α) = \det(A) / (A_0 + α A_1 + \cdots + α^{n-1}  A_{n-1})
+      \end{equation}
+      and since $|α| ≤1$ and $\det(A) ∈ℤ$ and therefore of absolute value at least one, we obtain
+      \begin{displaymath}
+        |q(α)| ≥ 1 / ∑_{i=0}^{n-1} |A_i|. 
+      \end{displaymath}
+      The Hadamard bound on the determinant (see Advanced Linear Algebra 2) implies $|A_i| ≤ \|p\|^n \|q\|^n$ and therefore, we obtain the desired bound
+       \begin{displaymath}
+        |q(α)| ≥ 1 / (n \|p\|^n \|q\|^n) . 
+      \end{displaymath}
+\end{proof}
+
+
+
+Suppose now that $p(x) ∈ℤ[x]$ is irreducible of degree $n$  with root $α∈ℂ$ with $|α|≤1$ and suppose one has approximations $ \br{α}_0 =1, \br{α}_1,\dots, \br{α}_n  ∈ℂ$ such that 
+\begin{displaymath}
+ | \br{α}_i - α^i| < 1/ 2^s
+\end{displaymath}
+for some $s ∈ℕ$. Then with $p(x) = a_0 + a_1x + \cdots + a_n x^n$ one has
+\begin{equation}
+  \label{eq:29}
+  \begin{array}{rcl}
+    | a_0 + a_1 \br{α}_1 + \cdots + a_n \br{α}_n|  & = &   | a_1 (\br{α}_1 - α) + \cdots + a_n (\br{α}_n - α^n) |\\
+                                                 & ≤ & n ⋅ \|p\|_∞ / 2^s.
+  \end{array}
+\end{equation}
+%
+On the other hand, if $q(x) = b_0+ b_1 x + \cdots + b_n x^n ∈ℤ[x]$ is a polynomial of degree at most $n$ and of which $α$ is not a root, then the root separation Lemma~\ref{lem:10} implies
+\begin{equation}
+  \label{eq:30}
+  \begin{array}{rcl}
+    |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n|  & = & |b_0+b_1 α + \cdots +b_n α^n + b_1 (\br{α}_1-α) + \cdots +b_n (\br{α}_n -  α^n)| \\
+                                               & ≥ & |b_0+b_1 α + \cdots +b_n α^n+ - n \|q\|_∞ / 2^s \\
+    & ≥ & 1/ (n \|p\|^n \|q\|^n) - n \|q\|_∞ / 2^s. 
+  \end{array}
+\end{equation}
+
+For a reason that will become clear later, we will only need to worry about polynomials $q(x)$ with $\|q\| ≤2^n \|q\|$. In this case, the bound~\eqref{eq:30} becomes
+\begin{equation}
+  \label{eq:31}
+  \begin{array}{rcl}
+    
+    |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n| & ≥ &1/ (n 2^n \|p\|^{2n}) - n \|p\|_∞ / 2^{s-n} \\
+    & ≥ &  1/ (n 2^n \|p\|^{2n}) -  \|p\|/ 2^{s-n}.
+  \end{array}                                          
+\end{equation}
+We conclude the following. If
+\begin{enumerate}[i)]
+\item $\deg(q) ≤n$,   
+\item $2^s ≥ 2n 2^{2n} \|p\|^{2n+1}$, 
+\item $q(α) ≠0$, and
+\item $\|q\| ≤ 2^n \|p\|$, 
+\end{enumerate}
+then the bound \eqref{eq:31} implies 
+\begin{equation}
+  \label{eq:32}
+  |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n|  ≥ 1/ (2 n 2^n \|p\|^{2n}). 
+\end{equation}
+On the other hand, if $2^s ≥ 2n^2 2^{2n} \|p\|^{2n +1}$, then the bound~\eqref{eq:29} implies
+\begin{equation}
+  \label{eq:33}
+   | a_0 + a_1 \br{α}_1 + \cdots + a_n \br{α}_n| ≤ 1/ (2 n 2^{2n} \|p\|^{2n}) 
+ \end{equation}
+ which is a $2^n$ factor smaller than the lower bound~\eqref{eq:32}. 
+
+
+ \subsection{A corresponding lattice problem}
+ \label{sec:corr-latt-probl}
+ Let $\br{α}_i = r_i + i \ell_i$ and consider the rational matrix
+ \begin{displaymath}
+  B =  \begin{pmatrix}
+     M ⋅ r_0 & M ⋅ r_1 & \cdots & M ⋅r_n \\
+     M ⋅ \ell_0 & M ⋅ \ell_1 & \cdots & M ⋅\ell_n \\
+     1 & \\
+     0 & 1 \\
+     &  & \ddots \\
+     & & & 1
+   \end{pmatrix}
+ \end{displaymath}
+ where $M = 2 n 2^{2n} \|p\|^{2n}$. Let 
+ \begin{displaymath}
+   v = B ⋅y
+ \end{displaymath}
+ where $y ∈ℤ^{n+1}$ can be understood as containing the coefficients of $q(x)$,
+ \begin{displaymath}
+y =     \begin{pmatrix}
+     b_0 \\ \vdots \\ b_n
+   \end{pmatrix}
+ \end{displaymath}
+ one obtains with the notation from above
+ \begin{equation}
+   \label{eq:34}
+   \|v\|^2 = M^2 ⋅ |b_0+b_1 \br{α}_1 + \cdots +b_n \br{α}_n|^2 + \|q\|^2. 
+ \end{equation}
+ Unless $α$ is a root of $q(x)$, we have just argued that
+ $\|v\|^2 ≥ 2^{2n} \|w\|^2$ holds, where $w$ is the vector
+ \begin{displaymath}
+    v = B \begin{pmatrix}
+     a_0 \\ \vdots \\ a_n
+   \end{pmatrix}
+ \end{displaymath}
+
+ 
+ 
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "notes"
