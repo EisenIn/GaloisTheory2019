@@ -59,9 +59,31 @@ Let $K \subseteq E \subseteq M$, $K \subseteq F \subseteq M$ be finite field ext
 
 \item Let $α = (a + ib)∈ℂ$ be a complex number with $|α|<1$ and non-negative real an imaginary part. The binary expansion of $a$ and $b$ being $a = ∑_{i=1}^∞ a_i 2^{-i}$ and  $b = ∑_{i=1}^∞ b_i 2^{-i}$, where the $a_i, b_i ∈ \{0,1\}$. The numbers $a_1,\dots,a_k$ and $b_1,\dots,b_k$ are called the first $k$ bits of the real and imaginary part of $α$ respectively. In the following, let $\br{α} ∈ℂ$ be a complex number of absolute value at most one with non-negative real and imaginary part.  
   \begin{enumerate}[a)]
-  \item If the first $k$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α - \br{α}| ≤2^{k-1}$.
-  \item If the first $k+1$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α^2 - \br{α}^2| ≤2^{k-2}$.
-  \item If the first $k+1$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α^j - \br{α}^j| ≤2^{k-1} j$.
+  \item If the first $k$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α - \br{α}| ≤2^{-k+1}$.
+
+    In this case, one has
+    \begin{displaymath}
+      |α - \br{α}|^2 = r ^2 +  l^2,
+    \end{displaymath}
+    where $r$ and $l$ are $≤ 2^{-k}$ in absolute value and thus
+    \begin{displaymath}
+       r ^2 +  l^2 ≤ 2^{-2k+1},
+     \end{displaymath}
+     from which the assertion follows. 
+    
+   \item If the first $k$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α^2 - \br{α}^2| ≤2^{-k+2}$.
+
+     We have
+     \begin{eqnarray*}
+       |α^2 - \br{α}^2| & = & |(α - \br{α})| |  ( α + \br{α}) | \\
+                        & ≤& 2^{-k+1} ⋅2. 
+     \end{eqnarray*}
+   \item If the first $k$ bits of the real and imaginary parts of $α$ and $\br{α}$ coincide, then $|α^j - \br{α}^j| ≤2^{-k+1} j$.
+
+     Solution: This is because
+     \begin{displaymath}
+       |α^j - \br{α}^j| = |α - \br{α}| ⋅ | ∑_{i=0}^{j-1}  α^{j-1-i} \br{α}^i| 
+     \end{displaymath}
 %  \item Conclude that, $\br{α}_i$ in Theorem~\ref{thr:35} can be set to $\br{α}_1^i$, if the real and imaginary parts of $\br{α_1}$ coincide with those of $α$ in the first $c' (n^3 + n^2 \log \|p\|_∞)$ bits, where $c'$ is an absolute constant, depending only on $c$. 
   \end{enumerate}
 

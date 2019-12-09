@@ -1,0 +1,104 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Math-317 Galois Theory \\ Problem Set 12 }
+\rhead{December  9, 2019}
+\rfoot{Problems selected by  F. Eisenbrand and C. Hunkenschöder}
+\usepackage{times}
+\usepackage{mathptmx}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\br}[1]{\overline{#1}}
+\usepackage[utf8]{inputenc} 
+\usepackage{mathrsfs}
+\usepackage{mathtools} 
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{hyperref}
+\usepackage{enumerate}
+
+\usepackage{../../utf8math}
+
+\def \N {\mathbb N}
+\def \R {\mathbb R}
+\def \Q {\mathbb Q}
+\def \Z {\mathbb Z}
+\def \id {{\rm id}\,}
+\def \Ker {{\rm Ker}\,}
+\def \Im {{\rm Im}\,}
+\def \Vect {{\rm Vect}\,}
+\DeclareMathOperator{\vol}{vol}
+
+\DeclareMathOperator{\gal}{Gal}
+
+\begin{document} 
+\begin{enumerate}
+\item 
+  Let $K_1$ and $K_2$ be intermediate fields of a finite Galois extension $E ⊇F$. Show that $\gal(E：K_1)$ and $\gal(G：K_2)$ are conjugate subgroups of $\gal(E：K_1)$ if and only of $K_1 = σ(K_2)$ for some $σ ∈ \gal(E：F)$.
+\item Let $E ⊇F$ be a finite Galois extension with Galois group $G$. For $u ∈E$, define $f = ∏_{σ ∈G} (x - σ(u))$. Show that $f(x) ∈F[x]$ and that this is a power of the minimal polynomial of $u$.
+
+\item Let $B_1, B_2 \in \Q^{n \times d}$ be of full column rank and recall the notations
+\begin{align*}
+\Lambda(B_i) &= \{ B_i z \mid z \in \Z^d\} \subseteq \R^n, \\
+\mathcal{P}(B_i) &= \{B_i x \mid x \in [0,1)^d\} \subseteq \R^n.
+\end{align*}
+Show the following.
+\begin{enumerate}
+\item
+\[
+\Lambda (B_1) = \Lambda (B_2) \quad \Leftrightarrow \quad \exists U \in \Z^{d \times d}: (\det(U) = \pm 1) \text{ and } (B_1 = B_2 U)
+\]
+\item Let $\Lambda \subseteq \R^n$ be a lattice and $B$ any basis of $\Lambda$.
+Show that $\det (\Lambda(B)) := \sqrt{B^\intercal B}$ is well-defined.
+\item Show that $\vol(\mathcal{P}(B)) = | \det (B) |$ for $B \in \R^{n \times n}$.
+\item Show that $\vol_d(\mathcal{P}(B)) = \det (\Lambda)$ for any $d$-dimensional lattice $\Lambda \subseteq \R^n$.
+\end{enumerate}
+\item Let $L \subset \R^n$ be a lattice and $L^\prime \subseteq L$ a sublattice such that $\dim(L) = \dim(L^\prime) =: d$.
+Let $B^\prime$ be a basis of $L^\prime$.
+Show that
+\[
+ | \mathcal{P}(B^\prime) \cap L | = \frac{\det(L^\prime)}{\det (L)} = [L : L^\prime].
+\]
+\textit{Hint:} Show this first for full-dimensional lattices, then conclude for lower-dimensional lattices.
+\item Let $B = \{ b_1,\dots,b_m\} \subseteq \Q^n$ be a set of vectors.
+Show that $L := \{\sum_{i=1}^m z_i b_i \mid z_i \in \Z \}$ is a lattice.
+Show that this is not necessarily true for choosing real vectors, i.e.\ $B = \{b_1,\dots,b_m\} \subseteq \R^n$. 
+
+\item Let  $b_1,\dots,b_m ∈ ℝ^n$  be linearly independent. Recall the Gram-Schmidt orthogonalization $b_1^*,\dots,b_m^* ∈ ℝ^n $ which is defined as $b_1^* = b_1$ and
+  \begin{displaymath}
+    b_i^* = b_i - ∑_{j=1}^{i-1} 〈b_i,b_j^*〉 / 〈b_j^*,b_j^*〉 b_j^* 
+  \end{displaymath}
+  for 
+  $i=2,\dots,m$. We denote the matrix with the columns $b_1,\dots,b_m$  by $B$ and the matrix with columns $b_1^*,\dots,b_m^*$ by $B^*$.
+  \begin{enumerate}[a)]
+  \item Show that
+    \begin{displaymath}
+      ∏_{i=1}^m \|b_i^*\| = \sqrt{\det(B^T B)} 
+    \end{displaymath}
+    and that this value is a positive integer if  $b_1,\dots,b_m ∈ℤ^n$.
+  \item If $b'_1,\dots,b'_m $ results from $b_1,\dots,b_m$ by swapping the order of $b_i$ and $b_{i+1}$ and  if ${b'}^*_1,\dots,{b'}^*_m $ is the corresponding Gram-Schmidt orthogonalization, then show that $b_j^*={b'}^*_j$ if $j≠i$ and $j ≠ i+1$. Furthermore, show
+    \begin{displaymath}
+     {b'}^*_i = b_{i+1}^* + 〈b_{i+1},b_i^*〉 / 〈b_i^*,b_i^*〉 b_i^*. 
+    \end{displaymath}
+  \end{enumerate}
+  
+\end{enumerate}
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+%%%Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
